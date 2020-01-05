@@ -31,5 +31,19 @@ namespace Hrms.Controllers.Admin
                 throw ex;
             }
         }
+
+        [HttpPost]
+        public bool SaveGeneralInfo(Organization organization)
+        {
+            try
+            {
+                InfoBL.saveGeneralInfo(organization);
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

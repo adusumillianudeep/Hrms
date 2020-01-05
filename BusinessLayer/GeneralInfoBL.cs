@@ -50,5 +50,18 @@ namespace BusinessLayer
                 throw ex;
             }
         }
+        
+        public bool saveGeneralInfo(Organization organization)
+        {
+            try
+            {
+                InfoDL.saveGeneralInfo(organization);
+                return true;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

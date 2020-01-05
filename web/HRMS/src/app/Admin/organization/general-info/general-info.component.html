@@ -1,4 +1,4 @@
-<form [formGroup]="GeneralInfoForm">
+<form [formGroup]="generalInfoForm">
 
     <label>
         Name:
@@ -54,4 +54,7 @@
         Note:
         <input type="text" formControlName="Note">
     </label>
+
+    <button type="submit" (click)="saveGeneralInfo()">Save</button>
+    <button (click)="getGeneralInfo()">Get</button>
 </form>
