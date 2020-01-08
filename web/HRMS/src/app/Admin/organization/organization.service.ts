@@ -13,4 +13,8 @@ export class OrganizationService {
     saveGeneralInfo(body) {
         return this.http.post(`${this.configUrl}/GeneralInfo/SaveGeneralInfo`, body);
     }
+
+    saveLocationInfo(body) {
+        return this.http.post(`${this.configUrl}/GeneralInfo/SaveLocationInfo`, body);
+    }
 }

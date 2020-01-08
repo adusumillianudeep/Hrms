@@ -45,5 +45,19 @@ namespace Hrms.Controllers.Admin
                 throw e;
             }
         }
+
+        [HttpPost]
+        public bool SaveLocationInfo(Location location)
+        {
+            try
+            {
+                InfoBL.saveLocationInfo(location);
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

@@ -1,0 +1,45 @@
+<form [formGroup]="locationForm">
+
+  <label>
+      Name:
+      <input type="text" formControlName="name">
+  </label>
+
+  <label>
+      City:
+      <input type="text" formControlName="city">
+  </label>
+
+  <label>
+      Country:
+      <input type="text" formControlName="country">
+  </label>
+
+  <label>
+      Address:
+      <input type="text" formControlName="address">
+  </label>
+  <br />
+  <label>
+      ZIP/Postal Code:
+      <input type="text" formControlName="postalCode">
+  </label>
+
+  <label>
+      Phone:
+      <input type="text" formControlName="phone">
+  </label>
+
+  <label>
+      Fax:
+      <input type="text" formControlName="fax">
+  </label>
+
+  <label>
+      Comments:
+      <input type="text" formControlName="comments">
+  </label>
+
+  <button type="submit" (click)="saveLocationInfo()">Save</button>
+  <button (click)="getLocationInfo()">Get</button>
+</form>

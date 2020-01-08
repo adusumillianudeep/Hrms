@@ -60,5 +60,30 @@ namespace DataAccessLayer
                 throw e;
             }
         }
+
+        public bool saveLocationInfo(Location location)
+        {
+            try
+            {
+                scon.Open();
+                SqlCommand command = new SqlCommand("SaveLocationInfo", scon);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@LocationId", SqlDbType.BigInt).Value = location.LocationId;
+                command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = location.Name;
+                command.Parameters.Add("@City", SqlDbType.NVarChar).Value = location.City;
+                command.Parameters.Add("@Country", SqlDbType.NVarChar).Value = location.Country;
+                command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = location.Address;
+                command.Parameters.Add("@PostalCode", SqlDbType.NVarChar).Value = location.PostalCode;
+                command.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = location.Phone;
+                command.Parameters.Add("@Fax", SqlDbType.NVarChar).Value = location.Fax;
+                command.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = location.Comments;
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

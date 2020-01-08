@@ -63,5 +63,18 @@ namespace BusinessLayer
                 throw e;
             }
         }
+
+        public bool saveLocationInfo(Location location)
+        {
+            try
+            {
+                InfoDL.saveLocationInfo(location);
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
