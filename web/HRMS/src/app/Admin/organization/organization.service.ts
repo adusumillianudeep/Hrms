@@ -3,9 +3,16 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class OrganizationService {
-    constructor(private http: HttpClient) { }
-
     configUrl = 'http://localhost:57960/api';
+    constructor(private http: HttpClient) { 
+        debugger;
+        this.http.get('assets/config.json').subscribe(data=>{
+            debugger;
+            this.configUrl = data["api"]["apiUrl"]
+        })
+    }
+
+    
     getGeneralInfo(id) {
         return this.http.get(`${this.configUrl}/GeneralInfo/GetGeneralInfo/${id}`);
     }

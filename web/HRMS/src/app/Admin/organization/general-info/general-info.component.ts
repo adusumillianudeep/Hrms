@@ -31,17 +31,22 @@ export class GeneralInfoComponent implements OnInit {
   }
 
   getGeneralInfo() {
-   this.organizationService.getGeneralInfo(1).subscribe((data: any) => {
+    this.organizationService.getGeneralInfo(1).subscribe((data: any) => {
       this.OrganizationInfo = data;
       this.generalInfoForm.setValue(data[0]);
     });
   }
 
   saveGeneralInfo() {
-    const generalInfo = this.generalInfoForm.value;
-    console.log(this.generalInfoForm.valid);
-    this.organizationService.saveGeneralInfo(generalInfo).subscribe(res => {
-      console.log(res);
-    });
+    if (this.generalInfoForm.valid) {
+      const generalInfo = this.generalInfoForm.value;
+      console.log(this.generalInfoForm.valid);
+      this.organizationService.saveGeneralInfo(generalInfo).subscribe(res => {
+        console.log(res);
+      });
+    }
+    else{
+      alert('Please give valid data');
+    }
   }
 }

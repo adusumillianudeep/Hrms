@@ -12,7 +12,12 @@ namespace DataAccessLayer
 {
     public class GeneralInfoDL
     {
-        SqlConnection scon = new SqlConnection(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=Hrms;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        SqlConnection scon;
+        
+        public GeneralInfoDL()
+        {
+            scon = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["HrmsConnString"].ConnectionString);
+        }
         public DataSet GetGeneralInfo()
         {
             try
@@ -30,6 +35,11 @@ namespace DataAccessLayer
             {
 
                 throw ex;
+            }
+            finally
+            {
+                if (scon.State == ConnectionState.Open)
+                    scon.Close();
             }
         }
 
@@ -58,6 +68,11 @@ namespace DataAccessLayer
             catch (Exception e)
             {
                 throw e;
+            }
+            finally
+            {
+                if (scon.State == ConnectionState.Open)
+                    scon.Close();
             }
         }
 
