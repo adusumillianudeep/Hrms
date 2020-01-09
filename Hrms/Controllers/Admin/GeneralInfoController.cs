@@ -18,11 +18,11 @@ namespace Hrms.Controllers.Admin
         }
 
         [HttpGet]
-        public List<Organization> GetGeneralInfo()
+        public List<Organization> GetGeneralInfo(int Id)
         {
             try
             {
-                List<Organization> organizations = InfoBL.GetGeneralInfo();
+                List<Organization> organizations = InfoBL.GetGeneralInfo(Id);
                 return organizations;
             }
             catch (Exception ex)
@@ -46,8 +46,24 @@ namespace Hrms.Controllers.Admin
             }
         }
 
+
+        [HttpGet]
+        public List<OrganizationLocation> GetLocationInfo(int Id)
+        {
+            try
+            {
+                List<OrganizationLocation> organizations = InfoBL.GetLocationInfo(Id);
+                return organizations;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         [HttpPost]
-        public bool SaveLocationInfo(Location location)
+        public bool SaveLocationInfo(OrganizationLocation location)
         {
             try
             {

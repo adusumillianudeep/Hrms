@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Location
+    public class OrganizationLocation
     {
-        public long LocationId { get; set; }
+        public long OrganizationLocationId { get; set; }
+
+        public long OrganizationId { get; set; }
 
         public string Name { get; set; }
 
@@ -18,7 +20,7 @@ namespace Model
 
         public string Address { get; set; }
 
-        public string PostalCode { get; set; }
+        public string ZipCode { get; set; }
 
         public string Phone { get; set; }
 
