@@ -7,7 +7,6 @@ export class OrganizationService {
     constructor(private http: HttpClient) { 
         debugger;
         this.http.get('assets/config.json').subscribe(data=>{
-            debugger;
             this.configUrl = data["api"]["apiUrl"]
         })
     }
@@ -15,6 +14,10 @@ export class OrganizationService {
     
     getGeneralInfo(id) {
         return this.http.get(`${this.configUrl}/GeneralInfo/GetGeneralInfo/${id}`);
+    }
+
+    getLocationInfo(id) {
+        return this.http.get(`${this.configUrl}/GeneralInfo/GetLocationInfo/${id}`);
     }
 
     saveGeneralInfo(body) {

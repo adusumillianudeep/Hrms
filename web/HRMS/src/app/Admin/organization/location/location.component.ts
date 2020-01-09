@@ -8,23 +8,30 @@ import { OrganizationService } from '../organization.service';
   styleUrls: ['./location.component.scss']
 })
 export class LocationComponent implements OnInit {
-
+  locationInfo:any[];
   locationForm: FormGroup;
   constructor(private organizationService: OrganizationService) { }
 
   ngOnInit() {
     this.locationForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      city: new FormControl(''),
-      country: new FormControl('', Validators.required),
-      address: new FormControl(''),
-      postalCode: new FormControl(''),
-      phone: new FormControl(''),
-      fax: new FormControl(''),
-      comments: new FormControl('')
+      OrganizationLocationId: new FormControl(''),
+      OrganizationId: new FormControl(''),
+      Name: new FormControl('', Validators.required),
+      City: new FormControl(''),
+      Country: new FormControl('', Validators.required),
+      Address: new FormControl(''),
+      ZipCode: new FormControl(''),
+      Phone: new FormControl(''),
+      Fax: new FormControl(''),
+      Comments: new FormControl('')
     });
   }
-
+  getLocationInfo() {
+    this.organizationService.getLocationInfo(1).subscribe((data: any) => {
+      this.locationInfo = data;
+      this.locationForm.setValue(data[0]);
+    });
+  }
   saveLocationInfo() {
     const locationInfo = this.locationForm.value;
     console.log(this.locationForm.valid);

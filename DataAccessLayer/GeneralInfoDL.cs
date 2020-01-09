@@ -18,14 +18,14 @@ namespace DataAccessLayer
         {
             scon = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["HrmsConnString"].ConnectionString);
         }
-        public DataSet GetGeneralInfo()
+        public DataSet GetGeneralInfo(int id)
         {
             try
             {
                 scon.Open();
                 SqlCommand command = new SqlCommand("GetGeneralInfo",scon);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@OrganizationId", SqlDbType.BigInt).Value = 1;
+                command.Parameters.Add("@OrganizationId", SqlDbType.BigInt).Value = id;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 DataSet ds = new DataSet();
                 dataAdapter.Fill(ds);
@@ -76,19 +76,44 @@ namespace DataAccessLayer
             }
         }
 
-        public bool saveLocationInfo(Location location)
+        public DataSet GetLocationInfo(int id)
+        {
+            try
+            {
+                scon.Open();
+                SqlCommand command = new SqlCommand("GetLocationInfo", scon);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@OrganizationId", SqlDbType.BigInt).Value = id;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                DataSet ds = new DataSet();
+                dataAdapter.Fill(ds);
+                return ds;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (scon.State == ConnectionState.Open)
+                    scon.Close();
+            }
+        }
+
+        public bool saveLocationInfo(OrganizationLocation location)
         {
             try
             {
                 scon.Open();
                 SqlCommand command = new SqlCommand("SaveLocationInfo", scon);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@LocationId", SqlDbType.BigInt).Value = location.LocationId;
+                command.Parameters.Add("@OrganizationId", SqlDbType.BigInt).Value = location.OrganizationId;
                 command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = location.Name;
                 command.Parameters.Add("@City", SqlDbType.NVarChar).Value = location.City;
                 command.Parameters.Add("@Country", SqlDbType.NVarChar).Value = location.Country;
                 command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = location.Address;
-                command.Parameters.Add("@PostalCode", SqlDbType.NVarChar).Value = location.PostalCode;
+                command.Parameters.Add("@ZipCode", SqlDbType.NVarChar).Value = location.ZipCode;
                 command.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = location.Phone;
                 command.Parameters.Add("@Fax", SqlDbType.NVarChar).Value = location.Fax;
                 command.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = location.Comments;

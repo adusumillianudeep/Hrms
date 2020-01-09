@@ -16,11 +16,11 @@ namespace BusinessLayer
         {
             InfoDL = new GeneralInfoDL();
         }
-        public List<Organization> GetGeneralInfo()
+        public List<Organization> GetGeneralInfo(int Id)
         {
             try
             {
-                DataSet ds = InfoDL.GetGeneralInfo();
+                DataSet ds = InfoDL.GetGeneralInfo(Id);
                 List<Organization> organization = new List<Organization>();
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -64,7 +64,40 @@ namespace BusinessLayer
             }
         }
 
-        public bool saveLocationInfo(Location location)
+        public List<OrganizationLocation> GetLocationInfo(int Id)
+        {
+            try
+            {
+                DataSet ds = InfoDL.GetLocationInfo(Id);
+                List<OrganizationLocation> organization = new List<OrganizationLocation>();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    organization = ds.Tables[0].AsEnumerable().Select(datarow => new OrganizationLocation
+                    {
+                        OrganizationLocationId = datarow.Field<long>("OrganizationLocationId"),
+                        OrganizationId = datarow.Field<long>("OrganizationId"),
+                        Name = datarow.Field<string>("Name"),
+                        Phone = datarow.Field<string>("Phone"),
+                        Address = datarow.Field<string>("Address"),
+                        City = datarow.Field<string>("City"),
+                        Fax = datarow.Field<string>("Fax"),
+                        Country = datarow.Field<string>("Country"),
+                        ZipCode = datarow.Field<string>("ZipCode"),
+                        Comments = datarow.Field<string>("Comments")
+
+                    }).ToList();
+                }
+
+                return organization;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool saveLocationInfo(OrganizationLocation location)
         {
             try
             {
