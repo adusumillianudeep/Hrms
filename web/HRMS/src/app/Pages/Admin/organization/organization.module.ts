@@ -6,6 +6,7 @@ import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LocationComponent } from './location/location.component';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { LocationComponent } from './location/location.component';
     CommonModule,
     TableModule,
     InputTextModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InputSwitchModule
   ],
   providers: [OrganizationService]
 })

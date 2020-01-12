@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 export class OrganizationService {
     configUrl = 'http://localhost:57960/api';
     constructor(private http: HttpClient) { 
-        debugger;
         this.http.get('assets/config.json').subscribe(data=>{
             this.configUrl = data["api"]["apiUrl"]
         })
