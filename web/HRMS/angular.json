@@ -28,7 +28,7 @@
               "src/assets",
               "src/web.config"
             ],
-            "styles": [
+            "styles": [              
               "src/styles.scss"
             ],
             "scripts": []
@@ -95,6 +95,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "src/app/shared/_styles.scss",              
               "../node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
