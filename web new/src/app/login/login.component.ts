@@ -13,10 +13,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private commonService: CommonService,
     private router: Router
-  ) { }
+  ) {
+    this.commonService.loginChange(false);
+  }
 
   ngOnInit() {
-    this.commonService.loginChange(false);
   }
 
   login() {

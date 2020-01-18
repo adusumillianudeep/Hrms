@@ -4,27 +4,27 @@ export const navigation: NavItem[] = [
     {
         displayName: "My Shortcuts",
         iconName: "short_text",
-        route: "devfestfl",
+        route: "",
     },
     {
         displayName: "Admin",
         iconName: "account_circle",
-        route: "devfestfl",
+        route: "",
         children: [
             {
                 displayName: "User Management",
                 iconName: '',
-                route: "devfestfl/speakers",
+                route: "",
                 children: [
                     {
                         displayName: "Users",
                         iconName: "",
-                        route: "devfestfl/speakers/michael-prentice"
+                        route: ""
                     },
                     {
                         displayName: "Users Role",
                         iconName: "",
-                        route: "devfestfl/speakers/stephen-fluin",
+                        route: "",
                     },
                 ]
             }
