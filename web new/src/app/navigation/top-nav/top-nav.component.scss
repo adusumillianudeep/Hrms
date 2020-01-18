@@ -1,0 +1,7 @@
+::ng-deep {
+  .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    background: linear-gradient(#ff7001 0%, #ff8b32 90%), linear-gradient(to right, #ff7001, #ff8b32 90%);
+    background-blend-mode: lighten;
+  }
+}
