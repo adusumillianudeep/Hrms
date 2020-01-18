@@ -1,60 +1,87 @@
 <form [formGroup]="generalInfoForm">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row card card-block">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            Name:
+                            <input type="text" formControlName="Name">
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            TaxId:
+                            <input type="text" formControlName="TaxId">
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            RegistrationNumber:
+                            <input type="text" formControlName="RegistrationNumber">
+                        </label>
 
-    <label>
-        Name:
-        <input type="text" formControlName="Name">
-    </label>
+                    </div>
 
-    <label>
-        TaxId:
-        <input type="text" formControlName="TaxId">
-    </label>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            Phone:
+                            <input type="text" formControlName="Phone">
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            Email:
+                            <input type="text" formControlName="Email">
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            Address:
+                            <input type="text" formControlName="Address">
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            City:
+                            <input type="text" formControlName="City">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            State:
+                            <input type="text" formControlName="State">
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            ZipCode:
+                            <input type="text" formControlName="ZipCode">
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">
+                            Country:
+                            <input type="text" formControlName="Country">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <label class="control-label">
+                            Note:
+                            <input type="text" formControlName="Note">
+                        </label>
+                    </div>
+                </div>
 
-    <label>
-        Email:
-        <input type="text" formControlName="Email">
-    </label>
-
-    <label>
-        Phone:
-        <input type="text" formControlName="Phone">
-    </label>
-    <br />
-    <label>
-        RegistrationNumber:
-        <input type="text" formControlName="RegistrationNumber">
-    </label>
-
-    <label>
-        Address:
-        <input type="text" formControlName="Address">
-    </label>
-
-    <label>
-        City:
-        <input type="text" formControlName="City">
-    </label>
-
-    <label>
-        State:
-        <input type="text" formControlName="State">
-    </label>
-    <br />
-    <label>
-        ZipCode:
-        <input type="text" formControlName="ZipCode">
-    </label>
-
-    <label>
-        Country:
-        <input type="text" formControlName="Country">
-    </label>
-
-    <label>
-        Note:
-        <input type="text" formControlName="Note">
-    </label>
-
-    <button type="submit" (click)="saveGeneralInfo()">Save</button>
-    <button (click)="getGeneralInfo()">Get</button>
+                <button type="submit" (click)="saveGeneralInfo()">Save</button>
+                <button (click)="getGeneralInfo()">Get</button>
+            </div>
+        </div>
+    </div>
 </form>
