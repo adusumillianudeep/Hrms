@@ -1,0 +1,5 @@
+{
+    "api": {
+        "apiUrl": "http://hrmsapplicationqaapi.azurewebsites.net/api"
+    }
+}
