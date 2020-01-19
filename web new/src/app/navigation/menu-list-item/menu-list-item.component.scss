@@ -1,3 +1,39 @@
 .px-8 {
   padding: 0 8px;
 }
+
+@import "../../theme";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  width: 100%;
+
+  .mat-list-item.active {
+    background: linear-gradient(#01579b 0%, #40c4ff 90%), linear-gradient(to right, #40c4ff, #01579b 90%);
+    background-blend-mode: lighten;
+    border-radius: 0px 40px 40px 0px;
+    font-weight: 500;
+    margin-right: 24px;
+  }
+  &:hover,
+  &:focus {
+    > .mat-list-item:not(.expanded) {
+      background-color: mat-color($app-primary, 100) !important;
+      border-radius: 0px 40px 40px 0px;
+      font-weight: 500;
+      margin-right: 24px;
+    }
+  }
+}
+
+.mat-list-item {
+  padding: 8px 0;
+  display: flex;
+  width: auto;
+
+  .routeIcon {
+    margin-right: 40px;
+  }
+}

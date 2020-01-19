@@ -26,7 +26,7 @@
 }
 
 .color {
-  background: linear-gradient(#ff7001 0%, #ff8b32 90%), linear-gradient(to right, #ff7001, #ff8b32 90%);
+  background: linear-gradient(#01579b 0%, #40c4ff 90%), linear-gradient(to right, #40c4ff, #01579b 90%);
   background-blend-mode: lighten;
 }
 
@@ -41,11 +41,11 @@
   }
 
   mat-card.card-header.mat-card {
-    box-shadow: 10px 10px 20px #f7c5a0;
+    box-shadow: 10px 10px 20px #80d8ff;
   }
 
   .mat-card-header {
-    background: linear-gradient(#ff7001 0%, #ff8b32 90%), linear-gradient(to right, #ff7001, #ff8b32 90%);
+    background: linear-gradient(#01579b 0%, #40c4ff 90%), linear-gradient(to right, #40c4ff, #01579b 90%);
     background-blend-mode: lighten;
     padding: 16px 16px 16px 200px !important;
     font-weight: 600;

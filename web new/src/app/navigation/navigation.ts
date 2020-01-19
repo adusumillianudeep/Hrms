@@ -19,12 +19,12 @@ export const navigation: NavItem[] = [
                     {
                         displayName: "Users",
                         iconName: "",
-                        route: ""
+                        route: "/users"
                     },
                     {
-                        displayName: "Users Role",
+                        displayName: "User Role",
                         iconName: "",
-                        route: "",
+                        route: "/user-roles",
                     },
                 ]
             }
