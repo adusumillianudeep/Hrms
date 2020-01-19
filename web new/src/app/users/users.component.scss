@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+.container {
+  margin: 16px;
+}
+
+.color {
+  background: linear-gradient(#01579b 0%, #40c4ff 90%), linear-gradient(to right, #40c4ff, #01579b 90%);
+  background-blend-mode: lighten;
+}

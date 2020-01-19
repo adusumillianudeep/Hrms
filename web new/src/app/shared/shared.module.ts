@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import {
   MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule,
-  MatDividerModule, MatSelectModule, MatFormFieldModule, MatTableModule, MatInputModule, MatDialogModule, MatMenuModule, MatSnackBarModule, MatCardModule
+  MatDividerModule, MatSelectModule, MatFormFieldModule, MatTableModule, MatInputModule, MatDialogModule, MatMenuModule, MatSnackBarModule, MatCardModule, MatPaginatorModule, MatCheckboxModule
 } from '@angular/material';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -29,7 +29,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatSnackBarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    MatCheckboxModule
   ],
   exports: [MatToolbarModule,
     MatSidenavModule,
@@ -46,6 +48,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     MatCardModule,
     MatSnackBarModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule
   ]
