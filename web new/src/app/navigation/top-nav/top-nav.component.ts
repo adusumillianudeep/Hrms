@@ -10,12 +10,15 @@ export class TopNavComponent implements OnInit {
 
   constructor(public navService: NavService) { }
   test = true;
-  
-  ngOnInit() { }
+  DashboardTitle:any;
+  ngOnInit() { 
+    this.DashboardTitle="Dashboard";
+  }
 
   toggleClick() {
     this.test = !this.test;
     this.navService.onToggle(this.test);
+
   }
 
 }

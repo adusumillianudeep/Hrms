@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { Routes, RouterModule } from '@angular/router';
-
+import {MatTableModule} from '@angular/material';
 const routes: Routes = [
   {
     path: '',
@@ -15,6 +15,7 @@ const routes: Routes = [
   declarations: [UsersComponent],
   imports: [
     CommonModule,
+    MatTableModule,
     RouterModule.forChild(routes)
   ]
 })
