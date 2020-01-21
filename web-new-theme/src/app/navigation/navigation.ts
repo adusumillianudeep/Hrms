@@ -80,7 +80,7 @@ export const navigation: FuseNavigation[] = [
             },
             {
                 id: 'organization',
-                title: 'organization',
+                title: 'Organization',
                 type: 'collapsable',
                 icon: 'business',
                 children: [
