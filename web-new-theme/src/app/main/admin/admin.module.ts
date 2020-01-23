@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserRolesComponent } from './user-roles.component';
 import { Routes, RouterModule } from '@angular/router';
-import { FuseSharedModule } from '@fuse/shared.module';
 
 const routes: Routes = [
   {
-    path: '',
-    component: UserRolesComponent
-  }
+    path: 'user-management',
+    loadChildren: () => import('./user-management/user-management.module').then(m => m.UserManagementModule)
+  },
 ];
 
 @NgModule({
-  declarations: [UserRolesComponent],
+  declarations: [],
   imports: [
     CommonModule,
-    FuseSharedModule,
     RouterModule.forChild(routes)
   ]
 })
-export class UserRolesModule { }
+export class AdminModule { }
