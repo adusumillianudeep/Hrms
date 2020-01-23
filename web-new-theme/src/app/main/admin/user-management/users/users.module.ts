@@ -6,7 +6,7 @@ import { FuseSharedModule } from '@fuse/shared.module';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '**',
     component: UsersComponent
   }
 ];

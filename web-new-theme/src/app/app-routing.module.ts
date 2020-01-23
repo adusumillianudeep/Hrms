@@ -3,22 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
+
   {
-    path: 'admin/user-management/users',
-    loadChildren: () => import('./main/users/users.module').then(m => m.UsersModule)
+    path: 'admin',
+    loadChildren: () => import('./main/admin/admin.module').then(m => m.AdminModule)
   },
   {
-    path: 'admin/user-management/user-roles',
-    loadChildren: () => import('./main/user-roles/user-roles.module').then(m => m.UserRolesModule)
-  },
-  {
-    path: '**',
+    path: 'dashboard',
     loadChildren: () => import('./main/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
-  // {
-  //   path: '**',
-  //   loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  // }
+  {
+    path: '',
+    loadChildren: () => import('./main/login/login.module').then(m => m.LoginModule)
+  },
 ];
 
 @NgModule({

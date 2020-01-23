@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -15,6 +15,7 @@ import { fuseConfig } from 'app/fuse-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpRequestInterceptor } from './services/http-request.interceptor';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,13 @@ import { AppRoutingModule } from './app-routing.module';
 
         // App modules
         LayoutModule
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpRequestInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [
         AppComponent

@@ -13,9 +13,7 @@ import { MatToolbarModule, MatSidenavModule, MatListModule, MatButtonModule, Mat
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-
         FlexLayoutModule,
-
         FuseDirectivesModule,
         FusePipesModule,
         MatToolbarModule,
@@ -60,7 +58,6 @@ import { MatToolbarModule, MatSidenavModule, MatListModule, MatButtonModule, Mat
         MatPaginatorModule,
         MatCheckboxModule,
         FlexLayoutModule,
-
         FuseDirectivesModule,
         FusePipesModule
     ]
