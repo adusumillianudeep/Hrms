@@ -1,0 +1,99 @@
+<div class="page-layout simple fullwidth">
+    <!-- HEADER -->
+    <app-header [title]="'General Information'">
+        <button mat-raised-button class="add-product-button fuse-white mt-sm-0" type="submit" (click)="save()">
+            SAVE
+        </button>
+    </app-header>
+
+    <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
+        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                    <mat-icon class="secondary-text primary-fg">info</mat-icon>
+                    <div class="h2 secondary-text primary-fg">General Information</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Organization Name" required>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Tax ID">
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Number of employees">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Registration Number">
+                        </mat-form-field>
+
+                        <div fxFlex fxLayoutAlign="space-between center" class="mt-8">
+                            <mat-checkbox>EEO Enabled</mat-checkbox>
+                            <mat-checkbox>Cost Center Enabled</mat-checkbox>
+                        </div>
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Cost Center">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                    <mat-icon class="secondary-text primary-fg">account_circle</mat-icon>
+                    <div class="h2 secondary-text primary-fg">Contact Details</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Phone" required>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Fax">
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Email">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Address Street 1">
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Address Street 2">
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="City">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="State/Province">
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Zip/Postal Code">
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Country">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row">
+                        <mat-form-field fxFlex>
+                            <textarea matInput placeholder="Note"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

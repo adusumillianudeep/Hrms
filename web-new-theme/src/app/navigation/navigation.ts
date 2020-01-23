@@ -88,7 +88,7 @@ export const navigation: FuseNavigation[] = [
                         id: 'general-info',
                         title: 'General Information',
                         type: 'item',
-                        url: '/admin/general-info'
+                        url: '/admin/organization/general-information'
                     },
                     {
                         id: 'locations',
