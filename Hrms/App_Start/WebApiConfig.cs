@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Configuration;
+using Hrms.Filters;
 
 namespace Hrms
 {
@@ -25,6 +26,7 @@ namespace Hrms
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Filters.Add(new ApiAuthenticationFilter());
         }
     }
 }
