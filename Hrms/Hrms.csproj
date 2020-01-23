@@ -217,6 +217,9 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\HrmsApplicationDevApi - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\HrmsApplicationDevApi - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\HrmsApplicationDevApi - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\HrmsApplicationQAApi - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\HrmsApplicationQAApi - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\HrmsApplicationQAApi - Web Deploy.pubxml" />
