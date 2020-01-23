@@ -66,20 +66,18 @@ export class LoginComponent implements OnInit {
     }
 
     login(): void {
-        // this._fuseProgressBarService.show();
-
-        this._router.navigate(['dashboard']);
-        // this._auth.login(this.username, this.password).subscribe(res => {
-        //     debugger;
-        //     if (res) {
-        //         this._router.navigate(['dashboard']);
-        //     } else {
-        //         this.invalidUser = true;
-        //     }
-        //     this._fuseProgressBarService.hide();
-        // }, error => {
-        //     this.invalidUser = true;
-        //     this._fuseProgressBarService.hide();
-        // });
+        this._fuseProgressBarService.show();
+        this._auth.login(this.username, this.password).subscribe(res => {
+            debugger;
+            if (res) {
+                this._router.navigate(['dashboard']);
+            } else {
+                this.invalidUser = true;
+            }
+            this._fuseProgressBarService.hide();
+        }, error => {
+            this.invalidUser = true;
+            this._fuseProgressBarService.hide();
+        });
     }
 }
