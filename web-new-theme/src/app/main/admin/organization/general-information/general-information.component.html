@@ -7,7 +7,8 @@
     </app-header>
 
     <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
-        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+        <div *ngIf="generalInfo" class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column"
+            fusePerfectScrollbar>
             <div fxLayout="column" fxLayoutGap="16px">
                 <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
                     <mat-icon class="secondary-text primary-fg">info</mat-icon>
@@ -17,18 +18,20 @@
                 <div fxLayout="column">
                     <div fxLayout="row" fxLayoutGap="24px">
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="Organization Name" required>
+                            <input matInput [(ngModel)]="generalInfo.Name" placeholder="Organization Name" required>
                         </mat-form-field>
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="Tax ID">
+                            <input matInput [(ngModel)]="generalInfo.TaxId" placeholder="Tax ID">
                         </mat-form-field>
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="Number of employees">
+                            <input matInput [(ngModel)]="generalInfo.NumberOfEmployees"
+                                placeholder="Number of employees">
                         </mat-form-field>
                     </div>
                     <div fxLayout="row" fxLayoutGap="24px">
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="Registration Number">
+                            <input matInput [(ngModel)]="generalInfo.RegistrationNumber"
+                                placeholder="Registration Number">
                         </mat-form-field>
 
                         <div fxFlex fxLayoutAlign="space-between center" class="mt-8">
@@ -36,7 +39,7 @@
                             <mat-checkbox>Cost Center Enabled</mat-checkbox>
                         </div>
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="Cost Center">
+                            <input matInput [(ngModel)]="generalInfo.CostCenter" placeholder="Cost Center">
                         </mat-form-field>
                     </div>
                 </div>
@@ -51,44 +54,44 @@
                 <div fxLayout="column">
                     <div fxLayout="row" fxLayoutGap="24px">
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="Phone" required>
+                            <input matInput [(ngModel)]="generalInfo.Phone" placeholder="Phone">
                         </mat-form-field>
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="Fax">
+                            <input matInput [(ngModel)]="generalInfo.Fax" placeholder="Fax">
                         </mat-form-field>
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="Email">
-                        </mat-form-field>
-                    </div>
-                    <div fxLayout="row" fxLayoutGap="24px">
-                        <mat-form-field fxFlex>
-                            <input matInput placeholder="Address Street 1">
-                        </mat-form-field>
-
-                        <mat-form-field fxFlex>
-                            <input matInput placeholder="Address Street 2">
-                        </mat-form-field>
-
-                        <mat-form-field fxFlex>
-                            <input matInput placeholder="City">
+                            <input matInput [(ngModel)]="generalInfo.Email" placeholder="Email">
                         </mat-form-field>
                     </div>
                     <div fxLayout="row" fxLayoutGap="24px">
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="State/Province">
+                            <input matInput [(ngModel)]="generalInfo.Address" placeholder="Address Street 1">
                         </mat-form-field>
 
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="Zip/Postal Code">
+                            <input matInput [(ngModel)]="generalInfo.Address2" placeholder="Address Street 2">
                         </mat-form-field>
 
                         <mat-form-field fxFlex>
-                            <input matInput placeholder="Country">
+                            <input matInput [(ngModel)]="generalInfo.City" placeholder="City">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput [(ngModel)]="generalInfo.State" placeholder="State/Province">
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <input matInput [(ngModel)]="generalInfo.ZipCode" placeholder="Zip/Postal Code">
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <input matInput [(ngModel)]="generalInfo.Country" placeholder="Country">
                         </mat-form-field>
                     </div>
                     <div fxLayout="row">
                         <mat-form-field fxFlex>
-                            <textarea matInput placeholder="Note"></textarea>
+                            <textarea matInput [(ngModel)]="generalInfo.Note" placeholder="Note"></textarea>
                         </mat-form-field>
                     </div>
                 </div>
