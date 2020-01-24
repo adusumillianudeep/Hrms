@@ -9,6 +9,7 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { navigation } from 'app/navigation/navigation';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'app/main/login/services/authentication.service';
 
 @Component({
     selector: 'toolbar',
@@ -25,6 +26,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     navigation: any;
     selectedLanguage: any;
     userStatusOptions: any[];
+    username: string;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -40,7 +42,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         private _fuseConfigService: FuseConfigService,
         private _fuseSidebarService: FuseSidebarService,
         private _translateService: TranslateService,
-        private _router: Router
+        private _router: Router,
+        private _auth: AuthenticationService
     ) {
         // Set the defaults
         this.userStatusOptions = [
@@ -109,6 +112,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
         // Set the selected language from default languages
         this.selectedLanguage = _.find(this.languages, { id: this._translateService.currentLang });
+        this.username = this._auth.getUsername();
     }
 
     /**

@@ -69,8 +69,10 @@ export class LoginComponent implements OnInit {
         this._fuseProgressBarService.show();
         this._auth.login(this.username, this.password).subscribe(res => {
             debugger;
-            if (res) {
+            if (res.token) {
                 this._router.navigate(['dashboard']);
+                this._auth.setToken(res.token);
+                this._auth.setUsername(res.username);
             } else {
                 this.invalidUser = true;
             }

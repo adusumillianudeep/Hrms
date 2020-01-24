@@ -21,4 +21,12 @@ export class AuthenticationService {
     localStorage.setItem('authToken', token);
   }
 
+  public getUsername(): string {
+    return localStorage.getItem('username');
+  }
+
+  public setUsername(username: string): void {
+    localStorage.setItem('username', username);
+  }
+
 }
