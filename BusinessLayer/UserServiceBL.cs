@@ -33,6 +33,7 @@ namespace BusinessLayer
                         LastName = datarow.Field<string>("LastName"),
                         PhoneNo = datarow.Field<string>("PhoneNo"),
                         Email = datarow.Field<string>("PhoneNo"),
+                        OrganizationId = datarow.Field<long>("OrganizationId"),
                         userRoles = new UserRoles() { Role = new Roles() { RoleId = datarow.Field<int>("RoleId"), RoleName = datarow.Field<string>("RoleName") }, UserId = datarow.Field<long>("UserId") }
                     }).ToList()[0];
                 }
@@ -62,6 +63,7 @@ namespace BusinessLayer
                         LastName = datarow.Field<string>("LastName"),
                         PhoneNo = datarow.Field<string>("PhoneNo"),
                         Email = datarow.Field<string>("PhoneNo"),
+                        OrganizationId = datarow.Field<long>("OrganizationId"),
                         userRegions = new UserRegions()
                         {
                             UserId = datarow.Field<long>("UserId"),
@@ -135,7 +137,7 @@ namespace BusinessLayer
         {
             try
             {
-                return _UserServiceDL.InsertUserDetails(users.UserName, users.Password, users.FirstName, users.LastName, users.PhoneNo, users.Email, users.userRoles.Role.RoleId, users.userRegions.Region.RegionId);
+                return _UserServiceDL.InsertUserDetails(users.UserName, users.Password, users.FirstName, users.LastName, users.PhoneNo, users.Email, users.userRoles.Role.RoleId, users.userRegions.Region.RegionId,users.OrganizationId);
             }
             catch (Exception ex)
             {
@@ -148,7 +150,7 @@ namespace BusinessLayer
         {
             try
             {
-                return _UserServiceDL.UpdateUserDetails(users.UserName, users.UserId, users.FirstName, users.LastName, users.PhoneNo, users.Email, users.userRoles.Role.RoleId, users.userRegions.Region.RegionId);
+                return _UserServiceDL.UpdateUserDetails(users.UserName, users.UserId, users.FirstName, users.LastName, users.PhoneNo, users.Email, users.userRoles.Role.RoleId, users.userRegions.Region.RegionId, users.OrganizationId);
             }
             catch (Exception ex)
             {

@@ -23,6 +23,8 @@ namespace Model
 
         public string Email { get; set; }
 
+        public long OrganizationId { get; set; }
+
         public UserRoles userRoles { get; set; }
         public UserRegions userRegions { get; set; }
 

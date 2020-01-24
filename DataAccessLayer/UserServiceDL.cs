@@ -92,7 +92,7 @@ namespace DataAccessLayer
             }
         }
 
-        public long InsertUserDetails(string UserName,string Password,string FirstName,string LastName,string PhoneNo,string Email,int RoleId,int RegionId)
+        public long InsertUserDetails(string UserName,string Password,string FirstName,string LastName,string PhoneNo,string Email,int RoleId,int RegionId,long OrganizationId)
         {
             try
             {
@@ -107,6 +107,7 @@ namespace DataAccessLayer
                 command.Parameters.Add("@Email", SqlDbType.VarChar).Value = Email;
                 command.Parameters.Add("@RoleId", SqlDbType.Int).Value = RoleId;
                 command.Parameters.Add("@RegionId", SqlDbType.Int).Value = RegionId;
+                command.Parameters.Add("@OrganizationId", SqlDbType.Int).Value = OrganizationId;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 DataSet ds = new DataSet();
                 dataAdapter.Fill(ds);
@@ -131,7 +132,7 @@ namespace DataAccessLayer
             }
         }
 
-        public long UpdateUserDetails(string UserName, long UserId, string FirstName, string LastName, string PhoneNo, string Email, int RoleId, int RegionId)
+        public long UpdateUserDetails(string UserName, long UserId, string FirstName, string LastName, string PhoneNo, string Email, int RoleId, int RegionId, long OrganizationId)
         {
             try
             {
@@ -146,6 +147,7 @@ namespace DataAccessLayer
                 command.Parameters.Add("@Email", SqlDbType.VarChar).Value = Email;
                 command.Parameters.Add("@RoleId", SqlDbType.Int).Value = RoleId;
                 command.Parameters.Add("@RegionId", SqlDbType.Int).Value = RegionId;
+                command.Parameters.Add("@OrganizationId", SqlDbType.Int).Value = OrganizationId;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 DataSet ds = new DataSet();
                 dataAdapter.Fill(ds);

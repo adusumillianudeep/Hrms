@@ -27,7 +27,7 @@ namespace Hrms.Controllers
                 else
                 {
                     var JwtToken = JwtManager.GenerateToken(users);
-                    return new { username = UserName, roleid = users.userRoles.Role.RoleId, rolename = users.userRoles.Role.RoleName, token = JwtToken };
+                    return new { username = UserName, roleid = users.userRoles.Role.RoleId, rolename = users.userRoles.Role.RoleName, organizationId = users.OrganizationId, token = JwtToken };
                 }
             }
             catch (Exception ex)
