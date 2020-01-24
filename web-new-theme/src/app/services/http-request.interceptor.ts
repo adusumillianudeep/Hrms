@@ -20,13 +20,11 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const endPoint = request.url;
         const baseUrl = environment.baseURL;
-        debugger;
-        const test = this.auth.getToken();
-        if (test) {
+        if (this.auth.getToken()) {
             request = request.clone({
                 setHeaders: {
                     Authorization: `Bearer ${this.auth.getToken()}`,
-                    url: `${environment.baseURL}${request.url}`
+                    url: `${baseUrl}${endPoint}`
                 }
             });
         } else {
