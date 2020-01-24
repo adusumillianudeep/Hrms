@@ -24,10 +24,10 @@ namespace Hrms.Authentication
             {
                 Subject = new ClaimsIdentity(new[]
                         {
-                            new Claim(ClaimTypes.Name, user.Username),
-                            new Claim(ClaimTypes.Surname, user.DOB),
-                            new Claim(ClaimTypes.GivenName, user.Useremail),
-                            new Claim(ClaimTypes.Role, user.Userid.ToString()),
+                            new Claim(ClaimTypes.Name, user.UserName),
+                            new Claim(ClaimTypes.Surname, user.FirstName),
+                            new Claim(ClaimTypes.GivenName, user.Email),
+                            new Claim(ClaimTypes.Role, user.UserId.ToString()),
                         }),
 
                 Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
