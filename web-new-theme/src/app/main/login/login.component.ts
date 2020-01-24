@@ -6,6 +6,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { AuthenticationService } from './services/authentication.service';
 import { Router } from '@angular/router';
 import { FuseProgressBarService } from '@fuse/components/progress-bar/progress-bar.service';
+import { AlertService } from 'app/services/alert.service';
 
 @Component({
     selector: 'login',
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
         private _formBuilder: FormBuilder,
         private _auth: AuthenticationService,
         private _router: Router,
+        private _alertService: AlertService,
         private _fuseProgressBarService: FuseProgressBarService
     ) {
         // Configure the layout
@@ -73,8 +75,10 @@ export class LoginComponent implements OnInit {
                 this._router.navigate(['dashboard']);
                 this._auth.setToken(res.token);
                 this._auth.setUsername(res.username);
+                this._alertService.success('Logged in successfully');
             } else {
                 this.invalidUser = true;
+                this._alertService.error('Failed to login');
             }
             this._fuseProgressBarService.hide();
         }, error => {

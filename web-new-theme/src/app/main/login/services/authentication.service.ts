@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient,
+    private _router: Router) { }
 
   public login(username: string, password: string): Observable<any> {
     return this._http.get(`/api/Token/GetTokenBasedonCredentials?UserName=${username}&Password=${password}`);
@@ -27,6 +29,12 @@ export class AuthenticationService {
 
   public setUsername(username: string): void {
     localStorage.setItem('username', username);
+  }
+
+  public logout(): void {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('username');
+    this._router.navigate(['login']);
   }
 
 }
