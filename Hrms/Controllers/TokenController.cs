@@ -20,14 +20,14 @@ namespace Hrms.Controllers
             {
                 UserServiceBL userServiceBL = new UserServiceBL();
                 Users users = userServiceBL.GetUserDetailBasedOnUserCredentials(UserName, Password);
-                if (users != null)
+                if (users == null || users.UserName == null)
                 {
-                    var JwtToken = JwtManager.GenerateToken(users);
-                    return new { username = UserName, roleid = users.RoleId, rolename = users.Roles, token = JwtToken };
+                    return new { errormessage = "Invalid credentials provided" };
                 }
                 else
                 {
-                    return new { errormessage = "Invalid credentials provided" };
+                    var JwtToken = JwtManager.GenerateToken(users);
+                    return new { username = UserName, roleid = users.userRoles.Role.RoleId, rolename = users.userRoles.Role.RoleName, organizationId = users.OrganizationId, token = JwtToken };
                 }
             }
             catch (Exception ex)

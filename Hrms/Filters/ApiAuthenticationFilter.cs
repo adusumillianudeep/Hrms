@@ -35,28 +35,28 @@ namespace Hrms.Filters
 
 
 
-            //if (authorization == null || authorization.Scheme != "Bearer")
-            //{
-            //    context.ErrorResult = new AuthenticationFailureResult("Missing Token", request);
-            //    return;
-            //}
-
-            //if (string.IsNullOrEmpty(authorization.Parameter))
-            //{
-            //    context.ErrorResult = new AuthenticationFailureResult("Missing Token", request);
-            //    return;
-            //}
-            var Token = "";
-            if (request.Headers.Contains("Token"))
-            {
-                Token = request.Headers.GetValues("Token").First();
-            }
-            if (Token == "")
+            if (authorization == null || authorization.Scheme != "Bearer")
             {
                 context.ErrorResult = new AuthenticationFailureResult("Missing Token", request);
                 return;
             }
-            var token = Token;
+
+            if (string.IsNullOrEmpty(authorization.Parameter))
+            {
+                context.ErrorResult = new AuthenticationFailureResult("Missing Token", request);
+                return;
+            }
+            //var Token = "";
+            //if (request.Headers.Contains("Token"))
+            //{
+            //    Token = request.Headers.GetValues("Token").First();
+            //}
+            //if (Token == "")
+            //{
+            //    context.ErrorResult = new AuthenticationFailureResult("Missing Token", request);
+            //    return;
+            //}
+            var token = authorization.Parameter;
             var principal = await AuthenticateJwtToken(token);
 
             if (principal == null)

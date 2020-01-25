@@ -1,23 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersComponent } from './users.component';
 import { Routes, RouterModule } from '@angular/router';
-import { FuseSharedModule } from '@fuse/shared.module';
 
 const routes: Routes = [
   {
-    path: '',
-    component: UsersComponent
-  }
+    path: 'general-information',
+    loadChildren: () => import('./general-information/general-information.module').then(m => m.GeneralInformationModule)
+  },
 ];
 
 
 @NgModule({
-  declarations: [UsersComponent],
+  declarations: [],
   imports: [
     CommonModule,
-    FuseSharedModule,
     RouterModule.forChild(routes)
   ]
 })
-export class UsersModule { }
+export class OrganizationModule { }

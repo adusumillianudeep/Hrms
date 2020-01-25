@@ -28,6 +28,8 @@ export class UsersComponent implements OnInit {
     return numSelected === numRows;
   }
 
+  login()
+  {}
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     this.isAllSelected() ?

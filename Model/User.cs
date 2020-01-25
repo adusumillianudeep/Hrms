@@ -9,21 +9,49 @@ namespace Model
 {
     public class Users
     {
-        public long Userid { get; set; }
+        public long UserId { get; set; }
 
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
-        public string Useremail { get; set; }
+        public string Password { get; set; }
 
-        public string Phoneno { get; set; }
-
-        public string DOB { get; set; }
-
-        public string[] Roles { get; set; }
-        public string LastName { get; set; }
         public string FirstName { get; set; }
-        public object RoleId { get; set; }
+
+        public string LastName { get; set; }
+
+        public string PhoneNo { get; set; }
+
+        public string Email { get; set; }
+
+        public long OrganizationId { get; set; }
+
+        public UserRoles userRoles { get; set; }
+        public UserRegions userRegions { get; set; }
+
     }
+
+    public class UserRoles
+    {
+        public long UserRoleId { get; set; }
+
+        public long UserId { get; set; }
+
+        public Roles Role { get; set; }
+
+    }
+
+    public class UserRegions
+    {
+        public long UserRegionId { get; set; }
+
+        public long UserId { get; set; }
+
+        public Regions Region { get; set; }
+
+    }
+
+
+
 }
 
-    
+
