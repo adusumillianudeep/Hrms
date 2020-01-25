@@ -20,7 +20,7 @@ namespace Model
 
         public string Email { get; set; }
 
-        public string Address { get; set; }
+        public string Address1 { get; set; }
 
         public string City { get; set; }
 
@@ -32,6 +32,17 @@ namespace Model
 
         public string Note { get; set; }
 
+        public int? NoOfEmployees { get; set; }
+
+        public bool? IsEEOEnabled { get; set; }
+
+        public bool? IsCostCenterEnabled { get; set; }
+
+        public string CostCenter { get; set; }
+
+        public string Address2 { get; set; }
+
     }
+
 
 }

@@ -32,12 +32,17 @@ namespace BusinessLayer
                         RegistrationNumber = datarow.Field<string>("RegistrationNumber"),
                         Phone = datarow.Field<string>("Phone"),
                         Email = datarow.Field<string>("Email"),
-                        Address = datarow.Field<string>("Address"),
+                        Address1 = datarow.Field<string>("Address1"),
+                        Address2 = datarow.Field<string>("Address2"),
                         City = datarow.Field<string>("City"),
                         State = datarow.Field<string>("State"),
                         Country = datarow.Field<string>("Country"),
                         ZipCode = datarow.Field<string>("ZipCode"),
-                        Note = datarow.Field<string>("Note")
+                        Note = datarow.Field<string>("Note"),
+                        NoOfEmployees = datarow.Field<int>("NoOfEmployees"),
+                        IsCostCenterEnabled = datarow.Field<bool>("IsCostCenterEnabled"),
+                        IsEEOEnabled = datarow.Field<bool>("IsEEOEnabled"),
+                        CostCenter = datarow.Field<string>("CostCenter")
 
                     }).ToList();                   
                 }
