@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/6698d24d-5187-4c10-8629-d237923bed0e/resourceGroups/HrmsApplication/providers/Microsoft.Web/sites/HrmsApplicationQA",
+    "appService.deploySubpath": "dist\\fuse"
+}
