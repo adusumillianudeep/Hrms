@@ -2,12 +2,14 @@ export class GeneralInformation {
     OrganizationId: number;
     Name: string;
     TaxId: string;
-    NumberOfEmployees: number;
+    NoOfEmployees: number;
+    IsEEOEnabled: boolean;
+    IsCostCenterEnabled: boolean;
     Fax: string;
     RegistrationNumber: string;
     Phone: string;
     Email: string;
-    Address: string;
+    Address1: string;
     Address2: string;
     CostCenter: string;
     City: string;

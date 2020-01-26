@@ -1,0 +1,73 @@
+<div class="content w-100-p h-100-p" fxLayout="column">
+    <div class="header-pop accent p-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2 fxFlex>Add/Edit User</h2>
+        <div fxLayoutAlign="end center" fxLayoutGap="16px">
+            <button mat-raised-button type="submit">
+                SAVE
+            </button>
+            <button mat-raised-button class="fuse-white" type="reset" (click)="dialogRef.close(false)">
+                CANCEL
+            </button>
+        </div>
+    </div>
+    <div class="p-24" fxFlex>
+        <div fxLayout="column" fxLayoutGap="16px">
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Employee Name" required>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Username">
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex>
+                    <mat-label>ESS Role</mat-label>
+                    <mat-select required>
+                        <mat-option>-select-</mat-option>
+                        <mat-option *ngFor="let animal of animals" [value]="animal">
+                            {{animal.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field fxFlex>
+                    <mat-label>Supervisor Role</mat-label>
+                    <mat-select required>
+                        <mat-option>-select-</mat-option>
+                        <mat-option *ngFor="let animal of animals" [value]="animal">
+                            {{animal.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex>
+                    <mat-label>Admin Role</mat-label>
+                    <mat-select required>
+                        <mat-option>-select-</mat-option>
+                        <mat-option *ngFor="let animal of animals" [value]="animal">
+                            {{animal.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field fxFlex>
+                    <mat-label>Status</mat-label>
+                    <mat-select required>
+                        <mat-option>-select-</mat-option>
+                        <mat-option>Enabled</mat-option>
+                        <mat-option>Disabled</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Password" required>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Confirm Password">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>

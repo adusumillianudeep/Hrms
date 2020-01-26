@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FuseSharedModule } from '@fuse/shared.module';
+import { SaveComponent } from './save/save.component';
 
 const routes: Routes = [
   {
@@ -13,11 +14,12 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [UsersComponent],
+  declarations: [UsersComponent, SaveComponent],
   imports: [
     CommonModule,
     FuseSharedModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  entryComponents: [SaveComponent]
 })
 export class UsersModule { }

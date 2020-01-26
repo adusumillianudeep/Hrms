@@ -1,48 +1,51 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
+import { SaveComponent } from './save/save.component';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class UsersComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<User>(Users);
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  displayedColumns: string[] = ['select', 'username', 'userrole', 'employeename', 'status', 'actions'];
-  selection = new SelectionModel<User>(true, []);
+  Users: User[] = [
+    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
+    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
+    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
+    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
+    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
+    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" }
+  ];
 
-  constructor() { }
-
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
   }
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
+  save(): void {
+    const dialogRef = this.dialog.open(SaveComponent, {
+      width: '60%',
+      height: '60%'
+    });
 
-  login()
-  {}
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: User): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.username + 1}`;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
@@ -54,8 +57,3 @@ export interface User {
   status: string;
 }
 
-const Users: User[] = [
-  { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
-  { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
-  { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" }
-];

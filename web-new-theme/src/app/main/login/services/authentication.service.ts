@@ -31,6 +31,23 @@ export class AuthenticationService {
     localStorage.setItem('username', username);
   }
 
+  public getOrganizationId(): string {
+    return localStorage.getItem('organizationId');
+  }
+
+  public setOrganizationId(organizationId: number): void {
+    localStorage.setItem('organizationId', organizationId.toString());
+  }
+
+  public getRoleId(): string {
+    return localStorage.getItem('roleId');
+  }
+
+  public setRoleId(roleId: number): void {
+    localStorage.setItem('roleId', roleId.toString());
+  }
+
+
   public logout(): void {
     localStorage.removeItem('authToken');
     localStorage.removeItem('username');
