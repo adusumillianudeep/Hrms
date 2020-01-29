@@ -171,5 +171,23 @@ namespace DataAccessLayer
                     scon.Close();
             }
         }
+
+        public DataSet GetRoleNamesAndTypes()
+        {
+            try
+            {
+                scon.Open();
+                SqlCommand command = new SqlCommand("GetRoleNamesAndTypes", scon);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                DataSet ds = new DataSet();
+                dataAdapter.Fill(ds);
+                return ds;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
