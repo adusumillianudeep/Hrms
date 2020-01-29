@@ -9,10 +9,10 @@ import { MatDialogRef } from '@angular/material';
 export class SaveComponent implements OnInit {
 
   animals: any[] = [
-    { name: 'Dog', sound: 'Woof!' },
-    { name: 'Cat', sound: 'Meow!' },
-    { name: 'Cow', sound: 'Moo!' },
-    { name: 'Fox', sound: 'Wa-pa-pa-pa-pa-pa-pow!' },
+    { name: 'India', sound: 'IND' },
+    { name: 'Australia', sound: 'AUS' },
+    { name: 'USA', sound: 'USA' },
+    { name: 'UAE', sound: 'UAE' },
   ];
 
   constructor(public _dialogRef: MatDialogRef<SaveComponent>) { }

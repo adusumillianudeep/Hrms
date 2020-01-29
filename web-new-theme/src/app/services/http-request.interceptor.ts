@@ -24,8 +24,8 @@ export class HttpRequestInterceptor implements HttpInterceptor {
             request = request.clone({
                 setHeaders: {
                     Authorization: `Bearer ${this.auth.getToken()}`,
-                    url: `${baseUrl}${endPoint}`
-                }
+                },
+                url: `${baseUrl}${endPoint}`
             });
         } else {
             request = request.clone({ url: `${baseUrl}${endPoint}` });

@@ -1,6 +1,6 @@
 <div class="content w-100-p h-100-p" fxLayout="column">
     <div class="header-pop accent p-16" fxLayout="row" fxLayoutAlign="space-between center">
-        <h2 fxFlex>Add/Edit User</h2>
+        <h2 fxFlex>Add/Edit Location</h2>
         <div fxLayoutAlign="end center" fxLayoutGap="16px">
             <button mat-raised-button type="submit">
                 SAVE
@@ -14,15 +14,21 @@
         <div fxLayout="column" fxLayoutGap="16px">
             <div fxLayout="row" fxLayoutGap="24px">
                 <mat-form-field fxFlex>
-                    <input matInput placeholder="Employee Name" required>
+                    <input matInput placeholder="Name" required>
                 </mat-form-field>
                 <mat-form-field fxFlex>
-                    <input matInput placeholder="Username">
+                    <mat-label>Country</mat-label>
+                    <mat-select required>
+                        <mat-option>-select-</mat-option>
+                        <mat-option *ngFor="let animal of animals" [value]="animal">
+                            {{animal.name}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
             <div fxLayout="row" fxLayoutGap="24px">
                 <mat-form-field fxFlex>
-                    <mat-label>ESS Role</mat-label>
+                    <mat-label>Time Zone</mat-label>
                     <mat-select required>
                         <mat-option>-select-</mat-option>
                         <mat-option *ngFor="let animal of animals" [value]="animal">
@@ -32,42 +38,36 @@
                 </mat-form-field>
 
                 <mat-form-field fxFlex>
-                    <mat-label>Supervisor Role</mat-label>
-                    <mat-select required>
-                        <mat-option>-select-</mat-option>
-                        <mat-option *ngFor="let animal of animals" [value]="animal">
-                            {{animal.name}}
-                        </mat-option>
-                    </mat-select>
+                    <input matInput placeholder="State/Province" required>
                 </mat-form-field>
             </div>
             <div fxLayout="row" fxLayoutGap="24px">
                 <mat-form-field fxFlex>
-                    <mat-label>Admin Role</mat-label>
-                    <mat-select required>
-                        <mat-option>-select-</mat-option>
-                        <mat-option *ngFor="let animal of animals" [value]="animal">
-                            {{animal.name}}
-                        </mat-option>
-                    </mat-select>
+                    <input matInput placeholder="City" required>
                 </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Zip/Postal Code" required>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Phone" required>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Fax">
+                </mat-form-field>
+            </div>
+            <div fxFlex>
+                <mat-checkbox>EEO Enabled</mat-checkbox>
+            </div>
 
-                <mat-form-field fxFlex>
-                    <mat-label>Status</mat-label>
-                    <mat-select required>
-                        <mat-option>-select-</mat-option>
-                        <mat-option>Enabled</mat-option>
-                        <mat-option>Disabled</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div fxLayout="row" fxLayoutGap="24px">
-                <mat-form-field fxFlex>
-                    <input matInput placeholder="Password" required>
-                </mat-form-field>
-                <mat-form-field fxFlex>
-                    <input matInput placeholder="Confirm Password">
-                </mat-form-field>
-            </div>
+            <mat-form-field fxFlex>
+                <textarea matInput placeholder="Address"></textarea>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <textarea matInput placeholder="Note"></textarea>
+            </mat-form-field>
+
         </div>
     </div>

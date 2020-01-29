@@ -94,25 +94,25 @@ export const navigation: FuseNavigation[] = [
                         id: 'locations',
                         title: 'Locations',
                         type: 'item',
-                        url: '/admin/locations'
+                        url: '/admin/organization/locations'
                     },
                     {
                         id: 'structure',
                         title: 'Structure',
                         type: 'item',
-                        url: '/admin/locations'
+                        url: '/admin/organization/structure'
                     },
                     {
                         id: 'cost-centers',
                         title: 'Cost Centers',
                         type: 'item',
-                        url: '/admin/locations'
+                        url: '/admin/organization/cost-centers'
                     },
                     {
                         id: 'process-eeo-filling',
                         title: 'Process EEO Filling',
                         type: 'item',
-                        url: '/admin/locations'
+                        url: '/admin/organization/process-eeo-filling'
                     }
                 ]
             },
