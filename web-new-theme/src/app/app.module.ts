@@ -16,10 +16,12 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpRequestInterceptor } from './services/http-request.interceptor';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        PageNotFoundComponent
     ],
     imports: [
         BrowserModule,

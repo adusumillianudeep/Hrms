@@ -44,37 +44,37 @@ export const navigation: FuseNavigation[] = [
                         id: 'job-titles',
                         title: 'Job Titles',
                         type: 'item',
-                        url: '/admin/job'
+                        url: '/error-404/4'
                     },
                     {
                         id: 'salary-components',
                         title: 'Salary Components',
                         type: 'item',
-                        url: '/admin/job'
+                        url: '/error-404/5'
                     },
                     {
                         id: 'pay-grades',
                         title: 'Pay Grades',
                         type: 'item',
-                        url: '/admin/job'
+                        url: '/error-404/6'
                     },
                     {
                         id: 'employment-status',
                         title: 'Employment Status',
                         type: 'item',
-                        url: '/admin/job'
+                        url: '/error-404/7'
                     },
                     {
                         id: 'job-categories',
                         title: 'Job Categories',
                         type: 'item',
-                        url: '/admin/job'
+                        url: '/error-404/8'
                     },
                     {
                         id: 'work-shifts',
                         title: 'Work Shifts',
                         type: 'item',
-                        url: '/admin/job'
+                        url: '/error-404/9'
                     }
                 ]
             },
@@ -100,19 +100,19 @@ export const navigation: FuseNavigation[] = [
                         id: 'structure',
                         title: 'Structure',
                         type: 'item',
-                        url: '/admin/organization/structure'
+                        url: '/error-404/1'
                     },
                     {
                         id: 'cost-centers',
                         title: 'Cost Centers',
                         type: 'item',
-                        url: '/admin/organization/cost-centers'
+                        url: '/error-404/2'
                     },
                     {
                         id: 'process-eeo-filling',
                         title: 'Process EEO Filling',
                         type: 'item',
-                        url: '/admin/organization/process-eeo-filling'
+                        url: '/error-404/3'
                     }
                 ]
             },
