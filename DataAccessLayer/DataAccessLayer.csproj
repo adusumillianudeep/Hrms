@@ -31,9 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +51,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\CostCenter.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\DataGroupPermission.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\EmployeeAction.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\HrmsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HrmsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\HrmsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\HrmsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HrmsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Organization.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\OrganizationLocation.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Region.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Role.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\RoleDataGroupPermission.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\RoleEmployeeAction.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\RoleType.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\RoleTypesDataGroupPermission.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\RoleTypeWorkflowManagement.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\RoleWorkflowAction.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\User.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\UserRegion.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\UserRole.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\WorkflowManagement.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CostCenterDataAccess.cs" />
     <Compile Include="GeneralInfoDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,6 +127,34 @@
       <Project>{a653af0a-f3da-4c91-990e-8d833f645c8e}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Context\HrmsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HrmsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Context\HrmsModel.edmx.diagram">
+      <DependentUpon>HrmsModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Context\HrmsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HrmsModel.Context.cs</LastGenOutput>
+      <DependentUpon>HrmsModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Context\HrmsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HrmsModel.edmx</DependentUpon>
+      <LastGenOutput>HrmsModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

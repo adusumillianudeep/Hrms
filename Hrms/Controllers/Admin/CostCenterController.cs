@@ -88,7 +88,7 @@ namespace Hrms.Controllers.Admin
         public IHttpActionResult DeleteCostCenter(long id)
         {
             try
-            {                
+            {
                 return Ok(_costCenterService.DeleteCostCenter(id));
             }
             catch (Exception ex)
@@ -105,22 +105,6 @@ namespace Hrms.Controllers.Admin
             try
             {
                 return Ok(_costCenterService.DeleteCostCenters(ids));
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
-
-        // Use this endpoint if above (deletecostcenters) endpoint not works.
-        [HttpPost]
-        [Route("deletecostcentersmultiple")]
-        [ResponseType(typeof(CostCenter))]
-        public IHttpActionResult DeleteCostCentersMultiple(List<long> ids)
-        {
-            try
-            {
-                return Ok(_costCenterService.DeleteCostCentersMultiple(ids));
             }
             catch (Exception ex)
             {

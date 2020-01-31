@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e1c9cb87f5c74efcad9a611f4ce7881e" Name="Diagram1">
+        <EntityTypeShape EntityType="HrmsModel.CostCenter" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.DataGroupPermission" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.EmployeeAction" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.Organization" Width="1.5" PointX="3.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.OrganizationLocation" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.Region" Width="1.5" PointX="6" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.RoleDataGroupPermission" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.RoleEmployeeAction" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.Role" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.RoleType" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.RoleTypesDataGroupPermission" Width="1.5" PointX="9.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.RoleTypeWorkflowManagement" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.RoleWorkflowAction" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.UserRegion" Width="1.5" PointX="8.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.UserRole" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.User" Width="1.5" PointX="6" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrmsModel.WorkflowManagement" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="HrmsModel.FK_RoleDataGroupPermissions_DataGroupPermissions" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_RoleEmployeeActions_EmployeeActions" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_Users_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_UserRegions_Regions" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_RoleDataGroupPermissions_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_RoleEmployeeActions_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_Roles_RoleTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_RoleWorkflowActions_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_UserRoles_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_RoleTypeWorkflowManagement_RoleTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_RoleTypeWorkflowManagement_WorkflowManagement" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_RoleWorkflowActions_WorkflowManagement" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_UserRegions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="HrmsModel.FK_UserRoles_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
