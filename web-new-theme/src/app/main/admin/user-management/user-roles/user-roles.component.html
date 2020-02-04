@@ -2,7 +2,7 @@
     <div class="mat-elevation-z8 p-16 h-100-p  fuse-white" fxLayout="column" fxLayoutGap="8px">
         <div fxLayoutAlign="space-between center">
             <span fxFlex class="mat-title mb-0">User Roles</span>
-            <button mat-raised-button color="accent">
+            <button mat-raised-button color="accent" [routerLink]="['add']">
                 <mat-icon>add</mat-icon>
                 Add User Role
             </button>
@@ -40,7 +40,7 @@
                         <mat-icon mat-icon-button>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item (click)="edit()">
+                        <button mat-menu-item [routerLink]="['edit', element.id]">
                             <mat-icon>edit</mat-icon>
                             <span>Edit</span>
                         </button>

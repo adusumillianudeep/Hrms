@@ -1,0 +1,781 @@
+<div class="content" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayout="column" fxLayoutGap="20px">
+    <div fxLayout="column" fxLayoutGap="8px">
+        <span class="mat-title">Workflow Management :</span>
+        <mat-divider></mat-divider>
+        <div fxLayout="column">
+            <div fxLayout="row" fxLayoutGap="16px">
+                <mat-checkbox fxFlex>Leave</mat-checkbox>
+                <mat-checkbox fxFlex>Time</mat-checkbox>
+                <mat-checkbox fxFlex>Performance - Appraisals</mat-checkbox>
+            </div>
+            <div fxLayout="row" fxLayoutGap="16px">
+                <mat-checkbox fxFlex>Performance - Goals</mat-checkbox>
+                <mat-checkbox fxFlex>Asset</mat-checkbox>
+                <mat-checkbox fxFlex>Expense Claim</mat-checkbox>
+            </div>
+            <div fxLayout="row">
+                <mat-checkbox fxFlex="34">Travel Request</mat-checkbox>
+                <mat-checkbox fxFlex class="margin-left">Succession and Development - Individual Development Plan
+                </mat-checkbox>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="8px">
+        <span class="mat-title">Data Group Permissions :</span>
+        <mat-divider></mat-divider>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-checkbox>Discipline</mat-checkbox>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div fxLayout="column" fxLayoutGap="8px">
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Discipline - Cases</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Discipline - Configure - Document Templates</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-checkbox>Leave</mat-checkbox>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div fxLayout="column" fxLayoutGap="8px">
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - BradfordFactor Threshold</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - Calendar Configuration</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="start center" class="ml-4">
+                        <span fxFlex="65" class="mat-body-2">Leave - Holidays</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="start center" class="ml-4">
+                        <span fxFlex="65" class="mat-body-2">Leave - Leave Bradford Factor Report</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="start center" class="ml-4">
+                        <span fxFlex="65" class="mat-body-2">Leave - Leave Calendar</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - Leave Entitlements</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - Leave Entitlements and Usage Report</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - Leave List</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - Leave List - Comments</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - Leave Notifications</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - Leave Period</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - Leave Types</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - Work Week</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Leave - Working Weekends</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-checkbox>Performance</mat-checkbox>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div fxLayout="column" fxLayoutGap="8px">
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Performance - Appraisal Configuration Evaluators</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Performance - Appraisal Configuration Questions</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Performance - Appraisal Configuration Templates</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Performance - Appraisal Cycle</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Performance - Competency Mappings</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Performance - Employee Appraisals</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Performance - Goal Library</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Performance - Goals</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Performance - Reports</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-checkbox>PIM</mat-checkbox>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div fxLayout="column" fxLayoutGap="8px">
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Bulk Update</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Configure - Add Employee Wizard</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Configure - Document Templates</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Contact Details</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Contact Details - Attachments</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Contact Details - Custom Fields</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Dependents</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Dependents - Attachments</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Dependents - Custom Fields</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Emergency Contacts</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Emergency Contacts - Attachments</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Emergency Contacts - Custom Fields</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Employee Data Export</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Employee Photograph</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Employee Subordinates</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Employee Supervisors</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Employee Supervisors/Subordinates - Attachment</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Employee Supervisors/Subordinates - Custom Fields</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Immigration</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Immigration - Attachments</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Immigration - Custom Fields</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Job</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Job - Attachments</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Job - Custom Fields</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Job - History</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Membership</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Membership - Attachments</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Membership - Custom Fields</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Personal Details</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Personal Details - Attachments</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Personal Details - Custom Fields</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Qualifications - Attachments</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Qualifications - Custom Fields</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Qualifications - Languages</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Qualifications - License</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Qualifications - SKills</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Qualifications - Work Experience</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Reports</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Salary</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Salary - Attachments</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Salary - Custom Fields</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Salary - History</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Social Media Details</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">PIM - Work Week</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <mat-divider></mat-divider>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-checkbox>Succession & Development</mat-checkbox>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div fxLayout="column" fxLayoutGap="8px">
+                    <span fxLayout="row" fxLayoutAlign="start center" class="ml-4">
+                        <span fxFlex="65" class="mat-body-2">Succession & Development - 9 Box Matrix</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                        </div>
+                    </span>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Succession & Development - Goals</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                    <span fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="mat-body-2">Succession & Development - Individual Development Plan</span>
+                        <div fxLayoutGap="40px">
+                            <mat-checkbox>Read</mat-checkbox>
+                            <mat-checkbox>Update</mat-checkbox>
+                            <mat-checkbox>Create</mat-checkbox>
+                            <mat-checkbox>Delete</mat-checkbox>
+                        </div>
+                    </span>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>
