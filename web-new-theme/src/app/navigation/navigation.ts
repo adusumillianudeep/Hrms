@@ -106,13 +106,13 @@ export const navigation: FuseNavigation[] = [
                         id: 'cost-centers',
                         title: 'Cost Centers',
                         type: 'item',
-                        url: '/error-404/2'
+                        url: '/admin/organization/cost-centers'
                     },
                     {
                         id: 'process-eeo-filling',
                         title: 'Process EEO Filling',
                         type: 'item',
-                        url: '/error-404/3'
+                        url: '/admin/organization/process-eeo-filling'
                     }
                 ]
             },

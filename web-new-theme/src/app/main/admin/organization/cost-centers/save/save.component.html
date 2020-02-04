@@ -1,0 +1,24 @@
+<div class="content w-100-p h-100-p" fxLayout="column">
+    <div class="header-pop accent p-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2 fxFlex>Add/Edit Cost Center</h2>
+        <div fxLayoutAlign="end center" fxLayoutGap="16px">
+            <button mat-raised-button type="submit">
+                SAVE
+            </button>
+            <button mat-raised-button class="fuse-white" type="reset" (click)="_dialogRef.close(false)">
+                CANCEL
+            </button>
+        </div>
+    </div>
+    <div class="p-24" fxLayout="column">
+        <mat-form-field fxFlex>
+            <input matInput placeholder="Cost Center ID" required>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <input matInput placeholder="Name" required>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <textarea matInput placeholder="Description"></textarea>
+        </mat-form-field>
+    </div>
+</div>

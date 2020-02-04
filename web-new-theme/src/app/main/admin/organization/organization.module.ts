@@ -11,6 +11,14 @@ const routes: Routes = [
     path: 'locations',
     loadChildren: () => import('./locations/locations.module').then(m => m.LocationsModule)
   },
+  {
+    path: 'cost-centers',
+    loadChildren: () => import('./cost-centers/cost-centers.module').then(m => m.CostCentersModule)
+  },
+  {
+    path: 'process-eeo-filling',
+    loadChildren: () => import('./process-eeo-filling/process-eeo-filling.module').then(m => m.ProcessEeoFillingModule)
+  },
 ];
 
 
