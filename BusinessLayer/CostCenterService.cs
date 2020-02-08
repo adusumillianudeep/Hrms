@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Mappers;
 using DataAccessLayer;
 using Model;
+using Repositories.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,18 @@ namespace BusinessLayer
 {
     public class CostCenterService
     {
-        private readonly CostCenterDataAccess _costCenterDataAccess;
-        private readonly CostCenterMapper _costCenterMapper;
+        private readonly CostCenterRepository _costCenterRepository;
+
         public CostCenterService()
         {
-            _costCenterDataAccess = new CostCenterDataAccess();
-            _costCenterMapper = new CostCenterMapper();
+            _costCenterRepository = new CostCenterRepository();
         }
 
         public List<CostCenter> GetCostCenters()
         {
             try
             {
-                return _costCenterMapper.Map(_costCenterDataAccess.GetCostCenters());
+                return _costCenterRepository.GetCostCenters();
             }
             catch (Exception ex)
             {
@@ -33,8 +33,7 @@ namespace BusinessLayer
         {
             try
             {
-                return _costCenterMapper.Map(_costCenterDataAccess.GetCostCenterById(id))
-                .FirstOrDefault();
+                return _costCenterRepository.GetCostCenterById(id);
             }
             catch (Exception ex)
             {
@@ -46,9 +45,9 @@ namespace BusinessLayer
         {
             try
             {
-                var costCenterId = _costCenterDataAccess.SaveCostCenter(costCenter.Name, costCenter.Description);
-                costCenter.Id = costCenterId;
-                return costCenter;
+                var savedCostCenter = _costCenterRepository.SaveCostCenter(costCenter);
+
+                return savedCostCenter;
             }
             catch (Exception ex)
             {
@@ -65,7 +64,8 @@ namespace BusinessLayer
                     throw new Exception("Cost center id not provided");
                 }
 
-                _costCenterDataAccess.UpdateCostCenter(costCenter.Id.GetValueOrDefault(), costCenter.Name, costCenter.Description);
+                _costCenterRepository.UpdateCostCenter(costCenter);
+
                 return costCenter;
             }
             catch (Exception ex)
@@ -78,7 +78,7 @@ namespace BusinessLayer
         {
             try
             {
-                _costCenterDataAccess.DeleteCostCenter(id);
+                _costCenterRepository.DeleteCostCenter(id);
                 return id;
             }
             catch (Exception ex)
@@ -91,23 +91,7 @@ namespace BusinessLayer
         {
             try
             {
-                _costCenterDataAccess.DeleteCostCenters(ids);
-                return ids;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public List<long> DeleteCostCentersMultiple(List<long> ids)
-        {
-            try
-            {
-                foreach(var id in ids)
-                {
-                    _costCenterDataAccess.DeleteCostCenter(id);
-                }
+                _costCenterRepository.DeleteCostCenters(ids);
                 return ids;
             }
             catch (Exception ex)

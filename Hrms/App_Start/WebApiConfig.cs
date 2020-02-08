@@ -26,7 +26,7 @@ namespace Hrms
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.Filters.Add(new ApiAuthenticationFilter());
+            //config.Filters.Add(new ApiAuthenticationFilter());
         }
     }
 }

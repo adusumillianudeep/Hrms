@@ -1,0 +1,1050 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HrmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CostCenters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="DataGroupPermissions">
+          <Key>
+            <PropertyRef Name="DataGroupIdPermissionsId" />
+          </Key>
+          <Property Name="DataGroupIdPermissionsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GroupTask" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="EmployeeActions">
+          <Key>
+            <PropertyRef Name="EmployeeActionId" />
+          </Key>
+          <Property Name="EmployeeActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeActionName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Name="OrganizationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TaxId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RegistrationNumber" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Address1" Type="varchar" MaxLength="500" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="Note" Type="varchar" MaxLength="50" />
+          <Property Name="NoOfEmployees" Type="int" />
+          <Property Name="IsEEOEnabled" Type="bit" />
+          <Property Name="IsCostCenterEnabled" Type="bit" />
+          <Property Name="CostCenter" Type="varchar" MaxLength="500" />
+          <Property Name="Address2" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="OrganizationLocation">
+          <Key>
+            <PropertyRef Name="OrganizationLocationId" />
+          </Key>
+          <Property Name="OrganizationLocationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganizationId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="1000" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Regions">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionName" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleDataGroupPermissions">
+          <Key>
+            <PropertyRef Name="RoleDataGroupId" />
+          </Key>
+          <Property Name="RoleDataGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="DataGroupPermissionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleEmployeeActions">
+          <Key>
+            <PropertyRef Name="RoleEmployeeActionId" />
+          </Key>
+          <Property Name="RoleEmployeeActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="EmployeeActionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RoleTypeId" Type="int" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" />
+        </EntityType>
+        <EntityType Name="RoleTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleTypeName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleTypesDataGroupPermissions">
+          <Key>
+            <PropertyRef Name="RoleTypesDataGroupPermissionId" />
+          </Key>
+          <Property Name="RoleTypesDataGroupPermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleTypesId" Type="int" Nullable="false" />
+          <Property Name="DataGroupPermissionsId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleTypeWorkflowManagement">
+          <Key>
+            <PropertyRef Name="RoleTypeWorkflowManagementId" />
+          </Key>
+          <Property Name="RoleTypeWorkflowManagementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleTypeId" Type="int" />
+          <Property Name="WorkflowManagementId" Type="int" />
+        </EntityType>
+        <EntityType Name="RoleWorkflowActions">
+          <Key>
+            <PropertyRef Name="RoleWorkflowActionId" />
+          </Key>
+          <Property Name="RoleWorkflowActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="WorkflowActionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRegions">
+          <Key>
+            <PropertyRef Name="UserRegionId" />
+          </Key>
+          <Property Name="UserRegionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="RegionId" Type="int" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="Roleid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="200" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="1000" />
+          <Property Name="OrganizationId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkflowManagement">
+          <Key>
+            <PropertyRef Name="WorkflowActionId" />
+          </Key>
+          <Property Name="WorkflowActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActionName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_RoleDataGroupPermissions_DataGroupPermissions">
+          <End Role="DataGroupPermissions" Type="Self.DataGroupPermissions" Multiplicity="1" />
+          <End Role="RoleDataGroupPermissions" Type="Self.RoleDataGroupPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataGroupPermissions">
+              <PropertyRef Name="DataGroupIdPermissionsId" />
+            </Principal>
+            <Dependent Role="RoleDataGroupPermissions">
+              <PropertyRef Name="DataGroupPermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDataGroupPermissions_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RoleDataGroupPermissions" Type="Self.RoleDataGroupPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RoleDataGroupPermissions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleEmployeeActions_EmployeeActions">
+          <End Role="EmployeeActions" Type="Self.EmployeeActions" Multiplicity="1" />
+          <End Role="RoleEmployeeActions" Type="Self.RoleEmployeeActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeActions">
+              <PropertyRef Name="EmployeeActionId" />
+            </Principal>
+            <Dependent Role="RoleEmployeeActions">
+              <PropertyRef Name="EmployeeActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleEmployeeActions_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RoleEmployeeActions" Type="Self.RoleEmployeeActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RoleEmployeeActions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_RoleTypes">
+          <End Role="RoleTypes" Type="Self.RoleTypes" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="RoleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleTypeWorkflowManagement_RoleTypes">
+          <End Role="RoleTypes" Type="Self.RoleTypes" Multiplicity="0..1" />
+          <End Role="RoleTypeWorkflowManagement" Type="Self.RoleTypeWorkflowManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleTypeWorkflowManagement">
+              <PropertyRef Name="RoleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleTypeWorkflowManagement_WorkflowManagement">
+          <End Role="WorkflowManagement" Type="Self.WorkflowManagement" Multiplicity="0..1" />
+          <End Role="RoleTypeWorkflowManagement" Type="Self.RoleTypeWorkflowManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowManagement">
+              <PropertyRef Name="WorkflowActionId" />
+            </Principal>
+            <Dependent Role="RoleTypeWorkflowManagement">
+              <PropertyRef Name="WorkflowManagementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleWorkflowActions_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RoleWorkflowActions" Type="Self.RoleWorkflowActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RoleWorkflowActions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleWorkflowActions_WorkflowManagement">
+          <End Role="WorkflowManagement" Type="Self.WorkflowManagement" Multiplicity="1" />
+          <End Role="RoleWorkflowActions" Type="Self.RoleWorkflowActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowManagement">
+              <PropertyRef Name="WorkflowActionId" />
+            </Principal>
+            <Dependent Role="RoleWorkflowActions">
+              <PropertyRef Name="WorkflowActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRegions_Regions">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="0..1" />
+          <End Role="UserRegions" Type="Self.UserRegions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="RegionId" />
+            </Principal>
+            <Dependent Role="UserRegions">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRegions_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserRegions" Type="Self.UserRegions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRegions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="Roleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Organization">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HrmsModelStoreContainer">
+          <EntitySet Name="CostCenters" EntityType="Self.CostCenters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataGroupPermissions" EntityType="Self.DataGroupPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeActions" EntityType="Self.EmployeeActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrganizationLocation" EntityType="Self.OrganizationLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleDataGroupPermissions" EntityType="Self.RoleDataGroupPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleEmployeeActions" EntityType="Self.RoleEmployeeActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleTypes" EntityType="Self.RoleTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleTypesDataGroupPermissions" EntityType="Self.RoleTypesDataGroupPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleTypeWorkflowManagement" EntityType="Self.RoleTypeWorkflowManagement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleWorkflowActions" EntityType="Self.RoleWorkflowActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRegions" EntityType="Self.UserRegions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkflowManagement" EntityType="Self.WorkflowManagement" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_RoleDataGroupPermissions_DataGroupPermissions" Association="Self.FK_RoleDataGroupPermissions_DataGroupPermissions">
+            <End Role="DataGroupPermissions" EntitySet="DataGroupPermissions" />
+            <End Role="RoleDataGroupPermissions" EntitySet="RoleDataGroupPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDataGroupPermissions_Roles" Association="Self.FK_RoleDataGroupPermissions_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleDataGroupPermissions" EntitySet="RoleDataGroupPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleEmployeeActions_EmployeeActions" Association="Self.FK_RoleEmployeeActions_EmployeeActions">
+            <End Role="EmployeeActions" EntitySet="EmployeeActions" />
+            <End Role="RoleEmployeeActions" EntitySet="RoleEmployeeActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleEmployeeActions_Roles" Association="Self.FK_RoleEmployeeActions_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleEmployeeActions" EntitySet="RoleEmployeeActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_RoleTypes" Association="Self.FK_Roles_RoleTypes">
+            <End Role="RoleTypes" EntitySet="RoleTypes" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleTypeWorkflowManagement_RoleTypes" Association="Self.FK_RoleTypeWorkflowManagement_RoleTypes">
+            <End Role="RoleTypes" EntitySet="RoleTypes" />
+            <End Role="RoleTypeWorkflowManagement" EntitySet="RoleTypeWorkflowManagement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleTypeWorkflowManagement_WorkflowManagement" Association="Self.FK_RoleTypeWorkflowManagement_WorkflowManagement">
+            <End Role="WorkflowManagement" EntitySet="WorkflowManagement" />
+            <End Role="RoleTypeWorkflowManagement" EntitySet="RoleTypeWorkflowManagement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleWorkflowActions_Roles" Association="Self.FK_RoleWorkflowActions_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleWorkflowActions" EntitySet="RoleWorkflowActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleWorkflowActions_WorkflowManagement" Association="Self.FK_RoleWorkflowActions_WorkflowManagement">
+            <End Role="WorkflowManagement" EntitySet="WorkflowManagement" />
+            <End Role="RoleWorkflowActions" EntitySet="RoleWorkflowActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRegions_Regions" Association="Self.FK_UserRegions_Regions">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="UserRegions" EntitySet="UserRegions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRegions_Users" Association="Self.FK_UserRegions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRegions" EntitySet="UserRegions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Users" Association="Self.FK_UserRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Organization" Association="Self.FK_Users_Organization">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HrmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CostCenter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DataGroupPermission">
+          <Key>
+            <PropertyRef Name="DataGroupIdPermissionsId" />
+          </Key>
+          <Property Name="DataGroupIdPermissionsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GroupTask" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RoleDataGroupPermissions" Relationship="Self.FK_RoleDataGroupPermissions_DataGroupPermissions" FromRole="DataGroupPermissions" ToRole="RoleDataGroupPermissions" />
+        </EntityType>
+        <EntityType Name="EmployeeAction">
+          <Key>
+            <PropertyRef Name="EmployeeActionId" />
+          </Key>
+          <Property Name="EmployeeActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeActionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RoleEmployeeActions" Relationship="Self.FK_RoleEmployeeActions_EmployeeActions" FromRole="EmployeeActions" ToRole="RoleEmployeeActions" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Name="OrganizationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TaxId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfEmployees" Type="Int32" />
+          <Property Name="IsEEOEnabled" Type="Boolean" />
+          <Property Name="IsCostCenterEnabled" Type="Boolean" />
+          <Property Name="CostCenter" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Organization" FromRole="Organization" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="OrganizationLocation">
+          <Key>
+            <PropertyRef Name="OrganizationLocationId" />
+          </Key>
+          <Property Name="OrganizationLocationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserRegions" Relationship="Self.FK_UserRegions_Regions" FromRole="Regions" ToRole="UserRegions" />
+        </EntityType>
+        <EntityType Name="RoleDataGroupPermission">
+          <Key>
+            <PropertyRef Name="RoleDataGroupId" />
+          </Key>
+          <Property Name="RoleDataGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="DataGroupPermissionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DataGroupPermission" Relationship="Self.FK_RoleDataGroupPermissions_DataGroupPermissions" FromRole="RoleDataGroupPermissions" ToRole="DataGroupPermissions" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_RoleDataGroupPermissions_Roles" FromRole="RoleDataGroupPermissions" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="RoleEmployeeAction">
+          <Key>
+            <PropertyRef Name="RoleEmployeeActionId" />
+          </Key>
+          <Property Name="RoleEmployeeActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeActionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeeAction" Relationship="Self.FK_RoleEmployeeActions_EmployeeActions" FromRole="RoleEmployeeActions" ToRole="EmployeeActions" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_RoleEmployeeActions_Roles" FromRole="RoleEmployeeActions" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <NavigationProperty Name="RoleDataGroupPermissions" Relationship="Self.FK_RoleDataGroupPermissions_Roles" FromRole="Roles" ToRole="RoleDataGroupPermissions" />
+          <NavigationProperty Name="RoleEmployeeActions" Relationship="Self.FK_RoleEmployeeActions_Roles" FromRole="Roles" ToRole="RoleEmployeeActions" />
+          <NavigationProperty Name="RoleType" Relationship="Self.FK_Roles_RoleTypes" FromRole="Roles" ToRole="RoleTypes" />
+          <NavigationProperty Name="RoleWorkflowActions" Relationship="Self.FK_RoleWorkflowActions_Roles" FromRole="Roles" ToRole="RoleWorkflowActions" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_Roles" FromRole="Roles" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="RoleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Roles_RoleTypes" FromRole="RoleTypes" ToRole="Roles" />
+          <NavigationProperty Name="RoleTypeWorkflowManagements" Relationship="Self.FK_RoleTypeWorkflowManagement_RoleTypes" FromRole="RoleTypes" ToRole="RoleTypeWorkflowManagement" />
+        </EntityType>
+        <EntityType Name="RoleTypesDataGroupPermission">
+          <Key>
+            <PropertyRef Name="RoleTypesDataGroupPermissionId" />
+          </Key>
+          <Property Name="RoleTypesDataGroupPermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleTypesId" Type="Int32" Nullable="false" />
+          <Property Name="DataGroupPermissionsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleTypeWorkflowManagement">
+          <Key>
+            <PropertyRef Name="RoleTypeWorkflowManagementId" />
+          </Key>
+          <Property Name="RoleTypeWorkflowManagementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleTypeId" Type="Int32" />
+          <Property Name="WorkflowManagementId" Type="Int32" />
+          <NavigationProperty Name="RoleType" Relationship="Self.FK_RoleTypeWorkflowManagement_RoleTypes" FromRole="RoleTypeWorkflowManagement" ToRole="RoleTypes" />
+          <NavigationProperty Name="WorkflowManagement" Relationship="Self.FK_RoleTypeWorkflowManagement_WorkflowManagement" FromRole="RoleTypeWorkflowManagement" ToRole="WorkflowManagement" />
+        </EntityType>
+        <EntityType Name="RoleWorkflowAction">
+          <Key>
+            <PropertyRef Name="RoleWorkflowActionId" />
+          </Key>
+          <Property Name="RoleWorkflowActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="WorkflowActionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_RoleWorkflowActions_Roles" FromRole="RoleWorkflowActions" ToRole="Roles" />
+          <NavigationProperty Name="WorkflowManagement" Relationship="Self.FK_RoleWorkflowActions_WorkflowManagement" FromRole="RoleWorkflowActions" ToRole="WorkflowManagement" />
+        </EntityType>
+        <EntityType Name="UserRegion">
+          <Key>
+            <PropertyRef Name="UserRegionId" />
+          </Key>
+          <Property Name="UserRegionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="RegionId" Type="Int32" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_UserRegions_Regions" FromRole="UserRegions" ToRole="Regions" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserRegions_Users" FromRole="UserRegions" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="Roleid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_UserRoles_Roles" FromRole="UserRoles" ToRole="Roles" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserRoles_Users" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="OrganizationId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK_Users_Organization" FromRole="Users" ToRole="Organization" />
+          <NavigationProperty Name="UserRegions" Relationship="Self.FK_UserRegions_Users" FromRole="Users" ToRole="UserRegions" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_Users" FromRole="Users" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="WorkflowManagement">
+          <Key>
+            <PropertyRef Name="WorkflowActionId" />
+          </Key>
+          <Property Name="WorkflowActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RoleTypeWorkflowManagements" Relationship="Self.FK_RoleTypeWorkflowManagement_WorkflowManagement" FromRole="WorkflowManagement" ToRole="RoleTypeWorkflowManagement" />
+          <NavigationProperty Name="RoleWorkflowActions" Relationship="Self.FK_RoleWorkflowActions_WorkflowManagement" FromRole="WorkflowManagement" ToRole="RoleWorkflowActions" />
+        </EntityType>
+        <Association Name="FK_RoleDataGroupPermissions_DataGroupPermissions">
+          <End Role="DataGroupPermissions" Type="Self.DataGroupPermission" Multiplicity="1" />
+          <End Role="RoleDataGroupPermissions" Type="Self.RoleDataGroupPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataGroupPermissions">
+              <PropertyRef Name="DataGroupIdPermissionsId" />
+            </Principal>
+            <Dependent Role="RoleDataGroupPermissions">
+              <PropertyRef Name="DataGroupPermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleEmployeeActions_EmployeeActions">
+          <End Role="EmployeeActions" Type="Self.EmployeeAction" Multiplicity="1" />
+          <End Role="RoleEmployeeActions" Type="Self.RoleEmployeeAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeActions">
+              <PropertyRef Name="EmployeeActionId" />
+            </Principal>
+            <Dependent Role="RoleEmployeeActions">
+              <PropertyRef Name="EmployeeActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Organization">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRegions_Regions">
+          <End Role="Regions" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="UserRegions" Type="Self.UserRegion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="RegionId" />
+            </Principal>
+            <Dependent Role="UserRegions">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleDataGroupPermissions_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="RoleDataGroupPermissions" Type="Self.RoleDataGroupPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RoleDataGroupPermissions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleEmployeeActions_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="RoleEmployeeActions" Type="Self.RoleEmployeeAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RoleEmployeeActions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_RoleTypes">
+          <End Role="RoleTypes" Type="Self.RoleType" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="RoleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleWorkflowActions_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="RoleWorkflowActions" Type="Self.RoleWorkflowAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RoleWorkflowActions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="Roleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleTypeWorkflowManagement_RoleTypes">
+          <End Role="RoleTypes" Type="Self.RoleType" Multiplicity="0..1" />
+          <End Role="RoleTypeWorkflowManagement" Type="Self.RoleTypeWorkflowManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleTypeWorkflowManagement">
+              <PropertyRef Name="RoleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleTypeWorkflowManagement_WorkflowManagement">
+          <End Role="WorkflowManagement" Type="Self.WorkflowManagement" Multiplicity="0..1" />
+          <End Role="RoleTypeWorkflowManagement" Type="Self.RoleTypeWorkflowManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowManagement">
+              <PropertyRef Name="WorkflowActionId" />
+            </Principal>
+            <Dependent Role="RoleTypeWorkflowManagement">
+              <PropertyRef Name="WorkflowManagementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleWorkflowActions_WorkflowManagement">
+          <End Role="WorkflowManagement" Type="Self.WorkflowManagement" Multiplicity="1" />
+          <End Role="RoleWorkflowActions" Type="Self.RoleWorkflowAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowManagement">
+              <PropertyRef Name="WorkflowActionId" />
+            </Principal>
+            <Dependent Role="RoleWorkflowActions">
+              <PropertyRef Name="WorkflowActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRegions_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserRegions" Type="Self.UserRegion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRegions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HrmsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CostCenters" EntityType="Self.CostCenter" />
+          <EntitySet Name="DataGroupPermissions" EntityType="Self.DataGroupPermission" />
+          <EntitySet Name="EmployeeActions" EntityType="Self.EmployeeAction" />
+          <EntitySet Name="Organizations" EntityType="Self.Organization" />
+          <EntitySet Name="OrganizationLocations" EntityType="Self.OrganizationLocation" />
+          <EntitySet Name="Regions" EntityType="Self.Region" />
+          <EntitySet Name="RoleDataGroupPermissions" EntityType="Self.RoleDataGroupPermission" />
+          <EntitySet Name="RoleEmployeeActions" EntityType="Self.RoleEmployeeAction" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="RoleTypes" EntityType="Self.RoleType" />
+          <EntitySet Name="RoleTypesDataGroupPermissions" EntityType="Self.RoleTypesDataGroupPermission" />
+          <EntitySet Name="RoleTypeWorkflowManagements" EntityType="Self.RoleTypeWorkflowManagement" />
+          <EntitySet Name="RoleWorkflowActions" EntityType="Self.RoleWorkflowAction" />
+          <EntitySet Name="UserRegions" EntityType="Self.UserRegion" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="WorkflowManagements" EntityType="Self.WorkflowManagement" />
+          <AssociationSet Name="FK_RoleDataGroupPermissions_DataGroupPermissions" Association="Self.FK_RoleDataGroupPermissions_DataGroupPermissions">
+            <End Role="DataGroupPermissions" EntitySet="DataGroupPermissions" />
+            <End Role="RoleDataGroupPermissions" EntitySet="RoleDataGroupPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleEmployeeActions_EmployeeActions" Association="Self.FK_RoleEmployeeActions_EmployeeActions">
+            <End Role="EmployeeActions" EntitySet="EmployeeActions" />
+            <End Role="RoleEmployeeActions" EntitySet="RoleEmployeeActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Organization" Association="Self.FK_Users_Organization">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRegions_Regions" Association="Self.FK_UserRegions_Regions">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="UserRegions" EntitySet="UserRegions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleDataGroupPermissions_Roles" Association="Self.FK_RoleDataGroupPermissions_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleDataGroupPermissions" EntitySet="RoleDataGroupPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleEmployeeActions_Roles" Association="Self.FK_RoleEmployeeActions_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleEmployeeActions" EntitySet="RoleEmployeeActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_RoleTypes" Association="Self.FK_Roles_RoleTypes">
+            <End Role="RoleTypes" EntitySet="RoleTypes" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleWorkflowActions_Roles" Association="Self.FK_RoleWorkflowActions_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleWorkflowActions" EntitySet="RoleWorkflowActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleTypeWorkflowManagement_RoleTypes" Association="Self.FK_RoleTypeWorkflowManagement_RoleTypes">
+            <End Role="RoleTypes" EntitySet="RoleTypes" />
+            <End Role="RoleTypeWorkflowManagement" EntitySet="RoleTypeWorkflowManagements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleTypeWorkflowManagement_WorkflowManagement" Association="Self.FK_RoleTypeWorkflowManagement_WorkflowManagement">
+            <End Role="WorkflowManagement" EntitySet="WorkflowManagements" />
+            <End Role="RoleTypeWorkflowManagement" EntitySet="RoleTypeWorkflowManagements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleWorkflowActions_WorkflowManagement" Association="Self.FK_RoleWorkflowActions_WorkflowManagement">
+            <End Role="WorkflowManagement" EntitySet="WorkflowManagements" />
+            <End Role="RoleWorkflowActions" EntitySet="RoleWorkflowActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRegions_Users" Association="Self.FK_UserRegions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRegions" EntitySet="UserRegions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Users" Association="Self.FK_UserRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HrmsModelStoreContainer" CdmEntityContainer="HrmsEntities">
+          <EntitySetMapping Name="CostCenters">
+            <EntityTypeMapping TypeName="HrmsModel.CostCenter">
+              <MappingFragment StoreEntitySet="CostCenters">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataGroupPermissions">
+            <EntityTypeMapping TypeName="HrmsModel.DataGroupPermission">
+              <MappingFragment StoreEntitySet="DataGroupPermissions">
+                <ScalarProperty Name="DataGroupIdPermissionsId" ColumnName="DataGroupIdPermissionsId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupTask" ColumnName="GroupTask" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeActions">
+            <EntityTypeMapping TypeName="HrmsModel.EmployeeAction">
+              <MappingFragment StoreEntitySet="EmployeeActions">
+                <ScalarProperty Name="EmployeeActionId" ColumnName="EmployeeActionId" />
+                <ScalarProperty Name="EmployeeActionName" ColumnName="EmployeeActionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizations">
+            <EntityTypeMapping TypeName="HrmsModel.Organization">
+              <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="NoOfEmployees" ColumnName="NoOfEmployees" />
+                <ScalarProperty Name="IsEEOEnabled" ColumnName="IsEEOEnabled" />
+                <ScalarProperty Name="IsCostCenterEnabled" ColumnName="IsCostCenterEnabled" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationLocations">
+            <EntityTypeMapping TypeName="HrmsModel.OrganizationLocation">
+              <MappingFragment StoreEntitySet="OrganizationLocation">
+                <ScalarProperty Name="OrganizationLocationId" ColumnName="OrganizationLocationId" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="HrmsModel.Region">
+              <MappingFragment StoreEntitySet="Regions">
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleDataGroupPermissions">
+            <EntityTypeMapping TypeName="HrmsModel.RoleDataGroupPermission">
+              <MappingFragment StoreEntitySet="RoleDataGroupPermissions">
+                <ScalarProperty Name="RoleDataGroupId" ColumnName="RoleDataGroupId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="DataGroupPermissionId" ColumnName="DataGroupPermissionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleEmployeeActions">
+            <EntityTypeMapping TypeName="HrmsModel.RoleEmployeeAction">
+              <MappingFragment StoreEntitySet="RoleEmployeeActions">
+                <ScalarProperty Name="RoleEmployeeActionId" ColumnName="RoleEmployeeActionId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="EmployeeActionId" ColumnName="EmployeeActionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="HrmsModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleTypeId" ColumnName="RoleTypeId" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleTypes">
+            <EntityTypeMapping TypeName="HrmsModel.RoleType">
+              <MappingFragment StoreEntitySet="RoleTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleTypeName" ColumnName="RoleTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleTypesDataGroupPermissions">
+            <EntityTypeMapping TypeName="HrmsModel.RoleTypesDataGroupPermission">
+              <MappingFragment StoreEntitySet="RoleTypesDataGroupPermissions">
+                <ScalarProperty Name="RoleTypesDataGroupPermissionId" ColumnName="RoleTypesDataGroupPermissionId" />
+                <ScalarProperty Name="RoleTypesId" ColumnName="RoleTypesId" />
+                <ScalarProperty Name="DataGroupPermissionsId" ColumnName="DataGroupPermissionsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleTypeWorkflowManagements">
+            <EntityTypeMapping TypeName="HrmsModel.RoleTypeWorkflowManagement">
+              <MappingFragment StoreEntitySet="RoleTypeWorkflowManagement">
+                <ScalarProperty Name="RoleTypeWorkflowManagementId" ColumnName="RoleTypeWorkflowManagementId" />
+                <ScalarProperty Name="RoleTypeId" ColumnName="RoleTypeId" />
+                <ScalarProperty Name="WorkflowManagementId" ColumnName="WorkflowManagementId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleWorkflowActions">
+            <EntityTypeMapping TypeName="HrmsModel.RoleWorkflowAction">
+              <MappingFragment StoreEntitySet="RoleWorkflowActions">
+                <ScalarProperty Name="RoleWorkflowActionId" ColumnName="RoleWorkflowActionId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="WorkflowActionId" ColumnName="WorkflowActionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRegions">
+            <EntityTypeMapping TypeName="HrmsModel.UserRegion">
+              <MappingFragment StoreEntitySet="UserRegions">
+                <ScalarProperty Name="UserRegionId" ColumnName="UserRegionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="HrmsModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Roleid" ColumnName="Roleid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HrmsModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkflowManagements">
+            <EntityTypeMapping TypeName="HrmsModel.WorkflowManagement">
+              <MappingFragment StoreEntitySet="WorkflowManagement">
+                <ScalarProperty Name="WorkflowActionId" ColumnName="WorkflowActionId" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
