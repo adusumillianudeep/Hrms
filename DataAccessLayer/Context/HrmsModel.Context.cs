@@ -42,5 +42,8 @@ namespace DataAccessLayer.Context
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<WorkflowManagement> WorkflowManagements { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<TimeZone> TimeZones { get; set; }
     }
 }

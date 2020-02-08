@@ -42,7 +42,6 @@ namespace Repositories.Repositories
         {
             CostCenter costCenterToSave = new CostCenter
             {
-                Id = costCenter.Id.GetValueOrDefault(),
                 Description = costCenter.Description,
                 Name = costCenter.Name
             };
@@ -50,6 +49,7 @@ namespace Repositories.Repositories
             _dbContext.CostCenters.Add(costCenterToSave);
             _dbContext.SaveChanges();
 
+            costCenter.Id = costCenterToSave.Id;
             return costCenter;
         }
 

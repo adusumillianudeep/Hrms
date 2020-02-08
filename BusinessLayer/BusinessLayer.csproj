@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dynamic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=68293a411f0cabcc, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicQuery.1.0\lib\35\Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -52,10 +55,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CostCenterService.cs" />
+    <Compile Include="CountryService.cs" />
     <Compile Include="GeneralInfoBL.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="LocationService.cs" />
     <Compile Include="Mappers\CostCenterMapper.cs" />
+    <Compile Include="PaginationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortingService.cs" />
+    <Compile Include="TimeZoneService.cs" />
     <Compile Include="UserServiceBL.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +83,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dynamic Expressions.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
