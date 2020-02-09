@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="CostCenter.cs" />
     <Compile Include="CountryModel.cs" />
+    <Compile Include="CountryTimeZoneModel.cs" />
     <Compile Include="EmployeeActions.cs" />
     <Compile Include="LocationModel.cs" />
     <Compile Include="OrganizationLocation.cs" />

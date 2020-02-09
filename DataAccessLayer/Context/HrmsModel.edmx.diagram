@@ -37,7 +37,7 @@
         <AssociationConnector Association="HrmsModel.FK_UserRegions_Users" ManuallyRouted="false" />
         <AssociationConnector Association="HrmsModel.FK_UserRoles_Users" ManuallyRouted="false" />
         <EntityTypeShape EntityType="HrmsModel.Country" Width="1.5" PointX="10.375" PointY="12.125" />
-        <EntityTypeShape EntityType="HrmsModel.Location" Width="1.5" PointX="12.25" PointY="2.5" />
+        <EntityTypeShape EntityType="HrmsModel.Location" Width="1.5" PointX="12.25" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.TimeZone" Width="1.5" PointX="10.375" PointY="4.75" />
         <AssociationConnector Association="HrmsModel.FK_Locations_CountryId_Countries_Id" />
         <AssociationConnector Association="HrmsModel.FK_Locations_TimeZoneId_TimeZones_Id" />

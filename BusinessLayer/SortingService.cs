@@ -5,6 +5,9 @@ namespace BusinessLayer
 {
     public class SortingService
     {
+        public static string SortByAscending = "ASC";
+        public static string SortByDescending = "DESC";
+
         public IQueryable<T> Sort<T>(IQueryable<T> list, string sortField, string sortOrder)
         {
             var sortedList = list;

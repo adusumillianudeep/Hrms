@@ -33,12 +33,17 @@ namespace Hrms.Controllers.Admin.Organization
         }
 
         [HttpGet]
-        [Route("~/api/locationsforpage/{pageNumber?}/{itemsPerPage?}/{sortField?}/{sortOrder?}")]
+        [Route("~/api/locationsforpage")]
         [ResponseType(typeof(IEnumerable<LocationModel>))]
         public IHttpActionResult GetLocationsForPage(int pageNumber = 1, int itemsPerPage = 10, string sortField = "Id", string sortOrder = "DESC")
         {
             try
             {
+                if (!(sortOrder == SortingService.SortByAscending || sortOrder == SortingService.SortByDescending))
+                {
+                    return BadRequest("Inavalid sort order");
+                }
+
                 return Ok(_locationService.GetLocationsForPage(pageNumber, itemsPerPage, sortField, sortOrder));
             }
             catch (Exception ex)
@@ -86,7 +91,7 @@ namespace Hrms.Controllers.Admin.Organization
             {
                 if (location.Id == null || location.Id <= 0)
                 {
-                    return BadRequest("Invalid cost location id");
+                    return BadRequest("Invalid location id");
                 }
 
                 return Ok(_locationService.UpdateLocation(location));
@@ -120,6 +125,21 @@ namespace Hrms.Controllers.Admin.Organization
             try
             {
                 return Ok(_locationService.DeleteLocations(locationIds));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("countrytimezone")]
+        [ResponseType(typeof(CountryTimeZoneModel))]
+        public IHttpActionResult GetCountryTimeZone()
+        {
+            try
+            {
+                return Ok(_locationService.GetCountryTimeZone());
             }
             catch (Exception ex)
             {

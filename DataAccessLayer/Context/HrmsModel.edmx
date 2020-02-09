@@ -53,6 +53,7 @@
           <Property Name="TimeZoneId" Type="bigint" Nullable="false" />
           <Property Name="InsertDate" Type="datetime" Nullable="false" />
           <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="RecordStatus" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Organization">
           <Key>
@@ -948,6 +949,7 @@
           <NavigationProperty Name="TimeZone" Relationship="HrmsModel.FK_Locations_TimeZoneId_TimeZones_Id" FromRole="Location" ToRole="TimeZone" />
           <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecordStatus" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="TimeZone">
           <Key>
@@ -1174,6 +1176,7 @@
           <EntitySetMapping Name="Locations">
             <EntityTypeMapping TypeName="HrmsModel.Location">
               <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
                 <ScalarProperty Name="TimeZoneId" ColumnName="TimeZoneId" />

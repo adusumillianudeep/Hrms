@@ -9,12 +9,16 @@ namespace BusinessLayer
     public class LocationService
     {
         private readonly LocationRepository _locationRepository;
+        private readonly CountryRepository _countryRepository;
+        private readonly TimeZoneRepository _timeZoneRepository;
         private readonly SortingService _sortingService;
         private readonly PaginationService _paginationService;
 
         public LocationService()
         {
             _locationRepository = new LocationRepository();
+            _countryRepository = new CountryRepository();
+            _timeZoneRepository = new TimeZoneRepository();
             _sortingService = new SortingService();
             _paginationService = new PaginationService();
         }
@@ -104,6 +108,15 @@ namespace BusinessLayer
             {
                 throw ex;
             }
+        }
+
+        public CountryTimeZoneModel GetCountryTimeZone()
+        {
+            return new CountryTimeZoneModel
+            {
+                Countries = _countryRepository.GetCountries().ToList(),
+                TimeZones = _timeZoneRepository.GetTimeZones().ToList()
+            };
         }
     }
 }
