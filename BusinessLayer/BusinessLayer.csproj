@@ -64,6 +64,7 @@
     <Compile Include="LocationService.cs" />
     <Compile Include="Mappers\CostCenterMapper.cs" />
     <Compile Include="MembershipService.cs" />
+    <Compile Include="NationalityService.cs" />
     <Compile Include="PaginationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SkillService.cs" />

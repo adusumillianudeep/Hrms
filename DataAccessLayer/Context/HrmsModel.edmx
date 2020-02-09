@@ -98,6 +98,16 @@
           <Property Name="UpdateDate" Type="datetime" Nullable="false" />
           <Property Name="RecordStatus" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Nationalities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="RecordStatus" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Organization">
           <Key>
             <PropertyRef Name="OrganizationId" />
@@ -454,6 +464,7 @@
           <EntitySet Name="Licenses" EntityType="Self.Licenses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Memberships" EntityType="Self.Memberships" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nationalities" EntityType="Self.Nationalities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrganizationLocation" EntityType="Self.OrganizationLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
@@ -987,6 +998,7 @@
           <EntitySet Name="Licenses" EntityType="HrmsModel.License" />
           <EntitySet Name="Languages" EntityType="HrmsModel.Language" />
           <EntitySet Name="Memberships" EntityType="HrmsModel.Membership" />
+          <EntitySet Name="Nationalities" EntityType="HrmsModel.Nationality" />
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -1092,6 +1104,16 @@
           <Property Name="RecordStatus" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Membership">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecordStatus" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nationality">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1371,6 +1393,17 @@
           <EntitySetMapping Name="Memberships">
             <EntityTypeMapping TypeName="HrmsModel.Membership">
               <MappingFragment StoreEntitySet="Memberships">
+                <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nationalities">
+            <EntityTypeMapping TypeName="HrmsModel.Nationality">
+              <MappingFragment StoreEntitySet="Nationalities">
                 <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />

@@ -68,7 +68,7 @@ namespace Hrms.Controllers.Admin
         }
 
         [HttpPost]
-        [Route("save")]
+        [Route("")]
         [ResponseType(typeof(MembershipModel))]
         public IHttpActionResult SaveMembership(MembershipModel membership)
         {
@@ -83,7 +83,7 @@ namespace Hrms.Controllers.Admin
         }
 
         [HttpPut]
-        [Route("update")]
+        [Route("")]
         [ResponseType(typeof(MembershipModel))]
         public IHttpActionResult UpdateMembership(MembershipModel membership)
         {

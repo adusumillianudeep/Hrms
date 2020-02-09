@@ -60,6 +60,7 @@
     <Compile Include="Repositories\LicenseRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\MembershipRepository.cs" />
+    <Compile Include="Repositories\NationalityRepository.cs" />
     <Compile Include="Repositories\TimeZoneRepository.cs" />
     <Compile Include="Repositories\SkillRepository.cs" />
   </ItemGroup>

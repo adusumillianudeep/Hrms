@@ -96,6 +96,9 @@
     <Compile Include="Context\Membership.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Nationality.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Organization.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>

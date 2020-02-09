@@ -46,6 +46,7 @@
         <EntityTypeShape EntityType="HrmsModel.License" Width="1.5" PointX="12.375" PointY="7.75" />
         <EntityTypeShape EntityType="HrmsModel.Language" Width="1.5" PointX="12.375" PointY="10.75" />
         <EntityTypeShape EntityType="HrmsModel.Membership" Width="1.5" PointX="12.375" PointY="13.75" />
+        <EntityTypeShape EntityType="HrmsModel.Nationality" Width="1.5" PointX="14.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -53,6 +53,7 @@
     <Compile Include="LicenseModel.cs" />
     <Compile Include="LocationModel.cs" />
     <Compile Include="MembershipModel.cs" />
+    <Compile Include="NationalityModel.cs" />
     <Compile Include="OrganizationLocation.cs" />
     <Compile Include="Organization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
