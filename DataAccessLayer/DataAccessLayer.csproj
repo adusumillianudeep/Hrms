@@ -84,6 +84,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HrmsModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Context\License.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Location.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>

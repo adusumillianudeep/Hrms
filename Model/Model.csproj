@@ -49,6 +49,7 @@
     <Compile Include="CountryTimeZoneModel.cs" />
     <Compile Include="EducationModel.cs" />
     <Compile Include="EmployeeActions.cs" />
+    <Compile Include="LicenseModel.cs" />
     <Compile Include="LocationModel.cs" />
     <Compile Include="OrganizationLocation.cs" />
     <Compile Include="Organization.cs" />
