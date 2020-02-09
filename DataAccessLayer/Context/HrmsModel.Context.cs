@@ -46,5 +46,6 @@ namespace DataAccessLayer.Context
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<TimeZone> TimeZones { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
+        public virtual DbSet<Education> Educations { get; set; }
     }
 }

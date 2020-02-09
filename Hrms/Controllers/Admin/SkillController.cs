@@ -41,7 +41,7 @@ namespace Hrms.Controllers.Admin
             {
                 if (!(sortOrder == SortingService.SortByAscending || sortOrder == SortingService.SortByDescending))
                 {
-                    return BadRequest("Inavalid sort order");
+                    return BadRequest("Invalid sort order");
                 }
 
                 return Ok(_skillService.GetSkillsForPage(pageNumber, itemsPerPage, sortField, sortOrder));

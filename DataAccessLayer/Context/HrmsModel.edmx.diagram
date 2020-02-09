@@ -42,6 +42,7 @@
         <AssociationConnector Association="HrmsModel.FK_Locations_CountryId_Countries_Id" />
         <AssociationConnector Association="HrmsModel.FK_Locations_TimeZoneId_TimeZones_Id" />
         <EntityTypeShape EntityType="HrmsModel.Skill" Width="1.5" PointX="10.375" PointY="7.75" />
+        <EntityTypeShape EntityType="HrmsModel.Education" Width="1.5" PointX="7.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

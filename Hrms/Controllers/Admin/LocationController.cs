@@ -41,7 +41,7 @@ namespace Hrms.Controllers.Admin.Organization
             {
                 if (!(sortOrder == SortingService.SortByAscending || sortOrder == SortingService.SortByDescending))
                 {
-                    return BadRequest("Inavalid sort order");
+                    return BadRequest("Invalid sort order");
                 }
 
                 return Ok(_locationService.GetLocationsForPage(pageNumber, itemsPerPage, sortField, sortOrder));

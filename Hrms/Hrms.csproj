@@ -185,6 +185,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Authentication\JwtManager.cs" />
     <Compile Include="Controllers\Admin\CostCenterController.cs" />
+    <Compile Include="Controllers\Admin\EducationController.cs" />
     <Compile Include="Controllers\Admin\GeneralInfoController.cs" />
     <Compile Include="Controllers\Admin\LocationController.cs" />
     <Compile Include="Controllers\Admin\SkillController.cs" />

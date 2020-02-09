@@ -63,6 +63,9 @@
     <Compile Include="Context\DataGroupPermission.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Education.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\EmployeeAction.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
