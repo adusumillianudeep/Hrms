@@ -7,7 +7,7 @@ using System.Web.Http.Description;
 
 namespace Hrms.Controllers.Admin
 {
-    [Route("api/licenses")]
+    [RoutePrefix("api/licenses")]
     public class LicenseController : ApiController
     {
         private readonly LicenseService _licenseService;

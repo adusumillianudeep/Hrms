@@ -190,6 +190,7 @@
     <Compile Include="Controllers\Admin\LanguageController.cs" />
     <Compile Include="Controllers\Admin\LicenseController.cs" />
     <Compile Include="Controllers\Admin\LocationController.cs" />
+    <Compile Include="Controllers\Admin\MembershipController.cs" />
     <Compile Include="Controllers\Admin\SkillController.cs" />
     <Compile Include="Controllers\Admin\UserController.cs" />
     <Compile Include="Controllers\CountryController.cs" />

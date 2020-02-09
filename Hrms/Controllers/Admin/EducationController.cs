@@ -7,7 +7,7 @@ using System.Web.Http.Description;
 
 namespace Hrms.Controllers.Admin
 {
-    [Route("api/educations")]
+    [RoutePrefix("api/educations")]
     public class EducationController : ApiController
     {
         private readonly EducationService _educationService;

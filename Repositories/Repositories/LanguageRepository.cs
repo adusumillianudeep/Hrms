@@ -26,62 +26,62 @@ namespace Repositories.Repositories
                 });
         }
 
-        public LanguageModel SaveLanguage(LanguageModel languageeModel)
+        public LanguageModel SaveLanguage(LanguageModel languageModel)
         {
-            var languagee = new Language
+            var language = new Language
             {
-                Name = languageeModel.Name
+                Name = languageModel.Name
             };
 
-            _dbContext.Languages.Add(languagee);
+            _dbContext.Languages.Add(language);
             _dbContext.SaveChanges();
 
-            languageeModel.Id = languagee.Id;
-            return languageeModel;
+            languageModel.Id = language.Id;
+            return languageModel;
         }
 
-        public LanguageModel UpdateLanguage(LanguageModel languageeModel)
+        public LanguageModel UpdateLanguage(LanguageModel languageModel)
         {
-            var languagee = _dbContext.Languages
-                .FirstOrDefault(x => x.Id == languageeModel.Id && x.RecordStatus == true);
+            var language = _dbContext.Languages
+                .FirstOrDefault(x => x.Id == languageModel.Id && x.RecordStatus == true);
 
-            languagee.Name = languageeModel.Name;
-            languagee.UpdateDate = DateTime.Now;
+            language.Name = languageModel.Name;
+            language.UpdateDate = DateTime.Now;
 
             _dbContext.SaveChanges();
 
-            return languageeModel;
+            return languageModel;
         }
 
-        public LanguageModel DeleteLanguage(long languageeId)
+        public LanguageModel DeleteLanguage(long languageId)
         {
-            var languagee = _dbContext.Languages
-                .FirstOrDefault(x => x.Id == languageeId);
+            var language = _dbContext.Languages
+                .FirstOrDefault(x => x.Id == languageId);
 
-            languagee.RecordStatus = false;
-            languagee.UpdateDate = DateTime.Now;
+            language.RecordStatus = false;
+            language.UpdateDate = DateTime.Now;
 
             _dbContext.SaveChanges();
 
             return new LanguageModel
             {
-                Id = languagee.Id,
-                Name = languagee.Name
+                Id = language.Id,
+                Name = language.Name
             };
         }
 
-        public List<long> DeleteLanguages(List<long> languageeId)
+        public List<long> DeleteLanguages(List<long> languageId)
         {
-            var languagee = _dbContext.Languages
-                .Where(x => languageeId.Contains(x.Id))
+            var language = _dbContext.Languages
+                .Where(x => languageId.Contains(x.Id))
                 .ToList();
 
-            languagee.ForEach(x => x.RecordStatus = false);
-            languagee.ForEach(x => x.UpdateDate = DateTime.Now);
+            language.ForEach(x => x.RecordStatus = false);
+            language.ForEach(x => x.UpdateDate = DateTime.Now);
 
             _dbContext.SaveChanges();
 
-            return languageeId;
+            return languageId;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Web.Http.Description;
 
 namespace Hrms.Controllers.Admin
 {
-    [Route("api/languages")]
+    [RoutePrefix("api/languages")]
     public class LanguageController : ApiController
     {
         private readonly LanguageService _languageService;

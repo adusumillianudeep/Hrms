@@ -7,7 +7,7 @@ using System.Web.Http.Description;
 
 namespace Hrms.Controllers.Admin
 {
-    [Route("api/skills")]
+    [RoutePrefix("api/skills")]
     public class SkillController : ApiController
     {
         private readonly SkillService _skillService;

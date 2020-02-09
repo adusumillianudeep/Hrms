@@ -49,5 +49,6 @@ namespace DataAccessLayer.Context
         public virtual DbSet<Education> Educations { get; set; }
         public virtual DbSet<License> Licenses { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
+        public virtual DbSet<Membership> Memberships { get; set; }
     }
 }
