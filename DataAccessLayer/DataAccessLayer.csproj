@@ -114,6 +114,9 @@
     <Compile Include="Context\RoleWorkflowAction.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Skill.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\TimeZone.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>

@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Context;
 using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -75,6 +76,7 @@ namespace Repositories.Repositories
             location.Phone = locationModel.Phone;
             location.State = locationModel.State;
             location.TimeZoneId = locationModel.TimeZoneId;
+            location.UpdateDate = DateTime.Now;
             location.ZipCode = locationModel.ZipCode;
 
             _dbContext.SaveChanges();
@@ -87,6 +89,7 @@ namespace Repositories.Repositories
             var location = _dbContext.Locations
                 .FirstOrDefault(x => x.Id == locationId);
             location.RecordStatus = false;
+            location.UpdateDate = DateTime.Now;
 
             _dbContext.SaveChanges();
 
@@ -113,6 +116,7 @@ namespace Repositories.Repositories
                 .Where(x => locationIds.Contains(x.Id))
                 .ToList();
             locations.ForEach(x => x.RecordStatus = false);
+            locations.ForEach(x => x.UpdateDate = DateTime.Now);
 
             _dbContext.SaveChanges();
 

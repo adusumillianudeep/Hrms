@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -47,6 +48,7 @@ namespace Repositories.Repositories
 
             costCenterToUpdate.Description = costCenter.Description;
             costCenterToUpdate.Name = costCenter.Name;
+            costCenterToUpdate.UpdateDate = DateTime.Now;
 
             _dbContext.SaveChanges();
 
@@ -58,6 +60,7 @@ namespace Repositories.Repositories
             var costCenterToDelete = _dbContext.CostCenters
                 .FirstOrDefault(x => x.Id == id);
             costCenterToDelete.RecordStatus = false;
+            costCenterToDelete.UpdateDate = DateTime.Now;
 
             _dbContext.SaveChanges();
 
@@ -75,6 +78,7 @@ namespace Repositories.Repositories
                 .Where(x => ids.Contains(x.Id))
                 .ToList();
             costCentersToDelete.ForEach(x => x.RecordStatus = false);
+            costCentersToDelete.ForEach(x => x.UpdateDate = DateTime.Now);
 
             _dbContext.SaveChanges();
 

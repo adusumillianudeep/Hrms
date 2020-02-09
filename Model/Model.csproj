@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regions.cs" />
     <Compile Include="Roles.cs" />
+    <Compile Include="SkillModel.cs" />
     <Compile Include="TimeZoneModel.cs" />
     <Compile Include="User.cs" />
     <Compile Include="WorkflowManagement.cs" />

@@ -57,6 +57,7 @@
     <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\TimeZoneRepository.cs" />
+    <Compile Include="Repositories\SkillRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">

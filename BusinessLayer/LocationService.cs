@@ -38,10 +38,18 @@ namespace BusinessLayer
 
         public List<LocationModel> GetLocationsForPage(int pageNumber, int itemsPerPage, string sortField, string sortOrder)
         {
-            var sortedLocations = _sortingService.Sort(_locationRepository.GetLocations(), sortField, sortOrder);
+            try
+            {
+                var sortedLocations = _sortingService.Sort(_locationRepository.GetLocations(), sortField, sortOrder);
 
-            return _paginationService.ApplyPaging(sortedLocations, pageNumber, itemsPerPage)
-                .ToList();
+                return _paginationService.ApplyPaging(sortedLocations, pageNumber, itemsPerPage)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         public LocationModel GetLocation(long locationId)
