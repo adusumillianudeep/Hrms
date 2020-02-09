@@ -59,6 +59,7 @@
     <Compile Include="EducationService.cs" />
     <Compile Include="GeneralInfoBL.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="LanguageService.cs" />
     <Compile Include="LicenseService.cs" />
     <Compile Include="LocationService.cs" />
     <Compile Include="Mappers\CostCenterMapper.cs" />

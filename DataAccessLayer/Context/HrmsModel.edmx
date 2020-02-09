@@ -48,6 +48,16 @@
           <Property Name="EmployeeActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeActionName" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="RecordStatus" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Licenses">
           <Key>
             <PropertyRef Name="Id" />
@@ -430,6 +440,7 @@
           <EntitySet Name="DataGroupPermissions" EntityType="Self.DataGroupPermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Educations" EntityType="Self.Educations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeActions" EntityType="Self.EmployeeActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Licenses" EntityType="Self.Licenses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
@@ -963,6 +974,7 @@
           <EntitySet Name="Skills" EntityType="HrmsModel.Skill" />
           <EntitySet Name="Educations" EntityType="HrmsModel.Education" />
           <EntitySet Name="Licenses" EntityType="HrmsModel.License" />
+          <EntitySet Name="Languages" EntityType="HrmsModel.Language" />
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -1048,6 +1060,16 @@
           <Property Name="RecordStatus" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="License">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecordStatus" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Language">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1305,6 +1327,17 @@
           <EntitySetMapping Name="Licenses">
             <EntityTypeMapping TypeName="HrmsModel.License">
               <MappingFragment StoreEntitySet="Licenses">
+                <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="HrmsModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
                 <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
