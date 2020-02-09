@@ -103,7 +103,7 @@ namespace Hrms.Controllers.Admin.Organization
         }
 
         [HttpDelete]
-        [Route("")]
+        [Route("{locationId}")]
         [ResponseType(typeof(LocationModel))]
         public IHttpActionResult DeleteLocation(long locationId)
         {

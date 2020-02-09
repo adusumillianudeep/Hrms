@@ -7,10 +7,10 @@ using System.Web.Http.Description;
 
 namespace Hrms.Controllers.Admin
 {
-    [RoutePrefix("api/costcenter")]
+    [RoutePrefix("api/costcenters")]
     public class CostCenterController : ApiController
     {
-        private CostCenterService _costCenterService;
+        private readonly CostCenterService _costCenterService;
 
         public CostCenterController()
         {
@@ -18,7 +18,7 @@ namespace Hrms.Controllers.Admin
         }
 
         [HttpGet]
-        [Route("getcostcenters")]
+        [Route("")]
         [ResponseType(typeof(List<CostCenter>))]
         public IHttpActionResult GetCostCenters()
         {
@@ -33,13 +33,33 @@ namespace Hrms.Controllers.Admin
         }
 
         [HttpGet]
-        [Route("getcostcenterbyid/{id}")]
-        [ResponseType(typeof(CostCenter))]
-        public IHttpActionResult GetCostCenterById(long id)
+        [Route("~/api/costcentersforpage")]
+        [ResponseType(typeof(IEnumerable<CostCenter>))]
+        public IHttpActionResult GetLocationsForPage(int pageNumber = 1, int itemsPerPage = 10, string sortField = "Id", string sortOrder = "DESC")
         {
             try
             {
-                return Ok(_costCenterService.GetCostCenterById(id));
+                if (!(sortOrder == SortingService.SortByAscending || sortOrder == SortingService.SortByDescending))
+                {
+                    return BadRequest("Inavalid sort order");
+                }
+
+                return Ok(_costCenterService.GetCostCentersForPage(pageNumber, itemsPerPage, sortField, sortOrder));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("{costCenterId}")]
+        [ResponseType(typeof(CostCenter))]
+        public IHttpActionResult GetCostCenterById(long costCenterId)
+        {
+            try
+            {
+                return Ok(_costCenterService.GetCostCenterById(costCenterId));
             }
             catch (Exception ex)
             {
@@ -48,7 +68,7 @@ namespace Hrms.Controllers.Admin
         }
 
         [HttpPost]
-        [Route("savecostcenter")]
+        [Route("")]
         [ResponseType(typeof(CostCenter))]
         public IHttpActionResult SaveCostCenter(CostCenter costCenter)
         {
@@ -63,7 +83,7 @@ namespace Hrms.Controllers.Admin
         }
 
         [HttpPut]
-        [Route("updatecostcenter")]
+        [Route("")]
         [ResponseType(typeof(CostCenter))]
         public IHttpActionResult UpdateCostCenter(CostCenter costCenter)
         {
@@ -83,13 +103,13 @@ namespace Hrms.Controllers.Admin
         }
 
         [HttpDelete]
-        [Route("deletecostcenter/{id}")]
+        [Route("{costCenterId}")]
         [ResponseType(typeof(CostCenter))]
-        public IHttpActionResult DeleteCostCenter(long id)
+        public IHttpActionResult DeleteCostCenter(long costCenterId)
         {
             try
             {
-                return Ok(_costCenterService.DeleteCostCenter(id));
+                return Ok(_costCenterService.DeleteCostCenter(costCenterId));
             }
             catch (Exception ex)
             {

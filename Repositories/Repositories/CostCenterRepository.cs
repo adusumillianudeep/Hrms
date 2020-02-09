@@ -13,29 +13,16 @@ namespace Repositories.Repositories
             _dbContext = new HrmsEntities();
         }
 
-        public List<Model.CostCenter> GetCostCenters()
+        public IQueryable<Model.CostCenter> GetCostCenters()
         {
             return _dbContext.CostCenters
+                .Where(x => x.RecordStatus == true)
                 .Select(x => new Model.CostCenter
                 {
                     Description = x.Description,
                     Id = x.Id,
                     Name = x.Name
-                })
-                .ToList();
-        }
-
-        public Model.CostCenter GetCostCenterById(long id)
-        {
-            return _dbContext.CostCenters
-                .Where(x => x.Id == id)
-                .Select(x => new Model.CostCenter
-                {
-                    Description = x.Description,
-                    Id = x.Id,
-                    Name = x.Name
-                })
-                .FirstOrDefault();
+                });
         }
 
         public Model.CostCenter SaveCostCenter(Model.CostCenter costCenter)
@@ -56,7 +43,7 @@ namespace Repositories.Repositories
         public Model.CostCenter UpdateCostCenter(Model.CostCenter costCenter)
         {
             var costCenterToUpdate = _dbContext.CostCenters
-                .FirstOrDefault(x => x.Id == costCenter.Id.GetValueOrDefault());
+                .FirstOrDefault(x => x.Id == costCenter.Id.GetValueOrDefault() && x.RecordStatus == true);
 
             costCenterToUpdate.Description = costCenter.Description;
             costCenterToUpdate.Name = costCenter.Name;
@@ -70,8 +57,8 @@ namespace Repositories.Repositories
         {
             var costCenterToDelete = _dbContext.CostCenters
                 .FirstOrDefault(x => x.Id == id);
+            costCenterToDelete.RecordStatus = false;
 
-            _dbContext.CostCenters.Remove(costCenterToDelete);
             _dbContext.SaveChanges();
 
             return new Model.CostCenter
@@ -87,8 +74,9 @@ namespace Repositories.Repositories
             var costCentersToDelete = _dbContext.CostCenters
                 .Where(x => ids.Contains(x.Id))
                 .ToList();
+            costCentersToDelete.ForEach(x => x.RecordStatus = false);
 
-            _dbContext.CostCenters.RemoveRange(costCentersToDelete);
+            _dbContext.SaveChanges();
 
             return ids;
         }

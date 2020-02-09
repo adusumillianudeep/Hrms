@@ -11,17 +11,22 @@ namespace BusinessLayer
     public class CostCenterService
     {
         private readonly CostCenterRepository _costCenterRepository;
+        private readonly SortingService _sortingService;
+        private readonly PaginationService _paginationService;
 
         public CostCenterService()
         {
             _costCenterRepository = new CostCenterRepository();
+            _sortingService = new SortingService();
+            _paginationService = new PaginationService();
         }
 
         public List<CostCenter> GetCostCenters()
         {
             try
             {
-                return _costCenterRepository.GetCostCenters();
+                return _costCenterRepository.GetCostCenters()
+                    .ToList();
             }
             catch (Exception ex)
             {
@@ -29,11 +34,20 @@ namespace BusinessLayer
             }
         }
 
-        public CostCenter GetCostCenterById(long id)
+        public List<CostCenter> GetCostCentersForPage(int pageNumber, int itemsPerPage, string sortField, string sortOrder)
+        {
+            var sortedCostCenters = _sortingService.Sort(_costCenterRepository.GetCostCenters(), sortField, sortOrder);
+
+            return _paginationService.ApplyPaging(sortedCostCenters, pageNumber, itemsPerPage)
+                .ToList();
+        }
+
+        public CostCenter GetCostCenterById(long costCenterId)
         {
             try
             {
-                return _costCenterRepository.GetCostCenterById(id);
+                return _costCenterRepository.GetCostCenters()
+                    .FirstOrDefault(x => x.Id == costCenterId);
             }
             catch (Exception ex)
             {
@@ -45,9 +59,7 @@ namespace BusinessLayer
         {
             try
             {
-                var savedCostCenter = _costCenterRepository.SaveCostCenter(costCenter);
-
-                return savedCostCenter;
+                return _costCenterRepository.SaveCostCenter(costCenter);
             }
             catch (Exception ex)
             {
@@ -64,9 +76,7 @@ namespace BusinessLayer
                     throw new Exception("Cost center id not provided");
                 }
 
-                _costCenterRepository.UpdateCostCenter(costCenter);
-
-                return costCenter;
+                return _costCenterRepository.UpdateCostCenter(costCenter);
             }
             catch (Exception ex)
             {
@@ -74,12 +84,11 @@ namespace BusinessLayer
             }
         }
 
-        public long DeleteCostCenter(long id)
+        public CostCenter DeleteCostCenter(long id)
         {
             try
             {
-                _costCenterRepository.DeleteCostCenter(id);
-                return id;
+                return _costCenterRepository.DeleteCostCenter(id);
             }
             catch (Exception ex)
             {
@@ -91,8 +100,7 @@ namespace BusinessLayer
         {
             try
             {
-                _costCenterRepository.DeleteCostCenters(ids);
-                return ids;
+                return _costCenterRepository.DeleteCostCenters(ids);
             }
             catch (Exception ex)
             {

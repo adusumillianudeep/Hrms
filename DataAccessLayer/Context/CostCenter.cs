@@ -17,5 +17,8 @@ namespace DataAccessLayer.Context
         public long Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public System.DateTime InsertDate { get; set; }
+        public System.DateTime UpdateDate { get; set; }
+        public bool RecordStatus { get; set; }
     }
 }
