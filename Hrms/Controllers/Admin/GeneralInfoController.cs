@@ -18,11 +18,11 @@ namespace Hrms.Controllers.Admin
         }
 
         [HttpGet]
-        public List<Organization> GetGeneralInfo(int Id)
+        public List<Model.Organization> GetGeneralInfo(int Id)
         {
             try
             {
-                List<Organization> organizations = InfoBL.GetGeneralInfo(Id);
+                List<Model.Organization> organizations = InfoBL.GetGeneralInfo(Id);
                 return organizations;
             }
             catch (Exception ex)
@@ -33,7 +33,7 @@ namespace Hrms.Controllers.Admin
         }
 
         [HttpPost]
-        public bool SaveGeneralInfo(Organization organization)
+        public bool SaveGeneralInfo(Model.Organization organization)
         {
             try
             {

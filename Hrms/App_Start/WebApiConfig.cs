@@ -5,6 +5,8 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Configuration;
 using Hrms.Filters;
+using System.Net.Http.Formatting;
+using Newtonsoft.Json.Serialization;
 
 namespace Hrms
 {
@@ -27,6 +29,14 @@ namespace Hrms
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Filters.Add(new ApiAuthenticationFilter());
+
+            var jsonFormatter = new JsonMediaTypeFormatter
+            {
+                SerializerSettings = { ContractResolver = new CamelCasePropertyNamesContractResolver() }
+            };
+
+            config.Formatters.Clear();
+            config.Formatters.Add(jsonFormatter);
         }
     }
 }

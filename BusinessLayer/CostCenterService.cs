@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Mappers;
 using DataAccessLayer;
 using Model;
+using Repositories.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,23 @@ namespace BusinessLayer
 {
     public class CostCenterService
     {
-        private readonly CostCenterDataAccess _costCenterDataAccess;
-        private readonly CostCenterMapper _costCenterMapper;
+        private readonly CostCenterRepository _costCenterRepository;
+        private readonly SortingService _sortingService;
+        private readonly PaginationService _paginationService;
+
         public CostCenterService()
         {
-            _costCenterDataAccess = new CostCenterDataAccess();
-            _costCenterMapper = new CostCenterMapper();
+            _costCenterRepository = new CostCenterRepository();
+            _sortingService = new SortingService();
+            _paginationService = new PaginationService();
         }
 
         public List<CostCenter> GetCostCenters()
         {
             try
             {
-                return _costCenterMapper.Map(_costCenterDataAccess.GetCostCenters());
+                return _costCenterRepository.GetCostCenters()
+                    .ToList();
             }
             catch (Exception ex)
             {
@@ -29,12 +34,20 @@ namespace BusinessLayer
             }
         }
 
-        public CostCenter GetCostCenterById(long id)
+        public List<CostCenter> GetCostCentersForPage(int pageNumber, int itemsPerPage, string sortField, string sortOrder)
+        {
+            var sortedCostCenters = _sortingService.Sort(_costCenterRepository.GetCostCenters(), sortField, sortOrder);
+
+            return _paginationService.ApplyPaging(sortedCostCenters, pageNumber, itemsPerPage)
+                .ToList();
+        }
+
+        public CostCenter GetCostCenterById(long costCenterId)
         {
             try
             {
-                return _costCenterMapper.Map(_costCenterDataAccess.GetCostCenterById(id))
-                .FirstOrDefault();
+                return _costCenterRepository.GetCostCenters()
+                    .FirstOrDefault(x => x.Id == costCenterId);
             }
             catch (Exception ex)
             {
@@ -46,9 +59,7 @@ namespace BusinessLayer
         {
             try
             {
-                var costCenterId = _costCenterDataAccess.SaveCostCenter(costCenter.Name, costCenter.Description);
-                costCenter.Id = costCenterId;
-                return costCenter;
+                return _costCenterRepository.SaveCostCenter(costCenter);
             }
             catch (Exception ex)
             {
@@ -65,8 +76,7 @@ namespace BusinessLayer
                     throw new Exception("Cost center id not provided");
                 }
 
-                _costCenterDataAccess.UpdateCostCenter(costCenter.Id.GetValueOrDefault(), costCenter.Name, costCenter.Description);
-                return costCenter;
+                return _costCenterRepository.UpdateCostCenter(costCenter);
             }
             catch (Exception ex)
             {
@@ -74,12 +84,11 @@ namespace BusinessLayer
             }
         }
 
-        public long DeleteCostCenter(long id)
+        public CostCenter DeleteCostCenter(long id)
         {
             try
             {
-                _costCenterDataAccess.DeleteCostCenter(id);
-                return id;
+                return _costCenterRepository.DeleteCostCenter(id);
             }
             catch (Exception ex)
             {
@@ -91,24 +100,7 @@ namespace BusinessLayer
         {
             try
             {
-                _costCenterDataAccess.DeleteCostCenters(ids);
-                return ids;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public List<long> DeleteCostCentersMultiple(List<long> ids)
-        {
-            try
-            {
-                foreach(var id in ids)
-                {
-                    _costCenterDataAccess.DeleteCostCenter(id);
-                }
-                return ids;
+                return _costCenterRepository.DeleteCostCenters(ids);
             }
             catch (Exception ex)
             {

@@ -11,7 +11,7 @@ namespace Hrms.Controllers.Admin
 {
     public class UserController : ApiController
     {
-        UserServiceBL userServiceBL;
+        readonly UserServiceBL userServiceBL;
         public UserController()
         {
             userServiceBL = new UserServiceBL();
