@@ -1,0 +1,41 @@
+<div class="page-layout simple h-100-p">
+    <div class="h-100-p p-16" fxLayout="column" fxLayoutGap="8px">
+        <div fxLayoutAlign="space-between center">
+            <span fxFlex class="mat-title mb-0">Languages</span>
+            <button mat-raised-button color="accent" (click)="save()">
+                <mat-icon>add</mat-icon>
+                Add Language
+            </button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="content h-100-p">
+            <ngx-datatable class="material h-100-p w-100-p" fxFlex [rows]="data" [loadingIndicator]="loadingIndicator"
+                [columnMode]="'flex'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'"
+                [reorderable]="reorderable" [selectionType]="'checkbox'" [limit]="10">
+
+                <ngx-datatable-column [width]="48" [canAutoResize]="false" [sortable]="false">
+                    <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                        let-selectFn="selectFn">
+                        <mat-checkbox [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"></mat-checkbox>
+                    </ng-template>
+
+                    <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                        let-onCheckboxChangeFn="onCheckboxChangeFn">
+                        <mat-checkbox [checked]="isSelected" (change)="onCheckboxChangeFn($event)"></mat-checkbox>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Language" prop="language" [flexGrow]="2"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Actions" [flexGrow]="0.5">
+                    <ng-template ngx-datatable-cell-template let-value="value">
+                        <button mat-button class="mat-icon-button" matTooltip="Edit" matTooltipPosition="right"
+                            aria-label="Edit" (click)="save()">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </div>
+</div>
