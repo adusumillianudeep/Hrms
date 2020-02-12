@@ -1,0 +1,27 @@
+<div class="page-layout simple fullwidth">
+    <!-- HEADER -->
+    <app-header [title]="'Email Settings'">
+        <button mat-raised-button class="fuse-white mt-sm-0" type="submit" (click)="save()">
+            SAVE
+        </button>
+    </app-header>
+
+    <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
+        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Sender Email" disabled>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Sender Name" disabled>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="start center">
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Sending Method" disabled>
+                </mat-form-field>
+                <mat-checkbox fxFlex disabled>EEO Enabled</mat-checkbox>
+            </div>
+        </div>
+    </div>
+</div>

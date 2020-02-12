@@ -13,16 +13,33 @@
         [columnMode]="'force'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'" [reorderable]="reorderable"
         [selectionType]="'checkbox'" [limit]="10">
 
-        <ngx-datatable-column [width]="48" [canAutoResize]="false" [sortable]="false">
+        <ngx-datatable-column [width]="100" [canAutoResize]="false" [sortable]="false">
           <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
             let-selectFn="selectFn">
-            <mat-checkbox [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"></mat-checkbox>
+            <button mat-button [matMenuTriggerFor]="menu">
+              <mat-icon mat-icon-button>more_horiz</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button *ngIf="!allRowsSelected" (click)="selectFn(allRowsSelected)" mat-menu-item>
+                <span>Select All</span>
+              </button>
+              <button *ngIf="allRowsSelected" (click)="selectFn(!allRowsSelected)" mat-menu-item>
+                <span>Deselect All</span>
+              </button>
+              <button mat-menu-item (click)="delete()">
+                <span>Configure</span>
+              </button>
+              <button mat-menu-item (click)="delete()">
+                <span>Delete Selected</span>
+              </button>
+            </mat-menu>
           </ng-template>
 
           <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
             let-onCheckboxChangeFn="onCheckboxChangeFn">
-            <mat-checkbox [checked]="isSelected" (change)="onCheckboxChangeFn($event)"></mat-checkbox>
+            <mat-checkbox class="px-24" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"></mat-checkbox>
           </ng-template>
+
         </ngx-datatable-column>
 
         <ngx-datatable-column name="Username" prop="username"></ngx-datatable-column>

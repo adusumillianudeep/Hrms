@@ -1,60 +1,67 @@
-<div class="page-layout simple p-16 h-100-p">
-    <div class="mat-elevation-z8 p-16 h-100-p  fuse-white" fxLayout="column" fxLayoutGap="8px">
+<div class="page-layout simple h-100-p">
+    <div class="h-100-p p-16" fxLayout="column" fxLayoutGap="8px">
         <div fxLayoutAlign="space-between center">
-            <span fxFlex class="mat-title mb-0">User Roles</span>
-            <button mat-raised-button color="accent" [routerLink]="['add']">
+            <span fxFlex class="mat-title mb-0">Users</span>
+            <button mat-raised-button color="accent" (click)="save()">
                 <mat-icon>add</mat-icon>
                 Add User Role
             </button>
         </div>
         <mat-divider></mat-divider>
-        <table fxFlex mat-table [dataSource]="dataSource">
-            <ng-container matColumnDef="select">
-                <th mat-header-cell *matHeaderCellDef>
-                    <mat-checkbox (change)="$event ? masterToggle() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
-                    </mat-checkbox>
-                </th>
-                <td mat-cell *matCellDef="let row">
-                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
-                    </mat-checkbox>
-                </td>
-            </ng-container>
+        <div class="content h-100-p">
+            <ngx-datatable class="material h-100-p" [rows]="Users" [loadingIndicator]="loadingIndicator"
+                [columnMode]="'force'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'"
+                [reorderable]="reorderable" [selectionType]="'checkbox'" [limit]="10">
 
-            <ng-container matColumnDef="userrole">
-                <th mat-header-cell *matHeaderCellDef> User Role </th>
-                <td mat-cell *matCellDef="let element"> {{element.userrole}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="roleType">
-                <th mat-header-cell *matHeaderCellDef> User Role Type </th>
-                <td mat-cell *matCellDef="let element"> {{element.roleType}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef> Actions </th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-button [matMenuTriggerFor]="menu">
-                        <mat-icon mat-icon-button>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item [routerLink]="['edit', element.id]">
-                            <mat-icon>edit</mat-icon>
-                            <span>Edit</span>
+                <ngx-datatable-column [width]="100" [canAutoResize]="false" [sortable]="false">
+                    <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                        let-selectFn="selectFn">
+                        <button mat-button [matMenuTriggerFor]="menu">
+                            <mat-icon mat-icon-button>more_horiz</mat-icon>
                         </button>
-                        <button mat-menu-item (click)="delete()">
-                            <mat-icon>block</mat-icon>
-                            <span>Prevent Access To</span>
-                        </button>
-                    </mat-menu>
-                </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+                        <mat-menu #menu="matMenu">
+                            <button *ngIf="!allRowsSelected" (click)="selectFn(allRowsSelected)" mat-menu-item>
+                                <span>Select All</span>
+                            </button>
+                            <button *ngIf="allRowsSelected" (click)="selectFn(!allRowsSelected)" mat-menu-item>
+                                <span>Deselect All</span>
+                            </button>
+                            <button mat-menu-item (click)="delete()">
+                                <span>Delete Selected</span>
+                            </button>
+                        </mat-menu>
+                    </ng-template>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                    <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                        let-onCheckboxChangeFn="onCheckboxChangeFn">
+                        <mat-checkbox class="px-24" [checked]="isSelected" (change)="onCheckboxChangeFn($event)">
+                        </mat-checkbox>
+                    </ng-template>
+
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="User Role" prop="userrole"></ngx-datatable-column>
+
+                <ngx-datatable-column name="User Role Type" prop="roleType"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Actions">
+                    <ng-template ngx-datatable-cell-template let-value="value">
+                        <button mat-button [matMenuTriggerFor]="menu">
+                            <mat-icon mat-icon-button>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>
+                                <mat-icon>edit</mat-icon>
+                                <span>Edit</span>
+                            </button>
+                            <button mat-menu-item (click)="delete()">
+                                <mat-icon>block</mat-icon>
+                                <span>Prevent Access To</span>
+                            </button>
+                        </mat-menu>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
     </div>
 </div>

@@ -6,7 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FuseDirectivesModule } from '@fuse/directives/directives';
 import { FusePipesModule } from '@fuse/pipes/pipes.module';
-import { MatToolbarModule, MatSidenavModule, MatListModule, MatButtonModule, MatIconModule, MatDividerModule, MatSelectModule, MatTableModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatMenuModule, MatCardModule, MatSnackBarModule, MatPaginatorModule, MatCheckboxModule, MatTooltipModule, MatExpansionModule } from '@angular/material';
+import { MatToolbarModule, MatSidenavModule, MatListModule, MatButtonModule, MatIconModule, MatDividerModule, MatSelectModule, MatTableModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatMenuModule, MatCardModule, MatSnackBarModule, MatPaginatorModule, MatCheckboxModule, MatTooltipModule, MatExpansionModule, MatMenuTrigger } from '@angular/material';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 

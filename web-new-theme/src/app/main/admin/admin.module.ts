@@ -4,6 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'audit-trail',
+    loadChildren: () => import('./audit-trail/audit-trail.module').then(m => m.AuditTrailModule)
+  },
+  {
+    path: 'configuration',
+    loadChildren: () => import('./configuration/configuration.module').then(m => m.ConfigurationModule)
+  },
+  {
     path: 'announcements',
     loadChildren: () => import('./announcements/announcements.module').then(m => m.AnnouncementsModule)
   },
