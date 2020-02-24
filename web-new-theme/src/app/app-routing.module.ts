@@ -10,6 +10,10 @@ const routes: Routes = [
     loadChildren: () => import('./main/admin/admin.module').then(m => m.AdminModule)
   },
   {
+    path: 'pim',
+    loadChildren: () => import('./main/pim/pim.module').then(m => m.PimModule)
+  },
+  {
     path: 'dashboard',
     loadChildren: () => import('./main/dashboard/dashboard.module').then(m => m.DashboardModule)
   },

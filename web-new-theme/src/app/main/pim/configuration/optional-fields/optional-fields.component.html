@@ -1,0 +1,27 @@
+<div class="page-layout simple fullwidth">
+    <!-- HEADER -->
+    <app-header [title]="'Optional Fields'">
+        <button mat-raised-button class="fuse-white mt-sm-0" type="submit" (click)="save()">
+            SAVE
+        </button>
+    </app-header>
+
+    <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
+        <div class="p-16 mat-elevation-z2" fxLayoutGap="36px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayoutGap="12px" fxLayout="column">
+                <span class="mat-title">Show Deprecated Fields</span>
+                <mat-checkbox>Show Nick Name, Smoker and Military Service in Personal Details</mat-checkbox>
+            </div>
+            <div fxLayoutGap="12px" fxLayout="column">
+                <span class="mat-title">Country Specific Information</span>
+                <mat-checkbox>Show US Tax Exemptions menu</mat-checkbox>
+                <mat-checkbox>Show SIN field in Personal Details</mat-checkbox>
+                <mat-checkbox>Show Main Id in Personal Details</mat-checkbox>
+            </div>
+            <div fxLayoutGap="12px" fxLayout="column">
+                <span class="mat-title">Dependents Related Information</span>
+                <mat-checkbox>Show Nationality of Dependents</mat-checkbox>
+            </div>
+        </div>
+    </div>
+</div>

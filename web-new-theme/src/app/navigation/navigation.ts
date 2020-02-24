@@ -259,5 +259,58 @@ export const navigation: FuseNavigation[] = [
                 url: '/admin/audit-trail'
             },
         ]
+    },
+    {
+        id: 'pim',
+        title: 'PIM',
+        type: 'collapsable',
+        icon: 'account_circle',
+        children: [
+            {
+                id: 'configuration',
+                title: 'Configuration',
+                type: 'collapsable',
+                icon: 'people_outline',
+                children: [
+                    {
+                        id: 'optional-fields',
+                        title: 'Optional Fields',
+                        type: 'item',
+                        url: '/pim/configuration/optional-fields'
+                    },
+                    {
+                        id: 'custom-fields',
+                        title: 'Custom Fields',
+                        type: 'item',
+                        url: '/pim/configuration/custom-fields'
+                    },
+                    {
+                        id: 'reporting-methods',
+                        title: 'Reporting Methods',
+                        type: 'item',
+                        url: '/pim/configuration/reporting-methods'
+                    },
+                    {
+                        id: 'add-employee-wizard',
+                        title: 'Add Employee Wizard',
+                        type: 'item',
+                        url: '/pim/configuration/add-employee-wizard'
+                    },
+                    {
+                        id: 'termination-reasons',
+                        title: 'Termination Reasons',
+                        type: 'item',
+                        url: '/pim/configuration/termination-reasons'
+                    },
+                    {
+                        id: 'document-templates',
+                        title: 'Document Templates',
+                        type: 'item',
+                        url: '/pim/configuration/document-templates'
+                    }
+                ]
+            },
+        ]
     }
+
 ];
