@@ -7,6 +7,18 @@ const routes: Routes = [
     path: 'configuration',
     loadChildren: () => import('./configuration/configuration.module').then(m => m.ConfigurationModule)
   },
+  {
+    path: 'employee-list',
+    loadChildren: () => import('./employee-list/employee-list.module').then(m => m.EmployeeListModule)
+  },
+  {
+    path: 'reports',
+    loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
+  },
+  {
+    path: 'manage-data',
+    loadChildren: () => import('./manage-data/manage-data.module').then(m => m.ManageDataModule)
+  },
 ];
 
 @NgModule({

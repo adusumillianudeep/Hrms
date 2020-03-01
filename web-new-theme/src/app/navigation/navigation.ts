@@ -308,6 +308,47 @@ export const navigation: FuseNavigation[] = [
                         type: 'item',
                         url: '/pim/configuration/document-templates'
                     }
+                ],
+            },
+            {
+                id: 'employee-list',
+                title: 'Employee List',
+                type: 'item',
+                icon: 'assignment',
+                url: '/pim/employee-list'
+            },
+            {
+                id: 'add-employee',
+                title: 'Add Employee',
+                type: 'item',
+                icon: 'assignment',
+                url: '/error-404/3'
+            },
+            {
+                id: 'reports',
+                title: 'Reports',
+                type: 'item',
+                icon: 'assignment',
+                url: '/pim/reports'
+            },
+            {
+                id: 'manage-data',
+                title: 'Manage Data',
+                type: 'collapsable',
+                icon: 'assignment',
+                children: [
+                    {
+                        id: 'bulk-update',
+                        title: 'Bulk Update',
+                        type: 'item',
+                        url: '/pim/manage-data/bulk-update'
+                    },
+                    {
+                        id: 'employee-data-export',
+                        title: 'Employee Data Export',
+                        type: 'item',
+                        url: '/pim/manage-data/employee-data-export'
+                    },
                 ]
             },
         ]

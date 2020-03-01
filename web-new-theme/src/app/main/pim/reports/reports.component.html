@@ -1,16 +1,16 @@
 <div class="page-layout simple h-100-p">
     <div class="h-100-p p-16" fxLayout="column" fxLayoutGap="8px">
         <div fxLayoutAlign="space-between center">
-            <span fxFlex class="mat-title mb-0">Users</span>
-            <button mat-raised-button color="accent" [routerLink]="['add']">
+            <span fxFlex class="mat-title mb-0">Reports</span>
+            <button mat-raised-button color="accent" (click)="save()">
                 <mat-icon>add</mat-icon>
-                Add User Role
+                Add Report
             </button>
         </div>
         <mat-divider></mat-divider>
         <div class="content h-100-p">
-            <ngx-datatable class="material h-100-p" [rows]="Users" [loadingIndicator]="loadingIndicator"
-                [columnMode]="'force'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'"
+            <ngx-datatable class="material h-100-p w-100-p" fxFlex [rows]="data" [loadingIndicator]="loadingIndicator"
+                [columnMode]="'flex'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'"
                 [reorderable]="reorderable" [selectionType]="'checkbox'" [limit]="10">
 
                 <ngx-datatable-column [width]="100" [canAutoResize]="false" [sortable]="false">
@@ -40,25 +40,14 @@
 
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="User Role" prop="userrole"></ngx-datatable-column>
+                <ngx-datatable-column name="Report Name" prop="name" [flexGrow]="2"></ngx-datatable-column>
 
-                <ngx-datatable-column name="User Role Type" prop="roleType"></ngx-datatable-column>
-
-                <ngx-datatable-column name="Actions">
+                <ngx-datatable-column name="Actions" [flexGrow]="0.5">
                     <ng-template ngx-datatable-cell-template let-value="value">
-                        <button mat-button [matMenuTriggerFor]="menu">
-                            <mat-icon mat-icon-button>more_vert</mat-icon>
+                        <button mat-button class="mat-icon-button" matTooltip="Edit" matTooltipPosition="right"
+                            aria-label="Edit" (click)="save()">
+                            <mat-icon>edit</mat-icon>
                         </button>
-                        <mat-menu #menu="matMenu">
-                            <button mat-menu-item [routerLink]="['edit']">
-                                <mat-icon>edit</mat-icon>
-                                <span>Edit</span>
-                            </button>
-                            <button mat-menu-item (click)="delete()">
-                                <mat-icon>block</mat-icon>
-                                <span>Prevent Access To</span>
-                            </button>
-                        </mat-menu>
                     </ng-template>
                 </ngx-datatable-column>
             </ngx-datatable>

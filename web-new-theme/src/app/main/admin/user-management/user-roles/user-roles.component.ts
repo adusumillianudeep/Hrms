@@ -10,21 +10,26 @@ import { SelectionModel } from '@angular/cdk/collections';
 export class UserRolesComponent implements OnInit {
 
   Users: User[] = [
-    { userrole: 'Asset Manager', roleType: 'Admin' },
-    { userrole: 'Global Salary Admin', roleType: 'Admin' },
-    { userrole: 'Recruitment Manager', roleType: 'Admin' },
-    { userrole: 'Time Manager', roleType: 'Admin' },
-    { userrole: 'Project Manager', roleType: 'Admin' },
-    { userrole: 'Recruitment Manager', roleType: 'Admin' }
+    { id: 1, userrole: 'Asset Manager', roleType: 'Admin' },
+    { id: 2, userrole: 'Global Salary Admin', roleType: 'Admin' },
+    { id: 3, userrole: 'Recruitment Manager', roleType: 'Admin' },
+    { id: 4, userrole: 'Time Manager', roleType: 'Admin' },
+    { id: 5, userrole: 'Project Manager', roleType: 'Admin' },
+    { id: 6, userrole: 'Recruitment Manager', roleType: 'Admin' }
   ];
 
   ngOnInit() {
 
   }
 
+  add(): void {
+
+  }
+
 }
 
 export interface User {
+  id: number;
   userrole: string;
   roleType: string;
 }
