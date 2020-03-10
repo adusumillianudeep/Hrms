@@ -186,7 +186,10 @@
     <Compile Include="Authentication\JwtManager.cs" />
     <Compile Include="Controllers\Admin\CostCenterController.cs" />
     <Compile Include="Controllers\Admin\EducationController.cs" />
+    <Compile Include="Controllers\Admin\EmploymentStatusController.cs" />
     <Compile Include="Controllers\Admin\GeneralInfoController.cs" />
+    <Compile Include="Controllers\Admin\JobCategoryController.cs" />
+    <Compile Include="Controllers\Admin\JobController.cs" />
     <Compile Include="Controllers\Admin\LanguageController.cs" />
     <Compile Include="Controllers\Admin\LicenseController.cs" />
     <Compile Include="Controllers\Admin\LocationController.cs" />

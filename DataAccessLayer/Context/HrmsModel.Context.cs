@@ -51,5 +51,8 @@ namespace DataAccessLayer.Context
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<Membership> Memberships { get; set; }
         public virtual DbSet<Nationality> Nationalities { get; set; }
+        public virtual DbSet<EmploymentStatu> EmploymentStatus { get; set; }
+        public virtual DbSet<JobCategory> JobCategories { get; set; }
+        public virtual DbSet<Job> Jobs { get; set; }
     }
 }

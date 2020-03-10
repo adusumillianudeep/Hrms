@@ -17,7 +17,6 @@ namespace Repositories.Repositories
         public IQueryable<Model.CostCenter> GetCostCenters()
         {
             return _dbContext.CostCenters
-                .Where(x => x.RecordStatus == true)
                 .Select(x => new Model.CostCenter
                 {
                     Description = x.Description,
@@ -44,11 +43,10 @@ namespace Repositories.Repositories
         public Model.CostCenter UpdateCostCenter(Model.CostCenter costCenter)
         {
             var costCenterToUpdate = _dbContext.CostCenters
-                .FirstOrDefault(x => x.Id == costCenter.Id.GetValueOrDefault() && x.RecordStatus == true);
+                .FirstOrDefault(x => x.Id == costCenter.Id.GetValueOrDefault() );
 
             costCenterToUpdate.Description = costCenter.Description;
             costCenterToUpdate.Name = costCenter.Name;
-            costCenterToUpdate.UpdateDate = DateTime.Now;
 
             _dbContext.SaveChanges();
 
@@ -59,8 +57,6 @@ namespace Repositories.Repositories
         {
             var costCenterToDelete = _dbContext.CostCenters
                 .FirstOrDefault(x => x.Id == id);
-            costCenterToDelete.RecordStatus = false;
-            costCenterToDelete.UpdateDate = DateTime.Now;
 
             _dbContext.SaveChanges();
 
@@ -77,8 +73,6 @@ namespace Repositories.Repositories
             var costCentersToDelete = _dbContext.CostCenters
                 .Where(x => ids.Contains(x.Id))
                 .ToList();
-            costCentersToDelete.ForEach(x => x.RecordStatus = false);
-            costCentersToDelete.ForEach(x => x.UpdateDate = DateTime.Now);
 
             _dbContext.SaveChanges();
 

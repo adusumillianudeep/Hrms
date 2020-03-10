@@ -69,6 +69,9 @@
     <Compile Include="Context\EmployeeAction.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\EmploymentStatu.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\HrmsModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +86,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HrmsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Job.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\JobCategory.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Language.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>

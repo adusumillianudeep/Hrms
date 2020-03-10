@@ -18,7 +18,6 @@ namespace Repositories.Repositories
         public IQueryable<LocationModel> GetLocations()
         {
             return _dbContext.Locations
-                .Where(x => x.RecordStatus == true)
                 .Select(x => new LocationModel
                 {
                     Address = x.Address,
@@ -63,7 +62,7 @@ namespace Repositories.Repositories
         public LocationModel UpdateLocation(LocationModel locationModel)
         {
             var location = _dbContext.Locations
-                .FirstOrDefault(x => x.Id == locationModel.Id.GetValueOrDefault() && x.RecordStatus == true);
+                .FirstOrDefault(x => x.Id == locationModel.Id.GetValueOrDefault());
 
             location.Address = locationModel.Address;
             location.City = locationModel.City;
@@ -88,7 +87,6 @@ namespace Repositories.Repositories
         {
             var location = _dbContext.Locations
                 .FirstOrDefault(x => x.Id == locationId);
-            location.RecordStatus = false;
             location.UpdateDate = DateTime.Now;
 
             _dbContext.SaveChanges();
@@ -115,7 +113,6 @@ namespace Repositories.Repositories
             var locations = _dbContext.Locations
                 .Where(x => locationIds.Contains(x.Id))
                 .ToList();
-            locations.ForEach(x => x.RecordStatus = false);
             locations.ForEach(x => x.UpdateDate = DateTime.Now);
 
             _dbContext.SaveChanges();
