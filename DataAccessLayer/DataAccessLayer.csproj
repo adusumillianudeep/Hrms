@@ -138,6 +138,9 @@
     <Compile Include="Context\RoleWorkflowAction.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\SalaryComponent.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Skill.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
@@ -154,6 +157,9 @@
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\WorkflowManagement.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\WorkShift.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CostCenterDataAccess.cs" />

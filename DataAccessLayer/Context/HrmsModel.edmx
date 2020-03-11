@@ -231,6 +231,20 @@
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="WorkflowActionId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="SalaryComponent">
+          <Key>
+            <PropertyRef Name="SalaryComponentId" />
+          </Key>
+          <Property Name="SalaryComponentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Earning" Type="bit" Nullable="false" />
+          <Property Name="Deduction" Type="bit" Nullable="false" />
+          <Property Name="TotalPayable" Type="bit" Nullable="false" />
+          <Property Name="CostToCompany" Type="bit" Nullable="false" />
+          <Property Name="Amount" Type="bit" Nullable="false" />
+          <Property Name="Percentage" Type="bit" Nullable="false" />
+          <Property Name="OrganizationId" Type="bigint" />
+        </EntityType>
         <EntityType Name="Skills">
           <Key>
             <PropertyRef Name="Id" />
@@ -284,6 +298,16 @@
           </Key>
           <Property Name="WorkflowActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ActionName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkShift">
+          <Key>
+            <PropertyRef Name="WorkShiftId" />
+          </Key>
+          <Property Name="WorkShiftId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="From" Type="time" Precision="7" Nullable="false" />
+          <Property Name="To" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OrganizationId" Type="bigint" />
         </EntityType>
         <Association Name="FK_Locations_CountryId_Countries_Id">
           <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
@@ -501,12 +525,14 @@
           <EntitySet Name="RoleTypesDataGroupPermissions" EntityType="Self.RoleTypesDataGroupPermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleTypeWorkflowManagement" EntityType="Self.RoleTypeWorkflowManagement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleWorkflowActions" EntityType="Self.RoleWorkflowActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryComponent" EntityType="Self.SalaryComponent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimeZones" EntityType="Self.TimeZones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRegions" EntityType="Self.UserRegions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkflowManagement" EntityType="Self.WorkflowManagement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkShift" EntityType="Self.WorkShift" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Locations_CountryId_Countries_Id" Association="Self.FK_Locations_CountryId_Countries_Id">
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Locations" EntitySet="Locations" />
@@ -1025,6 +1051,8 @@
           <EntitySet Name="EmploymentStatus" EntityType="HrmsModel.EmploymentStatu" />
           <EntitySet Name="JobCategories" EntityType="HrmsModel.JobCategory" />
           <EntitySet Name="Jobs" EntityType="HrmsModel.Job" />
+          <EntitySet Name="SalaryComponents" EntityType="HrmsModel.SalaryComponent" />
+          <EntitySet Name="WorkShifts" EntityType="HrmsModel.WorkShift" />
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -1173,6 +1201,30 @@
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="JobSpecification" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OrganizationId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="SalaryComponent">
+          <Key>
+            <PropertyRef Name="SalaryComponentId" />
+          </Key>
+          <Property Name="SalaryComponentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Earning" Type="Boolean" Nullable="false" />
+          <Property Name="Deduction" Type="Boolean" Nullable="false" />
+          <Property Name="TotalPayable" Type="Boolean" Nullable="false" />
+          <Property Name="CostToCompany" Type="Boolean" Nullable="false" />
+          <Property Name="Amount" Type="Boolean" Nullable="false" />
+          <Property Name="Percentage" Type="Boolean" Nullable="false" />
+          <Property Name="OrganizationId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="WorkShift">
+          <Key>
+            <PropertyRef Name="WorkShiftId" />
+          </Key>
+          <Property Name="WorkShiftId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="From" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="To" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="OrganizationId" Type="Int64" />
         </EntityType>
       </Schema>
@@ -1487,6 +1539,32 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="JobId" ColumnName="JobId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalaryComponents">
+            <EntityTypeMapping TypeName="HrmsModel.SalaryComponent">
+              <MappingFragment StoreEntitySet="SalaryComponent">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CostToCompany" ColumnName="CostToCompany" />
+                <ScalarProperty Name="TotalPayable" ColumnName="TotalPayable" />
+                <ScalarProperty Name="Deduction" ColumnName="Deduction" />
+                <ScalarProperty Name="Earning" ColumnName="Earning" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SalaryComponentId" ColumnName="SalaryComponentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkShifts">
+            <EntityTypeMapping TypeName="HrmsModel.WorkShift">
+              <MappingFragment StoreEntitySet="WorkShift">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="WorkShiftId" ColumnName="WorkShiftId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -35,11 +35,11 @@ namespace Hrms.Controllers
         [HttpGet]
         [Route("GetJobCategoryById")]
         [ResponseType(typeof(IEnumerable<JobCategoryModel>))]
-        public IHttpActionResult GetJobCategoryListById(long jobCategoryId)
+        public IHttpActionResult GetJobCategoryById(long jobCategoryId)
         {
             try
             {
-                return Ok(_jobCategoryService.GetJobCategoryListById(jobCategoryId));
+                return Ok(_jobCategoryService.GetJobCategoryById(jobCategoryId));
             }
             catch (Exception ex)
             {
@@ -99,7 +99,7 @@ namespace Hrms.Controllers
         }
 
         [HttpPost]
-        [Route("DeleteJobCategoryList")]
+        [Route("DeleteJobCategorys")]
         [ResponseType(typeof(JobCategoryModel))]
         public IHttpActionResult DeleteJobCategorys(List<long> jobCategoryIds)
         {

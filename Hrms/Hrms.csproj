@@ -188,6 +188,8 @@
     <Compile Include="Controllers\Admin\EducationController.cs" />
     <Compile Include="Controllers\Admin\EmploymentStatusController.cs" />
     <Compile Include="Controllers\Admin\GeneralInfoController.cs" />
+    <Compile Include="Controllers\Admin\WorkShiftController.cs" />
+    <Compile Include="Controllers\Admin\SalaryComponentController.cs" />
     <Compile Include="Controllers\Admin\JobCategoryController.cs" />
     <Compile Include="Controllers\Admin\JobController.cs" />
     <Compile Include="Controllers\Admin\LanguageController.cs" />

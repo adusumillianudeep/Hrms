@@ -54,5 +54,7 @@ namespace DataAccessLayer.Context
         public virtual DbSet<EmploymentStatu> EmploymentStatus { get; set; }
         public virtual DbSet<JobCategory> JobCategories { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
+        public virtual DbSet<SalaryComponent> SalaryComponents { get; set; }
+        public virtual DbSet<WorkShift> WorkShifts { get; set; }
     }
 }

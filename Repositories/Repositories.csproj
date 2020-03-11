@@ -57,6 +57,8 @@
     <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\EducationRepository.cs" />
     <Compile Include="Repositories\EmploymentStatusRepository.cs" />
+    <Compile Include="Repositories\WorkShiftRepository.cs" />
+    <Compile Include="Repositories\SalaryComponentRepository.cs" />
     <Compile Include="Repositories\JobCategoryRepository.cs" />
     <Compile Include="Repositories\JobRepository.cs" />
     <Compile Include="Repositories\LanguageRepository.cs" />

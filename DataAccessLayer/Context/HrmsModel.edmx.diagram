@@ -50,6 +50,8 @@
         <EntityTypeShape EntityType="HrmsModel.EmploymentStatu" Width="1.5" PointX="0.75" PointY="14.75" />
         <EntityTypeShape EntityType="HrmsModel.JobCategory" Width="1.5" PointX="14.75" PointY="3.75" />
         <EntityTypeShape EntityType="HrmsModel.Job" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="HrmsModel.SalaryComponent" Width="1.5" PointX="14.375" PointY="9.75" />
+        <EntityTypeShape EntityType="HrmsModel.WorkShift" Width="1.5" PointX="14.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

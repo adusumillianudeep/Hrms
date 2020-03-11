@@ -28,7 +28,7 @@ namespace BusinessLayer
             }
         }
 
-        public JobCategoryModel GetJobCategoryListById(long jobId)
+        public JobCategoryModel GetJobCategoryById(long jobId)
         {
             try
             {

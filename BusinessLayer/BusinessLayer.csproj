@@ -60,7 +60,9 @@
     <Compile Include="EmploymentStatusService.cs" />
     <Compile Include="GeneralInfoBL.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="WorkShiftService.cs" />
     <Compile Include="JobCategoryService.cs" />
+    <Compile Include="SalaryComponentService.cs" />
     <Compile Include="JobService.cs" />
     <Compile Include="LanguageService.cs" />
     <Compile Include="LicenseService.cs" />

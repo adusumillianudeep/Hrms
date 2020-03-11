@@ -35,11 +35,11 @@ namespace Hrms.Controllers
         [HttpGet]
         [Route("GetEmploymentStatusById")]
         [ResponseType(typeof(IEnumerable<EmploymentStatusModel>))]
-        public IHttpActionResult GetEmploymentStatusListById(long employmentStatusId)
+        public IHttpActionResult GetEmploymentStatusById(long employmentStatusId)
         {
             try
             {
-                return Ok(_employmentStatusService.GetEmploymentStatusListById(employmentStatusId));
+                return Ok(_employmentStatusService.GetEmploymentStatusById(employmentStatusId));
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace Hrms.Controllers
         [HttpPost]
         [Route("DeleteEmploymentStatusList")]
         [ResponseType(typeof(EmploymentStatusModel))]
-        public IHttpActionResult DeleteEmploymentStatuss(List<long> employmentStatusIds)
+        public IHttpActionResult DeleteEmploymentStatusList(List<long> employmentStatusIds)
         {
             try
             {

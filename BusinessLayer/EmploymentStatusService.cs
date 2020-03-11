@@ -28,12 +28,12 @@ namespace BusinessLayer
             }
         }
 
-        public EmploymentStatusModel GetEmploymentStatusListById(long jobId)
+        public EmploymentStatusModel GetEmploymentStatusById(long employmentStatusId)
         {
             try
             {
                 return _employmentStatusRepository.GetEmploymentStatusList()
-                    .FirstOrDefault(x => x.EmploymentStatusId == jobId);
+                    .FirstOrDefault(x => x.EmploymentStatusId == employmentStatusId);
             }
             catch (Exception ex)
             {
