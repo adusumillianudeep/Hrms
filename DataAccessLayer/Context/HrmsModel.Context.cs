@@ -12,6 +12,8 @@ namespace DataAccessLayer.Context
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class HrmsEntities : DbContext
     {
@@ -56,5 +58,13 @@ namespace DataAccessLayer.Context
         public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<SalaryComponent> SalaryComponents { get; set; }
         public virtual DbSet<WorkShift> WorkShifts { get; set; }
+        public virtual DbSet<Currency> Currencies { get; set; }
+        public virtual DbSet<GradeCurrency> GradeCurrencies { get; set; }
+        public virtual DbSet<PayGrade> PayGrades { get; set; }
+    
+        public virtual ObjectResult<GetPayGrades_Result> GetPayGrades()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPayGrades_Result>("GetPayGrades");
+        }
     }
 }
