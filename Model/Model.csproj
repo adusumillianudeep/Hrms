@@ -47,9 +47,15 @@
     <Compile Include="CostCenter.cs" />
     <Compile Include="CountryModel.cs" />
     <Compile Include="CountryTimeZoneModel.cs" />
+    <Compile Include="GradeCurrencyModel.cs" />
+    <Compile Include="PayGradeModel.cs" />
+    <Compile Include="CurrencyModel.cs" />
     <Compile Include="DataGroupPermissions.cs" />
     <Compile Include="EducationModel.cs" />
     <Compile Include="EmployeeActions.cs" />
+    <Compile Include="EmploymentStatusModel.cs" />
+    <Compile Include="JobCategoryModel.cs" />
+    <Compile Include="JobModal.cs" />
     <Compile Include="LanguageModel.cs" />
     <Compile Include="LicenseModel.cs" />
     <Compile Include="LocationModel.cs" />
@@ -60,10 +66,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regions.cs" />
     <Compile Include="Roles.cs" />
+    <Compile Include="SalaryComponentModel.cs" />
     <Compile Include="SkillModel.cs" />
     <Compile Include="TimeZoneModel.cs" />
     <Compile Include="User.cs" />
     <Compile Include="WorkflowManagement.cs" />
+    <Compile Include="WorkShiftModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dynamic Expressions.html" />

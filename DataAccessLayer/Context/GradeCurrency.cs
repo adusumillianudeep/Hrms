@@ -12,10 +12,12 @@ namespace DataAccessLayer.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class CostCenter
+    public partial class GradeCurrency
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int Id { get; set; }
+        public int PayGradeId { get; set; }
+        public int CurrencyID { get; set; }
+        public Nullable<decimal> MinimumSalary { get; set; }
+        public Nullable<decimal> MaximumSalary { get; set; }
     }
 }

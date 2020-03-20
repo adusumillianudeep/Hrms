@@ -28,7 +28,6 @@ namespace DataAccessLayer.Context
         public long TimeZoneId { get; set; }
         public System.DateTime InsertDate { get; set; }
         public System.DateTime UpdateDate { get; set; }
-        public bool RecordStatus { get; set; }
     
         public virtual Country Country { get; set; }
         public virtual TimeZone TimeZone { get; set; }

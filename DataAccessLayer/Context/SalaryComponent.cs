@@ -12,10 +12,16 @@ namespace DataAccessLayer.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class CostCenter
+    public partial class SalaryComponent
     {
-        public long Id { get; set; }
+        public long SalaryComponentId { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
+        public bool Earning { get; set; }
+        public bool Deduction { get; set; }
+        public bool TotalPayable { get; set; }
+        public bool CostToCompany { get; set; }
+        public bool Amount { get; set; }
+        public bool Percentage { get; set; }
+        public Nullable<long> OrganizationId { get; set; }
     }
 }

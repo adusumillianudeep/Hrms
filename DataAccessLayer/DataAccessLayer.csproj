@@ -60,6 +60,9 @@
     <Compile Include="Context\Country.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Currency.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\DataGroupPermission.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
@@ -67,6 +70,15 @@
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\EmployeeAction.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\EmploymentStatu.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\GetPayGrades_Result.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\GradeCurrency.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\HrmsModel.Context.cs">
@@ -83,6 +95,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HrmsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Job.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\JobCategory.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Language.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
@@ -103,6 +121,9 @@
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\OrganizationLocation.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\PayGrade.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Region.cs">
@@ -129,6 +150,9 @@
     <Compile Include="Context\RoleWorkflowAction.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\SalaryComponent.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Skill.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
@@ -145,6 +169,9 @@
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\WorkflowManagement.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\WorkShift.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CostCenterDataAccess.cs" />

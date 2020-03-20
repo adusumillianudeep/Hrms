@@ -10,12 +10,14 @@
 namespace DataAccessLayer.Context
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CostCenter
+    public partial class GetPayGrades_Result
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int PayGradeId { get; set; }
+        public string PayGrade { get; set; }
+        public string Curreny { get; set; }
+        public Nullable<decimal> MaximumSalary { get; set; }
+        public Nullable<decimal> MinimumSalary { get; set; }
+        public int GradeCurrenyId { get; set; }
     }
 }

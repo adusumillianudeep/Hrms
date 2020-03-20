@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e1c9cb87f5c74efcad9a611f4ce7881e" Name="Diagram1">
+      <Diagram DiagramId="e1c9cb87f5c74efcad9a611f4ce7881e" Name="Diagram1" ZoomLevel="63">
         <EntityTypeShape EntityType="HrmsModel.CostCenter" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.DataGroupPermission" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.EmployeeAction" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
@@ -47,6 +47,14 @@
         <EntityTypeShape EntityType="HrmsModel.Language" Width="1.5" PointX="12.375" PointY="10.75" />
         <EntityTypeShape EntityType="HrmsModel.Membership" Width="1.5" PointX="12.375" PointY="13.75" />
         <EntityTypeShape EntityType="HrmsModel.Nationality" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HrmsModel.EmploymentStatu" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="HrmsModel.JobCategory" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="HrmsModel.Job" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="HrmsModel.SalaryComponent" Width="1.5" PointX="14.375" PointY="9.75" />
+        <EntityTypeShape EntityType="HrmsModel.WorkShift" Width="1.5" PointX="14.375" PointY="13.75" />
+        <EntityTypeShape EntityType="HrmsModel.Currency" Width="1.5" PointX="16.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HrmsModel.GradeCurrency" Width="1.5" PointX="16.375" PointY="9.75" />
+        <EntityTypeShape EntityType="HrmsModel.PayGrade" Width="1.5" PointX="10.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

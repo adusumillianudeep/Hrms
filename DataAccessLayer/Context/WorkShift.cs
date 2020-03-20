@@ -12,10 +12,12 @@ namespace DataAccessLayer.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class CostCenter
+    public partial class WorkShift
     {
-        public long Id { get; set; }
+        public long WorkShiftId { get; set; }
+        public System.TimeSpan From { get; set; }
+        public System.TimeSpan To { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
+        public Nullable<long> OrganizationId { get; set; }
     }
 }

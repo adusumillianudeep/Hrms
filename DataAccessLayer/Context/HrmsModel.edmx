@@ -12,9 +12,6 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="500" />
-          <Property Name="InsertDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
-          <Property Name="RecordStatus" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Countries">
           <Key>
@@ -22,6 +19,14 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OrganizationId" Type="int" />
         </EntityType>
         <EntityType Name="DataGroupPermissions">
           <Key>
@@ -47,6 +52,43 @@
           </Key>
           <Property Name="EmployeeActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeActionName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmploymentStatus">
+          <Key>
+            <PropertyRef Name="EmploymentStatusId" />
+          </Key>
+          <Property Name="EmploymentStatusId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OrganizationId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="GradeCurrency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayGradeId" Type="int" Nullable="false" />
+          <Property Name="CurrencyID" Type="int" Nullable="false" />
+          <Property Name="MinimumSalary" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="MaximumSalary" Type="decimal" Precision="17" Scale="2" />
+        </EntityType>
+        <EntityType Name="JobCategories">
+          <Key>
+            <PropertyRef Name="JobCategoryId" />
+          </Key>
+          <Property Name="JobCategoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OrganizationId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Jobs">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="Notes" Type="varchar" MaxLength="100" />
+          <Property Name="JobSpecification" Type="varbinary(max)" />
+          <Property Name="OrganizationId" Type="bigint" />
         </EntityType>
         <EntityType Name="Languages">
           <Key>
@@ -86,7 +128,6 @@
           <Property Name="TimeZoneId" Type="bigint" Nullable="false" />
           <Property Name="InsertDate" Type="datetime" Nullable="false" />
           <Property Name="UpdateDate" Type="datetime" Nullable="false" />
-          <Property Name="RecordStatus" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Memberships">
           <Key>
@@ -144,6 +185,14 @@
           <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="Fax" Type="varchar" MaxLength="50" />
           <Property Name="Comments" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="PayGrade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="OrganizationId" Type="int" />
         </EntityType>
         <EntityType Name="Regions">
           <Key>
@@ -208,6 +257,20 @@
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="WorkflowActionId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="SalaryComponent">
+          <Key>
+            <PropertyRef Name="SalaryComponentId" />
+          </Key>
+          <Property Name="SalaryComponentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Earning" Type="bit" Nullable="false" />
+          <Property Name="Deduction" Type="bit" Nullable="false" />
+          <Property Name="TotalPayable" Type="bit" Nullable="false" />
+          <Property Name="CostToCompany" Type="bit" Nullable="false" />
+          <Property Name="Amount" Type="bit" Nullable="false" />
+          <Property Name="Percentage" Type="bit" Nullable="false" />
+          <Property Name="OrganizationId" Type="bigint" />
+        </EntityType>
         <EntityType Name="Skills">
           <Key>
             <PropertyRef Name="Id" />
@@ -261,6 +324,16 @@
           </Key>
           <Property Name="WorkflowActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ActionName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkShift">
+          <Key>
+            <PropertyRef Name="WorkShiftId" />
+          </Key>
+          <Property Name="WorkShiftId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="From" Type="time" Precision="7" Nullable="false" />
+          <Property Name="To" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OrganizationId" Type="bigint" />
         </EntityType>
         <Association Name="FK_Locations_CountryId_Countries_Id">
           <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
@@ -454,12 +527,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetPayGrades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="HrmsModelStoreContainer">
           <EntitySet Name="CostCenters" EntityType="Self.CostCenters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DataGroupPermissions" EntityType="Self.DataGroupPermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Educations" EntityType="Self.Educations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeActions" EntityType="Self.EmployeeActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmploymentStatus" EntityType="Self.EmploymentStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GradeCurrency" EntityType="Self.GradeCurrency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobCategories" EntityType="Self.JobCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Licenses" EntityType="Self.Licenses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
@@ -467,6 +546,7 @@
           <EntitySet Name="Nationalities" EntityType="Self.Nationalities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrganizationLocation" EntityType="Self.OrganizationLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayGrade" EntityType="Self.PayGrade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleDataGroupPermissions" EntityType="Self.RoleDataGroupPermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleEmployeeActions" EntityType="Self.RoleEmployeeActions" Schema="dbo" store:Type="Tables" />
@@ -475,12 +555,14 @@
           <EntitySet Name="RoleTypesDataGroupPermissions" EntityType="Self.RoleTypesDataGroupPermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleTypeWorkflowManagement" EntityType="Self.RoleTypeWorkflowManagement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleWorkflowActions" EntityType="Self.RoleWorkflowActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryComponent" EntityType="Self.SalaryComponent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimeZones" EntityType="Self.TimeZones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRegions" EntityType="Self.UserRegions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkflowManagement" EntityType="Self.WorkflowManagement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkShift" EntityType="Self.WorkShift" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Locations_CountryId_Countries_Id" Association="Self.FK_Locations_CountryId_Countries_Id">
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Locations" EntitySet="Locations" />
@@ -557,10 +639,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RecordStatus" Type="Boolean" Nullable="false" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="DataGroupPermission">
           <Key>
             <PropertyRef Name="DataGroupIdPermissionsId" />
@@ -999,6 +1078,15 @@
           <EntitySet Name="Languages" EntityType="HrmsModel.Language" />
           <EntitySet Name="Memberships" EntityType="HrmsModel.Membership" />
           <EntitySet Name="Nationalities" EntityType="HrmsModel.Nationality" />
+          <EntitySet Name="EmploymentStatus" EntityType="HrmsModel.EmploymentStatu" />
+          <EntitySet Name="JobCategories" EntityType="HrmsModel.JobCategory" />
+          <EntitySet Name="Jobs" EntityType="HrmsModel.Job" />
+          <EntitySet Name="SalaryComponents" EntityType="HrmsModel.SalaryComponent" />
+          <EntitySet Name="WorkShifts" EntityType="HrmsModel.WorkShift" />
+          <EntitySet Name="Currencies" EntityType="HrmsModel.Currency" />
+          <EntitySet Name="GradeCurrencies" EntityType="HrmsModel.GradeCurrency" />
+          <EntitySet Name="PayGrades" EntityType="HrmsModel.PayGrade" />
+          <FunctionImport Name="GetPayGrades" ReturnType="Collection(HrmsModel.GetPayGrades_Result)" />
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -1028,7 +1116,6 @@
           <NavigationProperty Name="TimeZone" Relationship="HrmsModel.FK_Locations_TimeZoneId_TimeZones_Id" FromRole="Location" ToRole="TimeZone" />
           <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RecordStatus" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="TimeZone">
           <Key>
@@ -1123,6 +1210,91 @@
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RecordStatus" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="EmploymentStatu">
+          <Key>
+            <PropertyRef Name="EmploymentStatusId" />
+          </Key>
+          <Property Name="EmploymentStatusId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OrganizationId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="JobCategory">
+          <Key>
+            <PropertyRef Name="JobCategoryId" />
+          </Key>
+          <Property Name="JobCategoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OrganizationId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="JobSpecification" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OrganizationId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="SalaryComponent">
+          <Key>
+            <PropertyRef Name="SalaryComponentId" />
+          </Key>
+          <Property Name="SalaryComponentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Earning" Type="Boolean" Nullable="false" />
+          <Property Name="Deduction" Type="Boolean" Nullable="false" />
+          <Property Name="TotalPayable" Type="Boolean" Nullable="false" />
+          <Property Name="CostToCompany" Type="Boolean" Nullable="false" />
+          <Property Name="Amount" Type="Boolean" Nullable="false" />
+          <Property Name="Percentage" Type="Boolean" Nullable="false" />
+          <Property Name="OrganizationId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="WorkShift">
+          <Key>
+            <PropertyRef Name="WorkShiftId" />
+          </Key>
+          <Property Name="WorkShiftId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="From" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="To" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OrganizationId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OrganizationId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="GradeCurrency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayGradeId" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyID" Type="Int32" Nullable="false" />
+          <Property Name="MinimumSalary" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="MaximumSalary" Type="Decimal" Precision="17" Scale="2" />
+        </EntityType>
+        <EntityType Name="PayGrade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OrganizationId" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="GetPayGrades_Result">
+          <Property Type="Int32" Name="PayGradeId" Nullable="false" />
+          <Property Type="String" Name="PayGrade" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Curreny" Nullable="false" MaxLength="255" />
+          <Property Type="Decimal" Name="MaximumSalary" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="MinimumSalary" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Int32" Name="GradeCurrenyId" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1132,9 +1304,6 @@
           <EntitySetMapping Name="CostCenters">
             <EntityTypeMapping TypeName="HrmsModel.CostCenter">
               <MappingFragment StoreEntitySet="CostCenters">
-                <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1319,7 +1488,6 @@
           <EntitySetMapping Name="Locations">
             <EntityTypeMapping TypeName="HrmsModel.Location">
               <MappingFragment StoreEntitySet="Locations">
-                <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
                 <ScalarProperty Name="TimeZoneId" ColumnName="TimeZoneId" />
@@ -1412,6 +1580,103 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EmploymentStatus">
+            <EntityTypeMapping TypeName="HrmsModel.EmploymentStatu">
+              <MappingFragment StoreEntitySet="EmploymentStatus">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmploymentStatusId" ColumnName="EmploymentStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobCategories">
+            <EntityTypeMapping TypeName="HrmsModel.JobCategory">
+              <MappingFragment StoreEntitySet="JobCategories">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="JobCategoryId" ColumnName="JobCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="HrmsModel.Job">
+              <MappingFragment StoreEntitySet="Jobs">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="JobSpecification" ColumnName="JobSpecification" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalaryComponents">
+            <EntityTypeMapping TypeName="HrmsModel.SalaryComponent">
+              <MappingFragment StoreEntitySet="SalaryComponent">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CostToCompany" ColumnName="CostToCompany" />
+                <ScalarProperty Name="TotalPayable" ColumnName="TotalPayable" />
+                <ScalarProperty Name="Deduction" ColumnName="Deduction" />
+                <ScalarProperty Name="Earning" ColumnName="Earning" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SalaryComponentId" ColumnName="SalaryComponentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkShifts">
+            <EntityTypeMapping TypeName="HrmsModel.WorkShift">
+              <MappingFragment StoreEntitySet="WorkShift">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="WorkShiftId" ColumnName="WorkShiftId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="HrmsModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GradeCurrencies">
+            <EntityTypeMapping TypeName="HrmsModel.GradeCurrency">
+              <MappingFragment StoreEntitySet="GradeCurrency">
+                <ScalarProperty Name="MaximumSalary" ColumnName="MaximumSalary" />
+                <ScalarProperty Name="MinimumSalary" ColumnName="MinimumSalary" />
+                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+                <ScalarProperty Name="PayGradeId" ColumnName="PayGradeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayGrades">
+            <EntityTypeMapping TypeName="HrmsModel.PayGrade">
+              <MappingFragment StoreEntitySet="PayGrade">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetPayGrades" FunctionName="HrmsModel.Store.GetPayGrades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HrmsModel.GetPayGrades_Result">
+                <ScalarProperty Name="PayGradeId" ColumnName="PayGradeId" />
+                <ScalarProperty Name="PayGrade" ColumnName="PayGrade" />
+                <ScalarProperty Name="Curreny" ColumnName="Curreny" />
+                <ScalarProperty Name="MaximumSalary" ColumnName="MaximumSalary" />
+                <ScalarProperty Name="MinimumSalary" ColumnName="MinimumSalary" />
+                <ScalarProperty Name="GradeCurrenyId" ColumnName="GradeCurrenyId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
