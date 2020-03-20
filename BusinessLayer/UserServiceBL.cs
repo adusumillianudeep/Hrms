@@ -162,5 +162,30 @@ namespace BusinessLayer
         {
 
         }
+
+        public bool InsertOrUpdateUserRole(Roles roles)
+        {
+            try
+            {
+                if (roles.RoleId == 0)
+                {
+                    roles.RoleId = _UserServiceDL.InsertRole(roles.RoleName,roles.RoleType);
+                }
+                //Insert role EmployeeActions
+                _UserServiceDL.InsertRoleEmployeeActions(roles.RoleId, roles.EmployeeActions);
+                //Insert role WorkflowManagements
+                _UserServiceDL.InsertRoleWorkflowManagements(roles.RoleId, roles.WorkflowManagements);
+                //Insert role DataGroupPermissions
+                _UserServiceDL.InsertRoleDataGroupPermissions(roles.RoleId, roles.DataGroupPermissions);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="GradeCurrencyModel.cs" />
     <Compile Include="PayGradeModel.cs" />
     <Compile Include="CurrencyModel.cs" />
+    <Compile Include="DataGroupPermissions.cs" />
     <Compile Include="EducationModel.cs" />
     <Compile Include="EmployeeActions.cs" />
     <Compile Include="EmploymentStatusModel.cs" />
