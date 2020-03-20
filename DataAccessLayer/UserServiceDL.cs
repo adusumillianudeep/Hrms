@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -16,7 +17,7 @@ namespace DataAccessLayer
         {
             scon = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["HrmsConnString"].ConnectionString);
         }
-        public DataSet GetUserDetailBasedOnUserCredentials(string UserName,string Password)
+        public DataSet GetUserDetailBasedOnUserCredentials(string UserName, string Password)
         {
             try
             {
@@ -92,7 +93,7 @@ namespace DataAccessLayer
             }
         }
 
-        public long InsertUserDetails(string UserName,string Password,string FirstName,string LastName,string PhoneNo,string Email,int RoleId,int RegionId,long OrganizationId)
+        public long InsertUserDetails(string UserName, string Password, string FirstName, string LastName, string PhoneNo, string Email, int RoleId, int RegionId, long OrganizationId)
         {
             try
             {
@@ -113,7 +114,7 @@ namespace DataAccessLayer
                 dataAdapter.Fill(ds);
 
                 long UserId = 0;
-                if(ds!=null && ds.Tables.Count>0 && ds.Tables[0].Rows.Count>0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     UserId = Convert.ToInt64(ds.Tables[0].Rows[0]["UserID"].ToString());
                 }
@@ -152,7 +153,7 @@ namespace DataAccessLayer
                 DataSet ds = new DataSet();
                 dataAdapter.Fill(ds);
 
-                
+
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     UserId = Convert.ToInt64(ds.Tables[0].Rows[0]["UserID"].ToString());
@@ -187,6 +188,100 @@ namespace DataAccessLayer
             {
 
                 throw ex;
+            }
+        }
+
+        public void InsertRoleDataGroupPermissions(int roleId, DataGroupPermissions dataGroupPermissions)
+        {
+            try
+            {
+                scon.Open();
+                SqlCommand command = new SqlCommand("InsertRoleDataGroupPermissions", scon);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@RoleId", SqlDbType.Int).Value = roleId;
+                command.Parameters.Add("@DataGroupPermissionIds", SqlDbType.VarChar).Value = string.Join(",", dataGroupPermissions.AdminGroups.Select(a => a.DataGroupIdPermissionsId));
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (scon.State == ConnectionState.Open)
+                    scon.Close();
+            }
+        }
+
+        public void InsertRoleWorkflowManagements(int roleId, List<WorkflowManagement> workflowManagements)
+        {
+            try
+            {
+                scon.Open();
+                SqlCommand command = new SqlCommand("InsertRoleWorkflowManagements", scon);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@RoleId", SqlDbType.Int).Value = roleId;
+                command.Parameters.Add("@WorkflowManagements", SqlDbType.VarChar).Value = string.Join(";", workflowManagements.Select(o => o.WorkflowActionId));
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (scon.State == ConnectionState.Open)
+                    scon.Close();
+            }
+        }
+
+        public void InsertRoleEmployeeActions(int roleId, List<EmployeeActions> employeeActions)
+        {
+            try
+            {
+                scon.Open();
+                SqlCommand command = new SqlCommand("InsertRoleEmployeeActions", scon);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@RoleId", SqlDbType.Int).Value = roleId;
+                command.Parameters.Add("@EmployeeActions", SqlDbType.VarChar).Value = string.Join(";", employeeActions.Select(o => o.EmployeeActionId));
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (scon.State == ConnectionState.Open)
+                    scon.Close();
+            }
+        }
+
+        public int InsertRole(string RoleName, int RoleType)
+        {
+            try
+            {
+                scon.Open();
+                SqlCommand command = new SqlCommand("InsertRole", scon);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@RoleName", SqlDbType.VarChar).Value = RoleName;
+                command.Parameters.Add("@RoleType", SqlDbType.Int).Value = RoleType;
+                int RoleId = Convert.ToInt32(command.ExecuteScalar());
+                return RoleId;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (scon.State == ConnectionState.Open)
+                    scon.Close();
             }
         }
     }

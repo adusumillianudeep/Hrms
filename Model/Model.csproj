@@ -47,6 +47,7 @@
     <Compile Include="CostCenter.cs" />
     <Compile Include="CountryModel.cs" />
     <Compile Include="CountryTimeZoneModel.cs" />
+    <Compile Include="DataGroupPermissions.cs" />
     <Compile Include="EducationModel.cs" />
     <Compile Include="EmployeeActions.cs" />
     <Compile Include="LanguageModel.cs" />

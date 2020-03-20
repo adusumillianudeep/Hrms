@@ -12,9 +12,13 @@ namespace Model
 
         public string RoleName { get; set; }
 
+        public int RoleType { get; set; }
+
         public List<EmployeeActions> EmployeeActions { get; set; }
 
         public List<WorkflowManagement> WorkflowManagements { get; set; }
+
+        public DataGroupPermissions DataGroupPermissions { get; set; }
 
     }
 

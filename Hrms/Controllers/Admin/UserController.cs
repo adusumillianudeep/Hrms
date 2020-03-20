@@ -92,6 +92,21 @@ namespace Hrms.Controllers.Admin
                 throw ex;
             }
         }
+
+        [HttpPost]
+        public bool InsertOrUpdateUserRole(Roles roles)
+        {
+            try
+            {
+
+                return userServiceBL.InsertOrUpdateUserRole(roles);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 
 }
