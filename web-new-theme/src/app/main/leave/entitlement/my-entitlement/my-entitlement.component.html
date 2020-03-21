@@ -1,0 +1,30 @@
+<div class="page-layout simple h-100-p">
+    <div class="h-100-p p-16" fxLayout="column" fxLayoutGap="8px">
+        <div fxLayoutAlign="space-between center">
+            <span fxFlex class="mat-title mb-0">My Leave Entitlements</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="content h-100-p">
+            <ngx-datatable class="material h-100-p w-100-p" fxFlex [rows]="myLeaveEntitlement"
+                [loadingIndicator]="loadingIndicator" [columnMode]="'flex'" [headerHeight]="48" [footerHeight]="56"
+                [rowHeight]="'auto'" [reorderable]="reorderable" [selectionType]="'checkbox'" [limit]="10">
+
+                <ngx-datatable-column name="Leave Type" prop="leaveType" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Entitlement Type" prop="entitlementType" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Created On" prop="createdOn" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Valid From" prop="validFrom" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Valid To" prop="validTo" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Expired" prop="expired" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Days" prop="days" [flexGrow]="0.5"></ngx-datatable-column>
+
+            </ngx-datatable>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="page-layout simple fullwidth">
+    <!-- HEADER -->
+    <app-header [title]="'Assign Leave'">
+        <button mat-raised-button class="add-product-button fuse-white mt-sm-0" type="submit" (click)="save()">
+            ASSIGN
+        </button>
+    </app-header>
+
+    <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
+        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                    <mat-icon class="secondary-text primary-fg">info</mat-icon>
+                    <div class="h2 secondary-text primary-fg">Assign Leave</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Employee" required>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Leave Type">
+                                <mat-option [value]="0">Select</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="From Date">
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="To Date">
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <textarea matInput placeholder="Comments"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

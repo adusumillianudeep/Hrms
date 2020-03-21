@@ -1,0 +1,90 @@
+<div class="page-layout simple fullwidth">
+    <app-header [title]="'Leave Bradford Factor Report'">
+        <button mat-raised-button class="add-product-button fuse-white mt-sm-0" type="submit" (click)="save()">
+            SAVE
+        </button>
+    </app-header>
+
+    <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
+        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                    <mat-icon class="secondary-text primary-fg">info</mat-icon>
+                    <div class="h2 secondary-text primary-fg">Leave Bradford Factor Report</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Employee" required>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Location" required>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Job Category" required>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Sub Unit" required>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Job Title" required>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Supervisors" required>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Include">
+                                <mat-option [value]="0">Select</mat-option>
+                                <mat-option [value]="1">Leave 1</mat-option>
+                                <mat-option [value]="2">Leave 2</mat-option>
+                                <mat-option [value]="3">Leave 3</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <textarea matInput placeholder="Comments"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Entitlement Type" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content h-100-p">
+            <ngx-datatable class="material h-100-p w-100-p" fxFlex [rows]="data" [loadingIndicator]="loadingIndicator"
+                [columnMode]="'flex'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'"
+                [reorderable]="reorderable" [selectionType]="'checkbox'" [limit]="10">
+
+                <ngx-datatable-column name="Employee" prop="employee" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Title Type" prop="title" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Sub Unit" prop="subUnit" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Location" prop="location" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Number of Days" prop="days" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Number of Spells" prop="spell" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Bradford Factor" prop="bradfordFactor" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+            </ngx-datatable>
+        </div>
+    </div>
+</div>

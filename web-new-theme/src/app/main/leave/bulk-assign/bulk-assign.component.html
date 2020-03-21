@@ -1,0 +1,98 @@
+<div class="page-layout simple fullwidth">
+    <!-- HEADER -->
+    <app-header [title]="'Bulk Assign Leave'">
+        <button mat-raised-button class="add-product-button fuse-white mt-sm-0" type="submit" (click)="save()">
+            ASSING
+        </button>
+    </app-header>
+
+    <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
+        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                    <mat-icon class="secondary-text primary-fg">info</mat-icon>
+                    <div class="h2 secondary-text primary-fg">Bulk Assign Leave</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Leave Type">
+                                <mat-option [value]="0">Select</mat-option>
+                                <mat-option [value]="1">Casual Leave</mat-option>
+                                <mat-option [value]="2">FMLA - US</mat-option>
+                                <mat-option [value]="3">Maternity Leave - US</mat-option>
+                                <mat-option [value]="4">Sick Leave - US</mat-option>
+                                <mat-option [value]="5">Vacation Leave - US</mat-option>
+                                <mat-option [value]="6">Work From Home - US</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="From Date">
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="To Date">
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <textarea matInput placeholder="Note"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                    <mat-icon class="secondary-text primary-fg">account_circle</mat-icon>
+                    <div class="h2 secondary-text primary-fg">Employee Selection</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Location">
+                                <mat-option [value]="0">Select</mat-option>
+                                <mat-option [value]="1">Casual Leave</mat-option>
+                                <mat-option [value]="2">FMLA - US</mat-option>
+                                <mat-option [value]="3">Maternity Leave - US</mat-option>
+                                <mat-option [value]="4">Sick Leave - US</mat-option>
+                                <mat-option [value]="5">Vacation Leave - US</mat-option>
+                                <mat-option [value]="6">Work From Home - US</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Submit">
+                                <mat-option [value]="0">Select</mat-option>
+                                <mat-option [value]="1">Casual Leave</mat-option>
+                                <mat-option [value]="2">FMLA - US</mat-option>
+                                <mat-option [value]="3">Maternity Leave - US</mat-option>
+                                <mat-option [value]="4">Sick Leave - US</mat-option>
+                                <mat-option [value]="5">Vacation Leave - US</mat-option>
+                                <mat-option [value]="6">Work From Home - US</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Additional Employees to include">
+                                <mat-option [value]="0">Select</mat-option>
+                                <mat-option [value]="1">Casual Leave</mat-option>
+                                <mat-option [value]="2">FMLA - US</mat-option>
+                                <mat-option [value]="3">Maternity Leave - US</mat-option>
+                                <mat-option [value]="4">Sick Leave - US</mat-option>
+                                <mat-option [value]="5">Vacation Leave - US</mat-option>
+                                <mat-option [value]="6">Work From Home - US</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="page-layout simple fullwidth">
+    <!-- HEADER -->
+    <app-header [title]="'Add Leave Entitlement'">
+        <button mat-raised-button class="add-product-button fuse-white mt-sm-0" type="submit" (click)="save()">
+            SAVE
+        </button>
+    </app-header>
+
+    <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
+        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                    <mat-icon class="secondary-text primary-fg">info</mat-icon>
+                    <div class="h2 secondary-text primary-fg">Add Leave Entitlement</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Employee" required>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Leave Type">
+                                <mat-option [value]="0">Select</mat-option>
+                                <mat-option [value]="1">Community leave AU</mat-option>
+                                <mat-option [value]="2">Compassionate & bereavement leave</mat-option>
+                                <mat-option [value]="3">Vacation Leave - Australia</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-checkbox>Add to Multiple Employees</mat-checkbox>
+                        <!-- <mat-form-field fxFlex>
+                        </mat-form-field> -->
+                    </div>
+
+
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Leave Period">
+                                <mat-option [value]="0">Select</mat-option>
+                                <mat-option [value]="1">Leave 1</mat-option>
+                                <mat-option [value]="2">Leave 2</mat-option>
+                                <mat-option [value]="3">Leave 3</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Entitlements (Days)" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <textarea matInput placeholder="Comments"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="Entitlement Type" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

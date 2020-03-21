@@ -1,0 +1,77 @@
+<div class="page-layout simple fullwidth">
+    <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
+        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                    <mat-icon class="secondary-text primary-fg">info</mat-icon>
+                    <div class="h2 secondary-text primary-fg">Work Week</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Country">
+                                <mat-option [value]="0">Select</mat-option>
+                                <mat-option [value]="1">India</mat-option>
+                                <mat-option [value]="2">italy</mat-option>
+                                <mat-option [value]="3">Maternity Leave - US</mat-option>
+                                <mat-option [value]="4">Sick Leave - US</mat-option>
+                                <mat-option [value]="5">Vacation Leave - US</mat-option>
+                                <mat-option [value]="6">Work From Home - US</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Monday" [value]="1">
+                                <mat-option [value]="1">Fully Day</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Tuesday" [value]="1">
+                                <mat-option [value]="1">Fully Day</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Wednesday" [value]="1">
+                                <mat-option [value]="1">Fully Day</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Thursday" [value]="1">
+                                <mat-option [value]="1">Fully Day</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Friday" [value]="1">
+                                <mat-option [value]="1">Fully Day</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Saturday" [value]="1">
+                                <mat-option [value]="1">Fully Day</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <mat-select placeholder="Sunday" [value]="1">
+                                <mat-option [value]="1">Fully Day</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
