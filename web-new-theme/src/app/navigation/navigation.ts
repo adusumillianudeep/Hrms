@@ -261,97 +261,155 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
-        id: 'pim',
-        title: 'PIM',
+        id: 'leave',
+        title: 'Leave',
         type: 'collapsable',
         icon: 'account_circle',
         children: [
             {
-                id: 'configuration',
-                title: 'Configuration',
+                id: 'apply',
+                title: 'Apply',
+                type: 'item',
+                icon: 'assignment',
+                url: '/leave/apply'
+            },
+            {
+                id: 'my-leave',
+                title: 'My Leave',
+                type: 'item',
+                icon: 'assignment',
+                url: '/leave/my-leave'
+            },
+            {
+                id: 'leave-list',
+                title: 'Leave List',
+                type: 'item',
+                icon: 'assignment',
+                url: '/leave/leave-list'
+            },
+            {
+                id: 'entitlements',
+                title: 'Entitlements',
                 type: 'collapsable',
                 icon: 'people_outline',
                 children: [
                     {
-                        id: 'optional-fields',
-                        title: 'Optional Fields',
+                        id: 'add-entitlements',
+                        title: 'Add Entitlements',
                         type: 'item',
-                        url: '/pim/configuration/optional-fields'
+                        url: '/leave/entitlements/add-entitlements'
                     },
                     {
-                        id: 'custom-fields',
-                        title: 'Custom Fields',
+                        id: 'entitlements-list',
+                        title: 'Entitlements List',
                         type: 'item',
-                        url: '/pim/configuration/custom-fields'
+                        url: '/leave/entitlements/list-entitlements'
                     },
                     {
-                        id: 'reporting-methods',
-                        title: 'Reporting Methods',
+                        id: 'my-entitlements',
+                        title: 'My Entitlements',
                         type: 'item',
-                        url: '/pim/configuration/reporting-methods'
-                    },
-                    {
-                        id: 'add-employee-wizard',
-                        title: 'Add Employee Wizard',
-                        type: 'item',
-                        url: '/pim/configuration/add-employee-wizard'
-                    },
-                    {
-                        id: 'termination-reasons',
-                        title: 'Termination Reasons',
-                        type: 'item',
-                        url: '/pim/configuration/termination-reasons'
-                    },
-                    {
-                        id: 'document-templates',
-                        title: 'Document Templates',
-                        type: 'item',
-                        url: '/pim/configuration/document-templates'
+                        url: '/leave/entitlements/my-entitlements'
                     }
                 ],
             },
             {
-                id: 'employee-list',
-                title: 'Employee List',
-                type: 'item',
-                icon: 'assignment',
-                url: '/pim/employee-list'
-            },
-            {
-                id: 'add-employee',
-                title: 'Add Employee',
-                type: 'item',
-                icon: 'assignment',
-                url: '/error-404/3'
-            },
-            {
-                id: 'reports',
-                title: 'Reports',
-                type: 'item',
-                icon: 'assignment',
-                url: '/pim/reports'
-            },
-            {
-                id: 'manage-data',
-                title: 'Manage Data',
+                id: 'report',
+                title: 'Report',
                 type: 'collapsable',
-                icon: 'assignment',
+                icon: 'people_outline',
                 children: [
                     {
-                        id: 'bulk-update',
-                        title: 'Bulk Update',
+                        id: 'leave-usage',
+                        title: 'Leave Usage',
                         type: 'item',
-                        url: '/pim/manage-data/bulk-update'
+                        url: '/leave/report/leave-usage'
                     },
                     {
-                        id: 'employee-data-export',
-                        title: 'Employee Data Export',
+                        id: 'my-leave-usage',
+                        title: 'My Leave Usage',
                         type: 'item',
-                        url: '/pim/manage-data/employee-data-export'
+                        url: '/leave/report/myleave-usage'
                     },
-                ]
+                    {
+                        id: 'bradford-factor',
+                        title: 'Bradford Factor',
+                        type: 'item',
+                        url: '/leave/report/bradford-factor'
+                    }
+                ],
             },
+            {
+                id: 'configure',
+                title: 'Configure',
+                type: 'collapsable',
+                icon: 'people_outline',
+                children: [
+                    {
+                        id: 'leave-period',
+                        title: 'Leave Period',
+                        type: 'item',
+                        url: '/leave/configure/leave-period'
+                    },
+                    {
+                        id: 'leave-type',
+                        title: 'Leave Type',
+                        type: 'item',
+                        url: '/leave/configure/leave-types'
+                    },
+                    {
+                        id: 'work-week',
+                        title: 'Work Week',
+                        type: 'item',
+                        url: '/leave/configure/work-week'
+                    },
+                    {
+                        id: 'holidays',
+                        title: 'Holidays',
+                        type: 'item',
+                        url: '/leave/configure/holidays'
+                    },
+                    {
+                        id: 'bradford-factor-threshold',
+                        title: 'Bradford Factor Threshold',
+                        type: 'item',
+                        url: '/leave/configure/bradford-factor-threshold'
+                    },
+                    {
+                        id: 'working-weekends',
+                        title: 'Working Weekends',
+                        type: 'item',
+                        url: '/leave/configure/working-weekends'
+                    },
+                    {
+                        id: 'notifications',
+                        title: 'Notifications',
+                        type: 'item',
+                        url: '/leave/configure/notifications'
+                    }
+                ],
+            },
+            {
+                id: 'assign-leave',
+                title: 'Assign Leave',
+                type: 'item',
+                icon: 'assignment',
+                url: '/leave/assing'
+            },
+            {
+                id: 'leave-calendar',
+                title: 'Leave Calendar',
+                type: 'item',
+                icon: 'assignment',
+                url: '/leave/calendar'
+            },
+            {
+                id: 'bulk-assign',
+                title: 'Bulk Assign',
+                type: 'item',
+                icon: 'assignment',
+                url: '/leave/bulk-assign'
+            }
         ]
     }
-
 ];

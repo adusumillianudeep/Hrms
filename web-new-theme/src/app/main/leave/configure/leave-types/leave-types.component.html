@@ -1,0 +1,58 @@
+<div class="page-layout simple h-100-p">
+    <div class="h-100-p p-16" fxLayout="column" fxLayoutGap="8px">
+        <div fxLayoutAlign="space-between center">
+            <span fxFlex class="mat-title mb-0">Leave Types</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="content h-100-p">
+            <ngx-datatable class="material h-100-p w-100-p" fxFlex [rows]="leaveTypes"
+                [loadingIndicator]="loadingIndicator" [columnMode]="'flex'" [headerHeight]="48" [footerHeight]="56"
+                [rowHeight]="'auto'" [reorderable]="reorderable" [selectionType]="'checkbox'" [limit]="10">
+
+                <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                    let-selectFn="selectFn">
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon mat-icon-button>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button *ngIf="!allRowsSelected" (click)="selectFn(allRowsSelected)" mat-menu-item>
+                            <span>Select All</span>
+                        </button>
+                        <button *ngIf="allRowsSelected" (click)="selectFn(!allRowsSelected)" mat-menu-item>
+                            <span>Deselect All</span>
+                        </button>
+                        <button mat-menu-item (click)="delete()">
+                            <span>Configure</span>
+                        </button>
+                        <button mat-menu-item (click)="delete()">
+                            <span>Delete Selected</span>
+                        </button>
+                    </mat-menu>
+                </ng-template>
+
+                <ngx-datatable-column name="Leave Type" prop="leaveType" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Country" prop="country" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Is Entitlement Situational" prop="IsEntitlementSituational"
+                    [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Included In Bradford Factor Report" prop="IncludedInBradfordFactorReport"
+                    [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Nominate Employee" prop="nominateEmployee" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Actions" [flexGrow]="0.5">
+                    <ng-template ngx-datatable-cell-template let-value="value">
+                        <button mat-button class="mat-icon-button" matTooltip="Edit" matTooltipPosition="right"
+                            aria-label="Setting">
+                            <mat-icon>settings</mat-icon>
+                        </button>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </div>
+</div>

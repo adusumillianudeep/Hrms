@@ -1,0 +1,36 @@
+<div class="page-layout simple h-100-p">
+    <div class="h-100-p p-16" fxLayout="column" fxLayoutGap="8px">
+        <div fxLayoutAlign="space-between center">
+            <span fxFlex class="mat-title mb-0">My Leave Entitlements</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="content h-100-p">
+            <ngx-datatable class="material h-100-p w-100-p" fxFlex [rows]="data" [loadingIndicator]="loadingIndicator"
+                [columnMode]="'flex'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'"
+                [reorderable]="reorderable" [selectionType]="'checkbox'" [scrollbarH]="true" [limit]="10">
+
+                <ngx-datatable-column name="Leave Type" prop="leaveType" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Leave Period" prop="period" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Entitlements (Days)" prop="days" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Pending Approval (Days)" prop="pendingDay" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Scheduled (Days)" prop="scheduleDay" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Taken (Days)" prop="takenDay" [flexGrow]="0.5"></ngx-datatable-column>
+
+                <ngx-datatable-column name="Available Balance (Days)" prop="availableBalanceDay" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Total Overdrawn (Days)" prop="totalOverdrawnDay" [flexGrow]="0.5">
+                </ngx-datatable-column>
+
+            </ngx-datatable>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,10 @@ const routes: Routes = [
     loadChildren: () => import('./main/pim/pim.module').then(m => m.PimModule)
   },
   {
+    path: 'leave',
+    loadChildren: () => import('./main/leave/leave.module').then(m => m.LeaveModule)
+  },
+  {
     path: 'dashboard',
     loadChildren: () => import('./main/dashboard/dashboard.module').then(m => m.DashboardModule)
   },

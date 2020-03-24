@@ -1,0 +1,90 @@
+<div class="page-layout simple fullwidth">
+    <!-- HEADER -->
+    <app-header [title]="'My Leave List'">
+        <button mat-raised-button class="add-product-button fuse-white mt-sm-0" type="submit" (click)="save()">
+            SAVE
+        </button>
+    </app-header>
+
+    <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
+        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                    <mat-icon class="secondary-text primary-fg">info</mat-icon>
+                    <div class="h2 secondary-text primary-fg">Search (Please specify your search)</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="From Date" required>
+                        </mat-form-field>
+                        <mat-form-field fxFlex>
+                            <input matInput placeholder="To Date">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <mat-checkbox>All</mat-checkbox>
+                        <mat-checkbox>Cancelled</mat-checkbox>
+                        <mat-checkbox>Pending Approval</mat-checkbox>
+                        <mat-checkbox>Scheduled</mat-checkbox>
+                        <mat-checkbox>Taken</mat-checkbox>
+                        <mat-checkbox>Rejected</mat-checkbox>
+                    </div>
+                </div>
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="24px">
+                        <button mat-raised-button class="fuse-white mt-sm-0" type="reset">
+                            RESET
+                        </button>
+                        <button mat-raised-button class="fuse-white mt-sm-0" type="search">
+                            SEARCH
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+                    <mat-icon class="secondary-text primary-fg">account_circle</mat-icon>
+                    <div class="h2 secondary-text primary-fg">Contact Details</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="content h-100-p">
+                    <ngx-datatable class="material h-100-p w-100-p" fxFlex [rows]="data"
+                        [loadingIndicator]="loadingIndicator" [columnMode]="'flex'" [headerHeight]="48"
+                        [footerHeight]="56" [rowHeight]="'auto'" [reorderable]="reorderable"
+                        [selectionType]="'checkbox'" [limit]="10">
+
+                        <ngx-datatable-column name="Employee" prop="employee" [flexGrow]="1"></ngx-datatable-column>
+
+                        <ngx-datatable-column name="Date" prop="date" [flexGrow]="0.5"></ngx-datatable-column>
+
+                        <ngx-datatable-column name="Leave Type" prop="leaveType" [flexGrow]="0.5">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="Leave Balance (Days)" prop="balance" [flexGrow]="1">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="Number of Days" prop="days" [flexGrow]="0.5">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="Status" prop="status" [flexGrow]="0.5"></ngx-datatable-column>
+
+                        <ngx-datatable-column name="Actions" [flexGrow]="0.5">
+                            <ng-template ngx-datatable-cell-template let-value="value">
+                                <button mat-button class="mat-icon-button" matTooltip="Edit" matTooltipPosition="right"
+                                    aria-label="Edit">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
