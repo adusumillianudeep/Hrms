@@ -15,7 +15,6 @@ export class SaveComponent implements OnInit {
   }
 
   onTypeChange(type: string): void {
-    debugger;
     this.type = type;
   }
 

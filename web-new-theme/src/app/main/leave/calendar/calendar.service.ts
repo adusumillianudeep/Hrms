@@ -17,7 +17,6 @@ export class CalendarService implements Resolve<any>
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-        debugger;
         return new Promise((resolve, reject) => {
             Promise.all([
                 // this.getEvents()
@@ -31,11 +30,9 @@ export class CalendarService implements Resolve<any>
     }
 
     getEvents(): Promise<any> {
-        debugger;
         return new Promise((resolve, reject) => {
             this._httpClient.get('api/calendar/events')
                 .subscribe((response: any) => {
-                    debugger;
                     this.events = response.data;
                     this.onEventsUpdated.next(this.events);
                     resolve(this.events);

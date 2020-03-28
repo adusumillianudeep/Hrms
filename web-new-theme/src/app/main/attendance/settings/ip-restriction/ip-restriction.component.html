@@ -1,0 +1,49 @@
+<div class="page-layout simple fullwidth">
+    <!-- HEADER -->
+    <app-header [title]="'Configure IP restrictions'">
+        <button mat-raised-button class="add-product-button fuse-white mt-sm-0" type="submit" (click)="save()">
+            + Add IP Restriction
+        </button>
+    </app-header>
+
+    <div fxFlex.lt-md="none" class="p-16" fusePerfectScrollbar>
+        <div class="p-16" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
+            <div fxLayout="column" fxLayoutGap="16px">
+                <div class="content h-100-p">
+                    <ngx-datatable class="material h-100-p w-100-p" fxFlex [rows]="data"
+                        [loadingIndicator]="loadingIndicator" [columnMode]="'flex'" [headerHeight]="48"
+                        [footerHeight]="56" [rowHeight]="'auto'" [reorderable]="reorderable"
+                        [selectionType]="'checkbox'" [limit]="10">
+
+                        <ngx-datatable-column name="From IP address" prop="fromIpAddress" [flexGrow]="0.5">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="To IP address" prop="toIpAddress" [flexGrow]="0.5">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="Module(s)" prop="modules" [flexGrow]="0.5">
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="Actions" [flexGrow]="0.2">
+                            <ng-template ngx-datatable-cell-template let-value="value">
+                                <button mat-button class="mat-icon-button" matTooltip="Edit" matTooltipPosition="right"
+                                    aria-label="Edit">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="Actions" [flexGrow]="0.2">
+                            <ng-template ngx-datatable-cell-template let-value="value">
+                                <button mat-button class="mat-icon-button" matTooltip="Delete"
+                                    matTooltipPosition="right" aria-label="Edit">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

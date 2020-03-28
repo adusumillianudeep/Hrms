@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: () => import('./main/leave/leave.module').then(m => m.LeaveModule)
   },
   {
+    path: 'attendance',
+    loadChildren: () => import('./main/attendance/attendance.module').then(m => m.AttendanceModule)
+  },
+  {
     path: 'dashboard',
     loadChildren: () => import('./main/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
