@@ -411,5 +411,189 @@ export const navigation: FuseNavigation[] = [
                 url: '/leave/bulk-assign'
             }
         ]
+    },
+    {
+
+        id: 'pim',
+
+        title: 'PIM',
+
+        type: 'collapsable',
+
+        icon: 'account_circle',
+
+        children: [
+
+            {
+
+                id: 'configuration',
+
+                title: 'Configuration',
+
+                type: 'collapsable',
+
+                icon: 'people_outline',
+
+                children: [
+
+                    {
+
+                        id: 'optional-fields',
+
+                        title: 'Optional Fields',
+
+                        type: 'item',
+
+                        url: '/pim/configuration/optional-fields'
+
+                    },
+
+                    {
+
+                        id: 'custom-fields',
+
+                        title: 'Custom Fields',
+
+                        type: 'item',
+
+                        url: '/pim/configuration/custom-fields'
+
+                    },
+
+                    {
+
+                        id: 'reporting-methods',
+
+                        title: 'Reporting Methods',
+
+                        type: 'item',
+
+                        url: '/pim/configuration/reporting-methods'
+
+                    },
+
+                    {
+
+                        id: 'add-employee-wizard',
+
+                        title: 'Add Employee Wizard',
+
+                        type: 'item',
+
+                        url: '/pim/configuration/add-employee-wizard'
+
+                    },
+
+                    {
+
+                        id: 'termination-reasons',
+
+                        title: 'Termination Reasons',
+
+                        type: 'item',
+
+                        url: '/pim/configuration/termination-reasons'
+
+                    },
+
+                    {
+
+                        id: 'document-templates',
+
+                        title: 'Document Templates',
+
+                        type: 'item',
+
+                        url: '/pim/configuration/document-templates'
+
+                    }
+
+                ],
+
+            },
+
+            {
+
+                id: 'employee-list',
+
+                title: 'Employee List',
+
+                type: 'item',
+
+                icon: 'assignment',
+
+                url: '/pim/employee-list'
+
+            },
+
+            {
+
+                id: 'add-employee',
+
+                title: 'Add Employee',
+
+                type: 'item',
+
+                icon: 'assignment',
+
+                url: '/error-404/3'
+
+            },
+
+            {
+
+                id: 'reports',
+
+                title: 'Reports',
+
+                type: 'item',
+
+                icon: 'assignment',
+
+                url: '/pim/reports'
+
+            },
+
+            {
+
+                id: 'manage-data',
+
+                title: 'Manage Data',
+
+                type: 'collapsable',
+
+                icon: 'assignment',
+
+                children: [
+
+                    {
+
+                        id: 'bulk-update',
+
+                        title: 'Bulk Update',
+
+                        type: 'item',
+
+                        url: '/pim/manage-data/bulk-update'
+
+                    },
+
+                    {
+
+                        id: 'employee-data-export',
+
+                        title: 'Employee Data Export',
+
+                        type: 'item',
+
+                        url: '/pim/manage-data/employee-data-export'
+
+                    },
+
+                ]
+
+            }
+        ]
     }
+
 ];

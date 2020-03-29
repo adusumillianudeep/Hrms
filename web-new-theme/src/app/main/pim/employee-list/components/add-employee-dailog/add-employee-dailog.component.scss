@@ -1,8 +1,21 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
 ::ng-deep .mat-dialog-container {
-    padding: 0px !important;
+  padding: 0px !important;
+  .mat-dialog-content {
+    height: 100%;
+    margin: 0px 24px;
+  }
+
+  .mat-dialog-actions {
+    margin-bottom: -16px;
+  }
 }
 
 .header {
-    min-height: 60px !important;
-    height: 60px !important;
+  min-height: 60px !important;
+  height: 60px !important;
 }
