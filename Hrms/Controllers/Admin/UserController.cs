@@ -17,6 +17,19 @@ namespace Hrms.Controllers.Admin
             userServiceBL = new UserServiceBL();
         }
 
+
+        [HttpGet]
+        public List<Users> Get()
+        {
+            return userServiceBL.GetUsers();
+        }
+
+        [HttpPost]
+        public Users SaveUser(Users user)
+        {
+            return userServiceBL.SaveUser(user);
+        } 
+
         /// <summary>
         /// Fetch user details by userid
         /// </summary>

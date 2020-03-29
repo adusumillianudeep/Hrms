@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AddEmployeeDailogComponent } from './components/add-employee-dailog/add-employee-dailog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-employee-list',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
-  ngOnInit() {
+  public ngOnInit(){}
+
+  openAddEmployeeDialog(): void {
+    const dialogRef = this.dialog.open(AddEmployeeDailogComponent, {
+      width: '800px',
+      height: '600px',
+      data: {name: 'some data'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
   }
 
 }

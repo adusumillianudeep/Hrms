@@ -202,6 +202,7 @@
     <Compile Include="Controllers\Admin\UserController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PIM\WizardController.cs" />
     <Compile Include="Controllers\TimeZoneController.cs" />
     <Compile Include="Controllers\TokenController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

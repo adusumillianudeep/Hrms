@@ -4,6 +4,7 @@ import { AddEmployeeWizardComponent } from './add-employee-wizard.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { HeaderModule } from 'app/main/header/header.module';
+import { FieldComponent } from './field/field.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AddEmployeeWizardComponent],
+  declarations: [AddEmployeeWizardComponent, FieldComponent],
   imports: [
     CommonModule,
     FuseSharedModule,

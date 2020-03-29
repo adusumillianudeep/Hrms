@@ -1,0 +1,14 @@
+<div fxFlex flexLayout="row" style="padding: 6px;">
+    <div fxFlex="60">
+        {{field.name}}
+
+    </div>
+    <div fxFlex="20">
+        <mat-checkbox [(ngModel)]="field.required" >Required</mat-checkbox>
+
+    </div>
+    <div fxFlex="20">
+        <mat-checkbox [(ngModel)]="field.available">Available</mat-checkbox>
+
+    </div>
+</div>

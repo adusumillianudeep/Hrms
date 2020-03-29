@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { SaveComponent } from './save/save.component';
+import { UsersService } from './servives/users.service';
+import { Subscription } from 'rxjs';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-users',
@@ -11,30 +14,41 @@ import { SaveComponent } from './save/save.component';
 })
 export class UsersComponent implements OnInit {
 
-  Users: User[] = [
-    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
-    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
-    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
-    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
-    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
-    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
-    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
-    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
-    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
-    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
-    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
-    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
-    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
-    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
-    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
-    { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
-    { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
-    { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" }
-  ];
+  // Users: User[] = [
+  //   { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+  //   { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+  //   { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
+  //   { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+  //   { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+  //   { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
+  //   { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+  //   { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+  //   { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
+  //   { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+  //   { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+  //   { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
+  //   { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+  //   { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+  //   { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" },
+  //   { username: "Anudeep01", userrole: 'Admin', employeename: "Anudeep", status: "Enabled" },
+  //   { username: "Raghavendra02", userrole: 'Supervisor', employeename: "Raghavendra", status: "Enabled" },
+  //   { username: "Sowjana04", userrole: 'Lead', employeename: "Sowjana", status: "Enabled" }
+  // ];
 
-  constructor(public dialog: MatDialog) { }
+  sub: Subscription;
+  Users: User[];
+
+  constructor(
+    public dialog: MatDialog,
+     private userService: UsersService
+    ) { }
 
   ngOnInit() {
+
+    this.userService.getUsers().subscribe(res=>{
+      
+    this.Users = res;
+    });
   }
 
   save(): void {

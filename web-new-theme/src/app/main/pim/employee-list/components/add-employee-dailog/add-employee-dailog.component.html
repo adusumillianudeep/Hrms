@@ -1,0 +1,42 @@
+<div fxFlex class="page-layout simple fullwidth pb-16">
+
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="header accent p-24">
+        <h2>Add Employee wizard</h2>
+    </div>
+
+
+
+    <div class="content p-24" fxLayout="column">
+        <div fxFlex="row" fxLayoutAlign="space-between" style="border: 1px solid red;">
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="Placeholder">
+
+            
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Middle Name</mat-label>
+                <input matInput placeholder="Placeholder">
+
+            
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Placeholder">
+
+            
+            </mat-form-field>
+        </div>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="end end">
+            <button mat-raised-button color="accent" (click)="gotoWizard()">Next</button>
+
+        </div>
+
+      
+
+        
+       
+    </div>
+
+</div>

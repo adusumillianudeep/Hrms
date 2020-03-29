@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer;
 using Model;
+using Repositories.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,9 +13,22 @@ namespace BusinessLayer
     public class UserServiceBL
     {
         UserServiceDL _UserServiceDL;
+        private readonly UserRepository _userRepository;
+
         public UserServiceBL()
         {
             _UserServiceDL = new UserServiceDL();
+            _userRepository = new UserRepository();
+        }
+
+
+        public List<Users> GetUsers() {
+            return _userRepository.GetUsers();
+        }
+
+        public Users SaveUser(Users user)
+        {
+            return _userRepository.SaveUser(user);
         }
 
         public Users GetUserDetailBasedOnUserCredentials(string UserName, string Password)

@@ -61,6 +61,8 @@ namespace DataAccessLayer.Context
         public virtual DbSet<Currency> Currencies { get; set; }
         public virtual DbSet<GradeCurrency> GradeCurrencies { get; set; }
         public virtual DbSet<PayGrade> PayGrades { get; set; }
+        public virtual DbSet<Section> Sections { get; set; }
+        public virtual DbSet<SectionField> SectionFields { get; set; }
     
         public virtual ObjectResult<GetPayGrades_Result> GetPayGrades()
         {

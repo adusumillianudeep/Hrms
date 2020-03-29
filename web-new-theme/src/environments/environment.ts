@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     hmr       : false,
-    baseURL: 'http://hrmsapplicationdevapi.azurewebsites.net'
+    baseURL: 'http://localhost:57960'
 };
 
 /*

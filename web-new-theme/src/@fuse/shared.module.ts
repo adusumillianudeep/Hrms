@@ -29,7 +29,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
         MatFormFieldModule,
         MatInputModule,
         MatDialogModule,
-        FlexLayoutModule,
+
         MatMenuModule,
         MatCardModule,
         MatSnackBarModule,
@@ -55,7 +55,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
         MatFormFieldModule,
         MatInputModule,
         MatDialogModule,
-        FlexLayoutModule,
+
         MatMenuModule,
         MatCardModule,
         MatSnackBarModule,

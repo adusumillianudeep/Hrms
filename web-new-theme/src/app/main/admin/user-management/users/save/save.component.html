@@ -2,7 +2,7 @@
     <div class="header-pop accent p-16" fxLayout="row" fxLayoutAlign="space-between center">
         <h2 fxFlex>Add/Edit User</h2>
         <div fxLayoutAlign="end center" fxLayoutGap="16px">
-            <button mat-raised-button type="submit">
+            <button mat-raised-button type="submit" (click)="saveUser()">
                 SAVE
             </button>
             <button mat-raised-button class="fuse-white" type="reset" (click)="_dialogRef.close(false)">
@@ -14,10 +14,10 @@
         <div fxLayout="column" fxLayoutGap="16px">
             <div fxLayout="row" fxLayoutGap="24px">
                 <mat-form-field fxFlex>
-                    <input matInput placeholder="Employee Name" required>
+                    <input matInput placeholder="Employee Name" [(ngModel)]="user.firstName" required>
                 </mat-form-field>
                 <mat-form-field fxFlex>
-                    <input matInput placeholder="Username">
+                    <input matInput placeholder="Username" [(ngModel)]="user.userName">
                 </mat-form-field>
             </div>
             <div fxLayout="row" fxLayoutGap="24px">

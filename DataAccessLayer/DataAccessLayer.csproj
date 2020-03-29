@@ -153,6 +153,12 @@
     <Compile Include="Context\SalaryComponent.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Section.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\SectionField.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Skill.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>

@@ -271,6 +271,25 @@
           <Property Name="Percentage" Type="bit" Nullable="false" />
           <Property Name="OrganizationId" Type="bigint" />
         </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="OrganizationId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Available" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SectionField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SectionId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Required" Type="bit" Nullable="false" />
+          <Property Name="Available" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Skills">
           <Key>
             <PropertyRef Name="Id" />
@@ -467,6 +486,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SectionFields_Sections">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="SectionField" Type="Self.SectionField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SectionField">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserRegions_Regions">
           <End Role="Regions" Type="Self.Regions" Multiplicity="0..1" />
           <End Role="UserRegions" Type="Self.UserRegions" Multiplicity="*" />
@@ -556,6 +587,8 @@
           <EntitySet Name="RoleTypeWorkflowManagement" EntityType="Self.RoleTypeWorkflowManagement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleWorkflowActions" EntityType="Self.RoleWorkflowActions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalaryComponent" EntityType="Self.SalaryComponent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SectionField" EntityType="Self.SectionField" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimeZones" EntityType="Self.TimeZones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRegions" EntityType="Self.UserRegions" Schema="dbo" store:Type="Tables" />
@@ -606,6 +639,10 @@
           <AssociationSet Name="FK_RoleWorkflowActions_WorkflowManagement" Association="Self.FK_RoleWorkflowActions_WorkflowManagement">
             <End Role="WorkflowManagement" EntitySet="WorkflowManagement" />
             <End Role="RoleWorkflowActions" EntitySet="RoleWorkflowActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionFields_Sections" Association="Self.FK_SectionFields_Sections">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="SectionField" EntitySet="SectionField" />
           </AssociationSet>
           <AssociationSet Name="FK_UserRegions_Regions" Association="Self.FK_UserRegions_Regions">
             <End Role="Regions" EntitySet="Regions" />
@@ -1087,6 +1124,12 @@
           <EntitySet Name="GradeCurrencies" EntityType="HrmsModel.GradeCurrency" />
           <EntitySet Name="PayGrades" EntityType="HrmsModel.PayGrade" />
           <FunctionImport Name="GetPayGrades" ReturnType="Collection(HrmsModel.GetPayGrades_Result)" />
+          <EntitySet Name="Sections" EntityType="HrmsModel.Section" />
+          <EntitySet Name="SectionFields" EntityType="HrmsModel.SectionField" />
+          <AssociationSet Name="FK_SectionFields_Sections" Association="HrmsModel.FK_SectionFields_Sections">
+            <End Role="Section" EntitySet="Sections" />
+            <End Role="SectionField" EntitySet="SectionFields" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -1295,6 +1338,39 @@
           <Property Type="Decimal" Name="MinimumSalary" Nullable="true" Precision="17" Scale="2" />
           <Property Type="Int32" Name="GradeCurrenyId" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Available" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SectionFields" Relationship="HrmsModel.FK_SectionFields_Sections" FromRole="Section" ToRole="SectionField" />
+        </EntityType>
+        <EntityType Name="SectionField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SectionId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Required" Type="Boolean" Nullable="false" />
+          <Property Name="Available" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Section" Relationship="HrmsModel.FK_SectionFields_Sections" FromRole="SectionField" ToRole="Section" />
+        </EntityType>
+        <Association Name="FK_SectionFields_Sections">
+          <End Type="HrmsModel.Section" Role="Section" Multiplicity="1" />
+          <End Type="HrmsModel.SectionField" Role="SectionField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SectionField">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1677,6 +1753,27 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Sections">
+            <EntityTypeMapping TypeName="HrmsModel.Section">
+              <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SectionFields">
+            <EntityTypeMapping TypeName="HrmsModel.SectionField">
+              <MappingFragment StoreEntitySet="SectionField">
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="Required" ColumnName="Required" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

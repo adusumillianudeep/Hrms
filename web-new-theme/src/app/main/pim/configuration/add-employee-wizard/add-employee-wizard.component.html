@@ -1,1 +1,25 @@
-<p>add-employee-wizard works!</p>
+<div fxFlex class="page-layout simple fullwidth pb-16">
+
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="header accent p-24">
+        <h2>Add Employee wizard</h2>
+        <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>
+    <div class="content p-24">
+        <mat-accordion>
+            <ng-container *ngFor="let s of sections">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-checkbox [(ngModel)]="s.available" color="primary" (click)="$event.stopPropagation()"
+                            (keydown)="$event.stopPropagation()">
+                            {{s.name}}
+                        </mat-checkbox>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngFor="let sf of s.fields">
+                        <app-field [field]="sf"></app-field>
+
+                    </ng-container>
+                </mat-expansion-panel>
+            </ng-container>
+        </mat-accordion>
+    </div>
+</div>
