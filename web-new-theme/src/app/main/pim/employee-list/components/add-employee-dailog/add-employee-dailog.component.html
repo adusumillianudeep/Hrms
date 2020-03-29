@@ -4,7 +4,7 @@
         <h2>Add Employee wizard</h2>
     </div>
 
-    <div mat-dialog-content class="content p-24" fxLayout="column">
+    <div mat-dialog-content class="content" fxLayout="column">
         <div fxFlex="row" fxLayoutAlign="space-between">
             <mat-form-field appearance="outline">
                 <mat-label>First Name</mat-label>
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div mat-dialog-actions fxFlex fxLayout="row" fxLayoutAlign="end center">
+    <div mat-dialog-actions fxFlex fxLayout="row" fxLayoutAlign="end center" class="pr-16">
         <button mat-raised-button color="accent" (click)="gotoWizard()">Next</button>
     </div>
 
