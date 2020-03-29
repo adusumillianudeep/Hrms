@@ -411,5 +411,98 @@ export const navigation: FuseNavigation[] = [
                 url: '/leave/bulk-assign'
             }
         ]
+    },
+    {
+        id: 'pim',
+        title: 'PIM',
+        type: 'collapsable',
+        icon: 'account_circle',
+        children: [
+            {
+                id: 'add-employee',
+                title: 'Add Employee',
+                type: 'item',
+                icon: 'assignment',
+                url: '/pim/add-employee'
+            }
+        ]
+    },
+    {
+        id: 'attendance',
+        title: 'Attendance',
+        type: 'collapsable',
+        icon: 'account_circle',
+        children: [
+            {
+                id: 'shift-schedule',
+                title: 'Shift Schedule',
+                type: 'collapsable',
+                icon: 'people_outline',
+                children: [
+                    {
+                        id: 'shift',
+                        title: 'Shift(s)',
+                        type: 'item',
+                        url: '/attendance/shift-schedule/shift-details'
+                    },
+                    {
+                        id: 'shift-mapping',
+                        title: 'Employee Shift Mapping',
+                        type: 'item',
+                        url: '/attendance/shift-schedule/shift-mapping'
+                    }
+                ]
+            },
+            {
+                id: 'settings',
+                title: 'Settings',
+                type: 'collapsable',
+                icon: 'people_outline',
+                children: [
+                    {
+                        id: 'users-settings',
+                        title: 'Users/Shift Sepfic Settings',
+                        type: 'item',
+                        url: '/attendance/settings/user-settings'
+                    },
+                    {
+                        id: 'user-id-mapping',
+                        title: 'User ID Mapping',
+                        type: 'item',
+                        url: '/attendance/settings/user-id-mapping'
+                    },
+                    {
+                        id: 'absent-schedule',
+                        title: 'Absent Schedule',
+                        type: 'item',
+                        url: '/attendance/settings/absent-schedule'
+                    },
+                    {
+                        id: 'regularization',
+                        title: 'Regularization',
+                        type: 'item',
+                        url: '/attendance/settings/regularization'
+                    },
+                    {
+                        id: 'payperiod-settings',
+                        title: 'Pay Period Settings',
+                        type: 'item',
+                        url: '/attendance/settings/payperiod-settings'
+                    },
+                    {
+                        id: 'ip-restriction',
+                        title: 'IP Restriction',
+                        type: 'item',
+                        url: '/attendance/settings/ip-restriction'
+                    },
+                    {
+                        id: 'geo-restriction',
+                        title: 'Geo Restriction',
+                        type: 'item',
+                        url: '/attendance/settings/geo-restriction'
+                    }
+                ],
+            }
+        ]
     }
 ];
