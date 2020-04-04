@@ -31,7 +31,7 @@ namespace Model
 
         public UserRoles userRoles { get; set; }
         public UserRegions userRegions { get; set; }
-
+        public int EmployeeId { get; set; }
     }
 
     public class UserRoles

@@ -22,10 +22,8 @@ namespace Repositories.Repositories
             var users = _dbContext.Users.Select(u => new Model.Users
             {
                 UserId = u.UserId,
-                FirstName = u.FirstName,
-                LastName = u.LastName,
                 UserName = u.UserName,
-                FullName = u.FirstName + u.LastName
+                EmployeeId = u.EmployeeId.Value
             }).ToList();
             return users;
         }
@@ -42,10 +40,8 @@ namespace Repositories.Repositories
                 userObj.Password = user.Password;
             }
 
-            userObj.FirstName = user.FirstName;
-            userObj.LastName = user.LastName;
             userObj.UserName = user.UserName;
-            userObj.OrganizationId = user.OrganizationId;
+            userObj.EmployeeId = user.EmployeeId;
 
             _dbContext.SaveChanges();
 
