@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatCheckboxChange } from '@angular/material';
 import { SaveComponent } from './save/save.component';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
@@ -10,6 +10,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 
 export class AddEmployeeComponent implements OnInit {
+
+  isIncludeContractDetails: boolean;
 
   // Horizontal Stepper
   horizontalStepperStep1: FormGroup;
@@ -30,11 +32,39 @@ export class AddEmployeeComponent implements OnInit {
     // Horizontal Stepper form steps
     this.horizontalStepperStep1 = this._formBuilder.group({
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required]
+      middleName: [''],
+      lastName: [''],
+      employeeId: [''],
+      otherId: [''],
+      dateOfBirth: [''],
+      maritalStatus: [''],
+      gender: [''],
+      nationality: [''],
+      licenseNumber: [''],
+      licenseExpiryDate: [''],
+      nickName: [''],
+      militaryService: [''],
+      smoker: [''],
+      bloodGroup: [''],
+      hobbies: [''],
     });
 
     this.horizontalStepperStep2 = this._formBuilder.group({
-      address: ['', Validators.required]
+      joinedDate: [''],
+      dateOfPermanency: [''],
+      jobTitle: [''],
+      employmentStatus: [''],
+      jobCategory: [''],
+      subUnit: [''],
+      costCenter: [''],
+      workShift: [''],
+      effectiveFrom: [''],
+      comments: [''],
+      startDate: [''],
+      endDate: [''],
+      region: [''],
+      fte: [''],
+      temporaryDepartment: [''],
     });
 
     this.horizontalStepperStep3 = this._formBuilder.group({
@@ -42,5 +72,9 @@ export class AddEmployeeComponent implements OnInit {
       state: ['', Validators.required],
       postalCode: ['', [Validators.required, Validators.maxLength(5)]]
     });
+  }
+
+  onChange(event: MatCheckboxChange) {
+    this.isIncludeContractDetails = event.checked;
   }
 }
