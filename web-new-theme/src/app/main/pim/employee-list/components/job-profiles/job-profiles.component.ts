@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobProfilesComponent implements OnInit {
 
+  section: any;
+  cusomtSections: any;
   constructor() { }
 
   ngOnInit() {

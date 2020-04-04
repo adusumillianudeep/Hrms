@@ -8,15 +8,15 @@ import { PersonalDetailsComponent } from '../personal-details/personal-details.c
   styleUrls: ['./component-loader.component.scss']
 })
 export class ComponentLoaderComponent implements OnInit {
-  
-  @Input()
-  componentMapping:any;
 
   @Input()
-  section:any;
+  componentMapping: any;
 
   @Input()
-  allSections:any;
+  section: any;
+
+  @Input()
+  allSections: any;
 
   @ViewChild(ComponentLoaderDirective, { static: true })
   loader: ComponentLoaderDirective;
@@ -40,7 +40,10 @@ export class ComponentLoaderComponent implements OnInit {
     const viewContainerRef = this.loader.viewContainerRef;
     viewContainerRef.clear();
 
-    viewContainerRef.createComponent(componentFactory);
+    const componentRef: any = viewContainerRef.createComponent(componentFactory);
+
+    componentRef.instance.customSections = this.allSections.filter(t => t.parentId === this.section.id && t.parentId !== t.id);
+    componentRef.instance.section = this.section;
   }
 
 }

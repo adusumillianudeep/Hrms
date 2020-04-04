@@ -11,6 +11,7 @@ import { JobProfilesComponent } from './components/job-profiles/job-profiles.com
 import { ComponentLoaderComponent } from './components/component-loader/component-loader.component';
 import { ComponentLoaderDirective } from './directives/component-loader.directive';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
+import { AvailableOnlyPipe } from './pipes/available-only.pipe';
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
     JobProfilesComponent,
     ComponentLoaderComponent,
     ComponentLoaderDirective,
-    MoreInfoComponent
+    MoreInfoComponent,
+    AvailableOnlyPipe
   ],
   imports: [
     CommonModule,

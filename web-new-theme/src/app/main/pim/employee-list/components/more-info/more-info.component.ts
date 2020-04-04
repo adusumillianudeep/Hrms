@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./more-info.component.scss']
 })
 export class MoreInfoComponent implements OnInit {
-
+   
+  section:any;
+  cusomtSections:any;
   constructor() { }
 
   ngOnInit() {

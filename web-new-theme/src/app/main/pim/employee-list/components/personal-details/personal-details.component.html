@@ -1,16 +1,31 @@
-<div>
-    <div fxFlex="row" fxLayoutAlign="space-between">
-        <mat-form-field fxFlex="30" appearance="outline">
-            <mat-label>First Name</mat-label>
-            <input matInput placeholder="Placeholder">
-        </mat-form-field>
-        <mat-form-field fxFlex="30" appearance="outline">
-            <mat-label>Middle Name</mat-label>
-            <input matInput placeholder="Placeholder">
-        </mat-form-field>
-        <mat-form-field fxFlex="30" appearance="outline">
-            <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Placeholder">
-        </mat-form-field>
+<div fxFlex fxLayout="column" fxLayoutGap="16px" class="mt-16">
+    <div class="mat-elevation-z4">
+        <div class="p-16 bb">
+            <span class="text-uppercase">{{section.name}}</span>
+        </div>
+        <div class="p-16" fxLayout="row" fxLayoutGap="16px">
+            <mat-form-field fxFlex appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="Placeholder">
+            </mat-form-field>
+            <mat-form-field fxFlex appearance="outline">
+                <mat-label>Middle Name</mat-label>
+                <input matInput placeholder="Placeholder">
+            </mat-form-field>
+            <mat-form-field fxFlex appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Placeholder">
+            </mat-form-field>
+        </div>
+    </div>
+
+
+    <div class="mat-elevation-z4" *ngFor="let cs of customSections">
+        <div class="p-16 bb">
+            <span class="text-uppercase">{{cs.name}}</span>
+        </div>
+        <div class="p-16" fxLayout="row" fxLayoutGap="16px">
+            Child fields go here
+        </div>
     </div>
 </div>
