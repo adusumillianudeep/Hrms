@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatCheckboxChange } from '@angular/material';
 import { SaveComponent } from './save/save.component';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-employee',
@@ -20,7 +21,8 @@ export class AddEmployeeComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private _formBuilder: FormBuilder) { }
+    private _formBuilder: FormBuilder,
+    private router: Router) { }
 
   ngOnInit() {
     const dialogRef = this.dialog.open(SaveComponent, {});
@@ -72,9 +74,14 @@ export class AddEmployeeComponent implements OnInit {
       state: ['', Validators.required],
       postalCode: ['', [Validators.required, Validators.maxLength(5)]]
     });
+
   }
 
   onChange(event: MatCheckboxChange) {
     this.isIncludeContractDetails = event.checked;
+  }
+
+  next() {
+    this.router.navigateByUrl('/pim/add-employee/add-wizard');
   }
 }

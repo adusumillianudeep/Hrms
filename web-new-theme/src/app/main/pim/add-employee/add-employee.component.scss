@@ -1,8 +1,9 @@
 :host {
   .content {
+    width: 100%;
     form {
       width: 100%;
-      max-width: 800px !important;
+      max-width: 1000px !important;
     }
 
     .form-errors-model {
@@ -15,7 +16,7 @@
 
     .horizontal-stepper-wrapper,
     .vertical-stepper-wrapper {
-      max-width: 800px;
+      max-width: 1000px;
     }
   }
 }

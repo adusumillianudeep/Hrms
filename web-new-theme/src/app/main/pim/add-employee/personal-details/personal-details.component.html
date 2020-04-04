@@ -1,0 +1,121 @@
+<form fxLayout="column" [formGroup]="horizontalStepperStep1">
+
+    <ng-template matStepLabel>Personal Details</ng-template>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+        <div class="h2 secondary-text primary-fg">Personal Details</div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div fxFlex="1 0 auto" fxLayout="column">
+
+        <div fxLayout="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex>
+                <input matInput formControlName="firstName" placeholder="First Name">
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <input matInput formControlName="middleName" placeholder="Middle Name">
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <input matInput formControlName="lastName" placeholder="Last Name">
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex="212px">
+                <input matInput formControlName="employeeId" placeholder="Employee Id">
+            </mat-form-field>
+            <mat-form-field fxFlex="212px">
+                <input matInput formControlName="otherId" placeholder="Other Id">
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex="212px">
+                <input matInput formControlName="dateOfBirth" placeholder="Date Of Birth">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <mat-label>Marital Status</mat-label>
+                <mat-select formControlName="maritalStatus">
+                    <mat-option>-select-</mat-option>
+                    <mat-option>Married</mat-option>
+                    <mat-option>Single</mat-option>
+                    <mat-option>Other</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option>-select-</mat-option>
+                    <mat-option>Male</mat-option>
+                    <mat-option>Female</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex>
+                <mat-label>Nationality</mat-label>
+                <mat-select formControlName="nationality">
+                    <mat-option>-select-</mat-option>
+                    <mat-option>A</mat-option>
+                    <mat-option>B</mat-option>
+                    <mat-option>Other</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <input matInput formControlName="licenseNumber" placeholder="Driver's License Number">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <input matInput formControlName="licenseExpiryDate" placeholder="License Expiry Date">
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex>
+                <input matInput formControlName="nickName" placeholder="Nick Name">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <input matInput formControlName="militaryService" placeholder="Military Service">
+            </mat-form-field>
+
+            <mat-checkbox formControlName="smoker" fxFlex>Smoker</mat-checkbox>
+        </div>
+    </div>
+
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+        <div class="h2 secondary-text primary-fg">Important</div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div fxFlex="1 0 auto" fxLayout="column">
+
+        <div fxLayout="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex>
+                <mat-label>Blood Group</mat-label>
+                <mat-select formControlName="bloodGroup">
+                    <mat-option>-select-</mat-option>
+                    <mat-option>A</mat-option>
+                    <mat-option>B</mat-option>
+                    <mat-option>etc</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <input matInput formControlName="hobbies" placeholder="Hobbies">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button matStepperNext type="button" color="accent">
+            Next
+        </button>
+    </div>
+</form>

@@ -1,0 +1,69 @@
+<div class="content w-100-p h-100-p" fxLayout="column">
+    <div class="header-pop accent p-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2 fxFlex>Add Membership</h2>
+        <div fxLayoutAlign="end center" fxLayoutGap="16px">
+            <button mat-raised-button type="submit">
+                Next
+            </button>
+            <button mat-raised-button class="fuse-white" type="reset" (click)="_dialogRef.close(false)">
+                CANCEL
+            </button>
+        </div>
+    </div>
+    <div class="p-24" fxFlex>
+        <div fxLayout="column" fxLayoutGap="16px">
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex>
+                    <mat-label>Membership</mat-label>
+                    <mat-select required>
+                        <mat-option>-- Select --</mat-option>
+                        <mat-option>Enabled</mat-option>
+                        <mat-option>Disabled</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex>
+                    <mat-label>Membership</mat-label>
+                    <mat-select required>
+                        <mat-option>-- Select --</mat-option>
+                        <mat-option>Enabled</mat-option>
+                        <mat-option>Disabled</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Subscription Amount*" required>
+                </mat-form-field>
+
+                <mat-form-field fxFlex>
+                    <mat-label>Currency*</mat-label>
+                    <mat-select required>
+                        <mat-option>-- Select --</mat-option>
+                        <mat-option>Enabled</mat-option>
+                        <mat-option>Disabled</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Subscription Commence Date*" required>
+                </mat-form-field>
+
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Subscription Renewal Date*" required>
+                </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="end center" fxLayoutGap="16px">
+                <button mat-raised-button type="submit">
+                    CANCEL
+                </button>
+                <button mat-raised-button class="fuse-white">
+                    SAVE
+                </button>
+            </div>
+        </div>
+    </div>
