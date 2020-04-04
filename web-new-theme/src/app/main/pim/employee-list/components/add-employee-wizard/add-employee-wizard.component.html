@@ -1,19 +1,25 @@
-<div fxFlex class="page-layout simple fullwidth pb-16">
+<div fxFlex class="page-layout simple fullwidth">
 
     <div fxLayout="row" fxLayoutAlign="space-between center" class="header accent p-24">
         <h2>Add Employee wizard</h2>
         <button mat-raised-button color="primary" (click)="save()">Save</button>
     </div>
-    <div class="content p-24" fxFlex fxLayout="column">
+    <div class="content p-24 mat-elevation-z2" fxFlex fxLayout="column">
 
+        <mat-horizontal-stepper fxFlex="100" [linear]="false" #stepper>
+            <ng-container *ngFor="let s of sections">
 
+                <mat-step *ngIf="s.available">
 
-        <ng-container *ngFor="let s of sections">
+                    <app-component-loader [componentMapping]="componentMapping" [section]="s" [allSections]="sections">
+                    </app-component-loader>
+                    <div>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+            </ng-container>
 
-            <div *ngIf="s.available" style="border: 1px solid gray; height: 150px; ">
-                {{s.name}}</div>
-
-        </ng-container>
+        </mat-horizontal-stepper>
 
 
     </div>

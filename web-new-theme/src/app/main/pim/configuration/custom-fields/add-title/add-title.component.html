@@ -1,0 +1,29 @@
+<div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column">
+    <div fxLayout="column" fxLayoutGap="16px">
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxLayout="row" fxLayoutGap="12px">
+                <mat-icon class="secondary-text primary-fg">info</mat-icon>
+                <div class="h2 secondary-text primary-fg">Section Title</div>
+            </div>
+            <div>
+                <button mat-raised-button color="accent" (click)="save()">Save</button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxLayout="column">
+            <div fxLayout="row" fxLayoutGap="24px">
+                <mat-form-field fxFlex="50" appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input matInput placeholder="Placeholder" [(ngModel)]="customSection.name">
+                </mat-form-field>
+                <mat-form-field fxFlex="50" appearance="outline">
+                    <mat-select placeholder="Section"  [(ngModel)]="customSection.parentId">
+                        <mat-option [value]="0">Select</mat-option>
+                        <mat-option [value]="1">Personal Detail</mat-option>
+                        <mat-option [value]="2">Job</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>

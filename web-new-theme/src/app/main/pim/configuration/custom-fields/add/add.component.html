@@ -1,0 +1,11 @@
+<div fxFlex class="page-layout simple fullwidth pb-16">
+
+    <app-header [title]="'Custom field'">
+
+    </app-header>
+
+    <div class="content p-24">
+        <app-add-title (customSectionCreated)="customSectionCreated($event)"></app-add-title>
+        <app-fields *ngIf="customSectionId>0" [customSectionId]="customSectionId"></app-fields>
+    </div>
+</div>

@@ -8,6 +8,7 @@ import { EmployeeService } from '../../services/employee.service';
 })
 export class AddEmployeeWizardComponent implements OnInit {
   sections: any;
+  componentMapping: any;
   constructor(private _employeeService: EmployeeService) {
 
   }
@@ -17,6 +18,10 @@ export class AddEmployeeWizardComponent implements OnInit {
     this._employeeService.getConfiguration().subscribe(t => {
       this.sections = t;
     });
+
+    this.componentMapping = this._employeeService.getSectionComponentMapping();
+
+
   }
 
 }

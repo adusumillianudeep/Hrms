@@ -275,10 +275,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrganizationId" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Available" Type="bit" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
         </EntityType>
         <EntityType Name="SectionField">
           <Key>
@@ -289,6 +290,9 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Required" Type="bit" Nullable="false" />
           <Property Name="Available" Type="bit" Nullable="false" />
+          <Property Name="Type" Type="int" />
+          <Property Name="ListOptions" Type="nvarchar(max)" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Skills">
           <Key>
@@ -1347,6 +1351,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Available" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="SectionFields" Relationship="HrmsModel.FK_SectionFields_Sections" FromRole="Section" ToRole="SectionField" />
+          <Property Name="ParentId" Type="Int32" />
         </EntityType>
         <EntityType Name="SectionField">
           <Key>
@@ -1358,6 +1363,9 @@
           <Property Name="Required" Type="Boolean" Nullable="false" />
           <Property Name="Available" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Section" Relationship="HrmsModel.FK_SectionFields_Sections" FromRole="SectionField" ToRole="Section" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="ListOptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_SectionFields_Sections">
           <End Type="HrmsModel.Section" Role="Section" Multiplicity="1" />
@@ -1756,6 +1764,7 @@
           <EntitySetMapping Name="Sections">
             <EntityTypeMapping TypeName="HrmsModel.Section">
               <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
                 <ScalarProperty Name="Available" ColumnName="Available" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
@@ -1766,6 +1775,9 @@
           <EntitySetMapping Name="SectionFields">
             <EntityTypeMapping TypeName="HrmsModel.SectionField">
               <MappingFragment StoreEntitySet="SectionField">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ListOptions" ColumnName="ListOptions" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Available" ColumnName="Available" />
                 <ScalarProperty Name="Required" ColumnName="Required" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

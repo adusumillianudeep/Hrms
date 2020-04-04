@@ -69,8 +69,6 @@ namespace Repositories.Repositories
             var userRegions = this._dbContext.UserRegions.Where(r => r.UserId == user.UserId);
             this._dbContext.UserRegions.RemoveRange(userRegions);
 
-
-
             user.UserId = userObj.UserId;
 
             return user;

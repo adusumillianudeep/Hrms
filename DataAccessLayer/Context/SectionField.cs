@@ -19,6 +19,9 @@ namespace DataAccessLayer.Context
         public string Name { get; set; }
         public bool Required { get; set; }
         public bool Available { get; set; }
+        public Nullable<int> Type { get; set; }
+        public string ListOptions { get; set; }
+        public string Value { get; set; }
     
         public virtual Section Section { get; set; }
     }

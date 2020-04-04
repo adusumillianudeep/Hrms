@@ -11,7 +11,7 @@
                     <mat-expansion-panel-header>
                         <mat-checkbox [(ngModel)]="s.available" color="primary" (click)="$event.stopPropagation()"
                             (keydown)="$event.stopPropagation()">
-                            {{s.name}}
+                           <span [innerHtml]="getTitle(s)"></span> 
                         </mat-checkbox>
                     </mat-expansion-panel-header>
                     <ng-container *ngFor="let sf of s.fields">

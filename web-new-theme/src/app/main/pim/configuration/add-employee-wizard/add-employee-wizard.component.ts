@@ -27,4 +27,14 @@ export class AddEmployeeWizardComponent implements OnInit {
       this._alertService.error('Failed to update.')
     });
   }
+
+  getTitle(s: any): string {
+    if(s.id === s.parentId){
+      return s.name;
+    }
+    else {
+      const parent = this.sections.find(t => t.id === s.parentId);
+      return `${parent.name} &rang; ${s.name}`;
+    }
+  }
 }

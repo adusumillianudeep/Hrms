@@ -2,14 +2,14 @@
     <div class="h-100-p p-16" fxLayout="column" fxLayoutGap="8px">
         <div fxLayoutAlign="space-between center">
             <span fxFlex class="mat-title mb-0">Custom Field Sections</span>
-            <button mat-raised-button color="accent" (click)="save()">
+            <button mat-raised-button color="accent" (click)="add()">
                 <mat-icon>add</mat-icon>
                 Add Custom Field Section
             </button>
         </div>
         <mat-divider></mat-divider>
         <div class="content h-100-p">
-            <ngx-datatable class="material h-100-p w-100-p" fxFlex [rows]="data" [loadingIndicator]="loadingIndicator"
+            <ngx-datatable class="material h-100-p w-100-p" fxFlex [rows]="customSections" [loadingIndicator]="loadingIndicator"
                 [columnMode]="'flex'" [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'"
                 [reorderable]="reorderable" [selectionType]="'checkbox'" [limit]="10">
 
@@ -42,7 +42,7 @@
 
                 <ngx-datatable-column name="Name" prop="name" [flexGrow]="1"></ngx-datatable-column>
 
-                <ngx-datatable-column name="Screen" prop="screen" [flexGrow]="1"></ngx-datatable-column>
+                <ngx-datatable-column name="Screen" prop="parentName" [flexGrow]="1"></ngx-datatable-column>
 
                 <ngx-datatable-column name="Actions" [flexGrow]="0.5">
                     <ng-template ngx-datatable-cell-template let-value="value">

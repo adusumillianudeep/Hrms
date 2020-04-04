@@ -24,6 +24,7 @@ namespace DataAccessLayer.Context
         public int OrganizationId { get; set; }
         public string Name { get; set; }
         public bool Available { get; set; }
+        public Nullable<int> ParentId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SectionField> SectionFields { get; set; }

@@ -10,7 +10,8 @@ import { MatDialogRef } from '@angular/material';
 export class AddEmployeeDailogComponent implements OnInit {
 
 
-  constructor(private _router: Router, 
+  constructor(
+    private _router: Router,
     public dialogRef: MatDialogRef<AddEmployeeDailogComponent>) { }
 
   ngOnInit() {
