@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal-details.component.scss']
 })
 export class PersonalDetailsComponent implements OnInit {
-
+  
+  section:any;
+  cusomtSections:any;
   constructor() { }
 
   ngOnInit() {

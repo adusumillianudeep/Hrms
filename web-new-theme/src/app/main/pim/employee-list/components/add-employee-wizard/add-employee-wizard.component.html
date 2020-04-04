@@ -4,23 +4,19 @@
         <h2>Add Employee wizard</h2>
         <button mat-raised-button color="primary" (click)="save()">Save</button>
     </div>
-    <div class="content p-24 mat-elevation-z2" fxFlex fxLayout="column">
+    <div class="content" fxFlex fxLayout="column">
 
         <mat-horizontal-stepper fxFlex="100" [linear]="false" #stepper>
-            <ng-container *ngFor="let s of sections">
 
-                <mat-step *ngIf="s.available">
+            <mat-step *ngFor="let s of sections | availableOnly">
 
-                    <app-component-loader [componentMapping]="componentMapping" [section]="s" [allSections]="sections">
-                    </app-component-loader>
-                    <div>
-                        <button mat-button matStepperNext>Next</button>
-                    </div>
-                </mat-step>
-            </ng-container>
+                <app-component-loader [componentMapping]="componentMapping" [section]="s" [allSections]="sections">
+                </app-component-loader>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
 
         </mat-horizontal-stepper>
-
-
     </div>
 </div>

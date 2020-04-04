@@ -33,7 +33,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(catchError(err => {
             // check if err status is 401 unathroried if yes redirect to login      
             if (err.status === 401 || err.status === 400 || err.statusText === 'Unauthorized') {
-                // this.auth.logout();
+                this.auth.logout();
             }
             else {
                 // this.alertService.error(err.error.exceptionMessage);
