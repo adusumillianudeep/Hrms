@@ -9,20 +9,18 @@ import { MatDialog } from '@angular/material';
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
-  public ngOnInit(){}
+  public ngOnInit() { }
 
   openAddEmployeeDialog(): void {
     const dialogRef = this.dialog.open(AddEmployeeDailogComponent, {
       width: '800px',
       height: '600px',
-      data: {name: 'some data'}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
     });
   }
 

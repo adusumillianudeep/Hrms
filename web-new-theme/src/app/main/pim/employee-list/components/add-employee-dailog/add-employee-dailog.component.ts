@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef, MatCheckboxChange } from '@angular/material';
 import { fuseAnimations } from '@fuse/animations';
+import { EmployeeData } from '../../models/employee-data';
+import { AddEmployeeService } from '../../services/add-employee.service';
 
 @Component({
   selector: 'app-add-employee-dailog',
@@ -12,18 +14,24 @@ import { fuseAnimations } from '@fuse/animations';
 })
 export class AddEmployeeDailogComponent implements OnInit {
 
+  empData: EmployeeData;
+
   isChecked: boolean;
   constructor(
     private _router: Router,
-    public dialogRef: MatDialogRef<AddEmployeeDailogComponent>) { }
+    private _addEmployeeService: AddEmployeeService,
+    public dialogRef: MatDialogRef<AddEmployeeDailogComponent>) {
+
+    this.empData = new EmployeeData();
+  }
 
   ngOnInit() {
   }
 
   gotoWizard(): void {
+    this._addEmployeeService.employeeData = this.empData;
     this._router.navigate(['pim/employee-list/add-wizard']);
     this.dialogRef.close();
-
   }
 
   onChange(event: MatCheckboxChange) {

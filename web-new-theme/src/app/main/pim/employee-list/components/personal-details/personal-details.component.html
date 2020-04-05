@@ -13,13 +13,13 @@
                 <div fxLayout="column">
                     <div fxLayout="row" fxLayoutGap="24px">
                         <mat-form-field fxFlex>
-                            <input matInput formControlName="firstName" placeholder="First Name*">
+                            <input matInput formControlName="firstName" [(ngModel)]="personalDetail.firstName" placeholder="First Name*">
                         </mat-form-field>
                         <mat-form-field fxFlex>
-                            <input matInput formControlName="middleName" placeholder="Middle Name">
+                            <input matInput formControlName="middleName" [(ngModel)]="personalDetail.middleName" placeholder="Middle Name">
                         </mat-form-field>
                         <mat-form-field fxFlex>
-                            <input matInput formControlName="lastName" placeholder="Last Name*">
+                            <input matInput formControlName="lastName" [(ngModel)]="personalDetail.lastName" placeholder="Last Name*">
                         </mat-form-field>
                     </div>
                     <div fxLayout="row" fxLayoutGap="24px">

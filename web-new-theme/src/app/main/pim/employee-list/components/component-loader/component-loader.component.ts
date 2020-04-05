@@ -44,6 +44,7 @@ export class ComponentLoaderComponent implements OnInit {
 
     componentRef.instance.customSections = this.allSections.filter(t => t.parentId === this.section.id && t.parentId !== t.id);
     componentRef.instance.section = this.section;
+    componentRef.instance.addWizard = true;
   }
 
 }

@@ -10,12 +10,8 @@
         <mat-horizontal-stepper fxFlex="100" [linear]="false" #stepper>
             <mat-step *ngFor="let s of sections | availableOnly">
                 <app-component-loader [componentMapping]="componentMapping" [section]="s" [allSections]="sections">
-                </app-component-loader>
-                <!-- <div>
-                    <button mat-button matStepperNext>Next</button>
-                </div> -->
+                </app-component-loader>                
             </mat-step>
-            <!-- </ng-container> -->
         </mat-horizontal-stepper>
     </div>
 </div>
