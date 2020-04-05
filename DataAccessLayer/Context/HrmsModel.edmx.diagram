@@ -53,10 +53,6 @@
         <EntityTypeShape EntityType="HrmsModel.Section" Width="1.5" PointX="16.375" PointY="13" />
         <EntityTypeShape EntityType="HrmsModel.SectionField" Width="1.5" PointX="18.625" PointY="12.875" />
         <AssociationConnector Association="HrmsModel.FK_SectionFields_Sections" />
-        <EntityTypeShape EntityType="HrmsModel.User" Width="1.5" PointX="6" PointY="13.875" />
-        <AssociationConnector Association="HrmsModel.FK_UserRegions_Users" />
-        <AssociationConnector Association="HrmsModel.FK_UserRoles_Users" />
-        <EntityTypeShape EntityType="HrmsModel.Job" Width="1.5" PointX="14.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
