@@ -6,7 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class AvailableOnlyPipe implements PipeTransform {
 
   transform(items: any, ...args: any[]): any {
-    return items.filter(t=> t.available);
+    if (items) {
+      return items.filter(t => t.available);
+    }
   }
-
 }
