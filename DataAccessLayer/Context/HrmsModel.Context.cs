@@ -42,7 +42,6 @@ namespace DataAccessLayer.Context
         public virtual DbSet<RoleWorkflowAction> RoleWorkflowActions { get; set; }
         public virtual DbSet<UserRegion> UserRegions { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<WorkflowManagement> WorkflowManagements { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
@@ -55,7 +54,6 @@ namespace DataAccessLayer.Context
         public virtual DbSet<Nationality> Nationalities { get; set; }
         public virtual DbSet<EmploymentStatu> EmploymentStatus { get; set; }
         public virtual DbSet<JobCategory> JobCategories { get; set; }
-        public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<SalaryComponent> SalaryComponents { get; set; }
         public virtual DbSet<WorkShift> WorkShifts { get; set; }
         public virtual DbSet<Currency> Currencies { get; set; }
@@ -63,6 +61,8 @@ namespace DataAccessLayer.Context
         public virtual DbSet<PayGrade> PayGrades { get; set; }
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<SectionField> SectionFields { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Job> Jobs { get; set; }
     
         public virtual ObjectResult<GetPayGrades_Result> GetPayGrades()
         {
