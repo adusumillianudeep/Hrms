@@ -9,7 +9,24 @@ import { FusePipesModule } from '@fuse/pipes/pipes.module';
 import {
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule, MatButtonModule, MatIconModule, MatDividerModule, MatSelectModule, MatTableModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatMenuModule, MatCardModule, MatSnackBarModule, MatPaginatorModule, MatCheckboxModule, MatTooltipModule, MatExpansionModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    MatSelectModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatMenuModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatTooltipModule,
+    MatExpansionModule,
     MatStepperModule
 } from '@angular/material';
 
@@ -44,7 +61,9 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
         FormsModule,
         MatTooltipModule,
         NgxDatatableModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     exports: [
         CommonModule,
@@ -73,7 +92,9 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
         FuseDirectivesModule,
         FusePipesModule,
         NgxDatatableModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ]
 })
 export class FuseSharedModule {
