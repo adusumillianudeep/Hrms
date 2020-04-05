@@ -69,7 +69,13 @@
     <Compile Include="Context\Education.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Employee.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\EmployeeAction.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\EmployeeJob.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\EmploymentStatu.cs">
@@ -124,6 +130,9 @@
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\PayGrade.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\PersonalDetail.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Region.cs">

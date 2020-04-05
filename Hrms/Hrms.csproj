@@ -203,6 +203,7 @@
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PIM\CustomFieldsController.cs" />
+    <Compile Include="Controllers\PIM\EmployeeController.cs" />
     <Compile Include="Controllers\PIM\WizardController.cs" />
     <Compile Include="Controllers\TimeZoneController.cs" />
     <Compile Include="Controllers\TokenController.cs" />
@@ -323,6 +324,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{a653af0a-f3da-4c91-990e-8d833f645c8e}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repositories\Repositories.csproj">
+      <Project>{18EF7C2B-6755-4C5B-8C80-3F87CEA16E58}</Project>
+      <Name>Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

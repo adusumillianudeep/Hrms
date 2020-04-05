@@ -46,12 +46,42 @@
           <Property Name="UpdateDate" Type="datetime" Nullable="false" />
           <Property Name="RecordStatus" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="OrganizationId" Type="int" />
+        </EntityType>
         <EntityType Name="EmployeeActions">
           <Key>
             <PropertyRef Name="EmployeeActionId" />
           </Key>
           <Property Name="EmployeeActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeActionName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmployeeJobs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="Joined_Date" Type="datetime" />
+          <Property Name="Probation_End_Date" Type="datetime" />
+          <Property Name="Date_Of_Permanency" Type="datetime" />
+          <Property Name="Job_Title" Type="varchar" MaxLength="50" />
+          <Property Name="Employment_Status" Type="varchar" MaxLength="50" />
+          <Property Name="Job_Category" Type="varchar" MaxLength="50" />
+          <Property Name="Sub_Unit" Type="varchar" MaxLength="50" />
+          <Property Name="Work_Shift" Type="varchar" MaxLength="50" />
+          <Property Name="Contract_Start_Date" Type="datetime" />
+          <Property Name="Contract_End_Date" Type="datetime" />
+          <Property Name="Cost_Center" Type="varchar" MaxLength="50" />
+          <Property Name="FLSA_Exempt" Type="varchar" MaxLength="50" />
+          <Property Name="EEO_Job_Category" Type="varchar" MaxLength="50" />
+          <Property Name="Comment" Type="varchar" MaxLength="50" />
+          <Property Name="Effective_From" Type="datetime" />
+          <Property Name="Job_Specification" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="EmploymentStatus">
           <Key>
@@ -77,17 +107,6 @@
           </Key>
           <Property Name="JobCategoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="OrganizationId" Type="bigint" />
-        </EntityType>
-        <EntityType Name="Jobs">
-          <Key>
-            <PropertyRef Name="JobId" />
-          </Key>
-          <Property Name="JobId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="255" />
-          <Property Name="Notes" Type="varchar" MaxLength="100" />
-          <Property Name="JobSpecification" Type="varbinary(max)" />
           <Property Name="OrganizationId" Type="bigint" />
         </EntityType>
         <EntityType Name="Languages">
@@ -193,6 +212,28 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="OrganizationId" Type="int" />
+        </EntityType>
+        <EntityType Name="PersonalDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Middle_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Employee_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Other_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Date_Of_Birth" Type="datetime" />
+          <Property Name="Marital_Status" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Nationality" Type="varchar" MaxLength="50" />
+          <Property Name="Drivers_License_Number" Type="varchar" MaxLength="50" />
+          <Property Name="License_Expiry_Date" Type="datetime" />
+          <Property Name="EEO_Race_And_Ethnicity" Type="varchar" MaxLength="50" />
+          <Property Name="Smoker" Type="varchar" MaxLength="50" />
+          <Property Name="Military_Service" Type="varchar" MaxLength="50" />
+          <Property Name="Nick_Name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Regions">
           <Key>
@@ -335,11 +376,7 @@
           <Property Name="UserId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="200" />
-          <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
-          <Property Name="Email" Type="varchar" MaxLength="1000" />
-          <Property Name="OrganizationId" Type="bigint" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" />
         </EntityType>
         <EntityType Name="WorkflowManagement">
           <Key>
@@ -358,6 +395,18 @@
           <Property Name="To" Type="time" Precision="7" Nullable="false" />
           <Property Name="OrganizationId" Type="bigint" />
         </EntityType>
+        <Association Name="FK_Job_Employee_EmployeeId">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeJobs" Type="Self.EmployeeJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeJobs">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Locations_CountryId_Countries_Id">
           <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
           <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
@@ -379,6 +428,18 @@
             </Principal>
             <Dependent Role="Locations">
               <PropertyRef Name="TimeZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalDetails_Employee_EmployeeId">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="PersonalDetails" Type="Self.PersonalDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalDetails">
+              <PropertyRef Name="EmployeeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -550,18 +611,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Organization">
-          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Organization">
-              <PropertyRef Name="OrganizationId" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="OrganizationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="GetPayGrades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="HrmsModelStoreContainer">
           <EntitySet Name="CostCenters" EntityType="Self.CostCenters" Schema="dbo" store:Type="Tables" />
@@ -569,11 +618,12 @@
           <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DataGroupPermissions" EntityType="Self.DataGroupPermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Educations" EntityType="Self.Educations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeActions" EntityType="Self.EmployeeActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeJobs" EntityType="Self.EmployeeJobs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmploymentStatus" EntityType="Self.EmploymentStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GradeCurrency" EntityType="Self.GradeCurrency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobCategories" EntityType="Self.JobCategories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Licenses" EntityType="Self.Licenses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
@@ -582,6 +632,7 @@
           <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrganizationLocation" EntityType="Self.OrganizationLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayGrade" EntityType="Self.PayGrade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleDataGroupPermissions" EntityType="Self.RoleDataGroupPermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleEmployeeActions" EntityType="Self.RoleEmployeeActions" Schema="dbo" store:Type="Tables" />
@@ -600,6 +651,10 @@
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkflowManagement" EntityType="Self.WorkflowManagement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkShift" EntityType="Self.WorkShift" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Job_Employee_EmployeeId" Association="Self.FK_Job_Employee_EmployeeId">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeJobs" EntitySet="EmployeeJobs" />
+          </AssociationSet>
           <AssociationSet Name="FK_Locations_CountryId_Countries_Id" Association="Self.FK_Locations_CountryId_Countries_Id">
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Locations" EntitySet="Locations" />
@@ -607,6 +662,10 @@
           <AssociationSet Name="FK_Locations_TimeZoneId_TimeZones_Id" Association="Self.FK_Locations_TimeZoneId_TimeZones_Id">
             <End Role="TimeZones" EntitySet="TimeZones" />
             <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalDetails_Employee_EmployeeId" Association="Self.FK_PersonalDetails_Employee_EmployeeId">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="PersonalDetails" EntitySet="PersonalDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_RoleDataGroupPermissions_DataGroupPermissions" Association="Self.FK_RoleDataGroupPermissions_DataGroupPermissions">
             <End Role="DataGroupPermissions" EntitySet="DataGroupPermissions" />
@@ -663,10 +722,6 @@
           <AssociationSet Name="FK_UserRoles_Users" Association="Self.FK_UserRoles_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserRoles" EntitySet="UserRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_Organization" Association="Self.FK_Users_Organization">
-            <End Role="Organization" EntitySet="Organization" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -850,6 +905,7 @@
           <NavigationProperty Name="Organization" Relationship="Self.FK_Users_Organization" FromRole="Users" ToRole="Organization" />
           <NavigationProperty Name="UserRegions" Relationship="Self.FK_UserRegions_Users" FromRole="Users" ToRole="UserRegions" />
           <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_Users" FromRole="Users" ToRole="UserRoles" />
+          <Property Name="EmployeeId" Type="Int32" />
         </EntityType>
         <EntityType Name="WorkflowManagement">
           <Key>
@@ -1134,6 +1190,17 @@
             <End Role="Section" EntitySet="Sections" />
             <End Role="SectionField" EntitySet="SectionFields" />
           </AssociationSet>
+          <EntitySet Name="Employees" EntityType="HrmsModel.Employee" />
+          <EntitySet Name="EmployeeJobs" EntityType="HrmsModel.EmployeeJob" />
+          <EntitySet Name="PersonalDetails" EntityType="HrmsModel.PersonalDetail" />
+          <AssociationSet Name="FK_Job_Employee_EmployeeId" Association="HrmsModel.FK_Job_Employee_EmployeeId">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmployeeJob" EntitySet="EmployeeJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalDetails_Employee_EmployeeId" Association="HrmsModel.FK_PersonalDetails_Employee_EmployeeId">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="PersonalDetail" EntitySet="PersonalDetails" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -1379,6 +1446,86 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationId" Type="Int32" />
+          <NavigationProperty Name="EmployeeJobs" Relationship="HrmsModel.FK_Job_Employee_EmployeeId" FromRole="Employee" ToRole="EmployeeJob" />
+          <NavigationProperty Name="PersonalDetails" Relationship="HrmsModel.FK_PersonalDetails_Employee_EmployeeId" FromRole="Employee" ToRole="PersonalDetail" />
+        </EntityType>
+        <EntityType Name="EmployeeJob">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="Joined_Date" Type="DateTime" Precision="3" />
+          <Property Name="Probation_End_Date" Type="DateTime" Precision="3" />
+          <Property Name="Date_Of_Permanency" Type="DateTime" Precision="3" />
+          <Property Name="Job_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Employment_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Work_Shift" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contract_Start_Date" Type="DateTime" Precision="3" />
+          <Property Name="Contract_End_Date" Type="DateTime" Precision="3" />
+          <Property Name="Cost_Center" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FLSA_Exempt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EEO_Job_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Effective_From" Type="DateTime" Precision="3" />
+          <Property Name="Job_Specification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="HrmsModel.FK_Job_Employee_EmployeeId" FromRole="EmployeeJob" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="PersonalDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Employee_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Other_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Of_Birth" Type="DateTime" Precision="3" />
+          <Property Name="Marital_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Drivers_License_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="License_Expiry_Date" Type="DateTime" Precision="3" />
+          <Property Name="EEO_Race_And_Ethnicity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Smoker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Military_Service" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nick_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="HrmsModel.FK_PersonalDetails_Employee_EmployeeId" FromRole="PersonalDetail" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Job_Employee_EmployeeId">
+          <End Type="HrmsModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="HrmsModel.EmployeeJob" Role="EmployeeJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeJob">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalDetails_Employee_EmployeeId">
+          <End Type="HrmsModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="HrmsModel.PersonalDetail" Role="PersonalDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalDetail">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1542,15 +1689,11 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="HrmsModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WorkflowManagements">
@@ -1682,18 +1825,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Jobs">
-            <EntityTypeMapping TypeName="HrmsModel.Job">
-              <MappingFragment StoreEntitySet="Jobs">
-                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
-                <ScalarProperty Name="JobSpecification" ColumnName="JobSpecification" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="JobId" ColumnName="JobId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SalaryComponents">
             <EntityTypeMapping TypeName="HrmsModel.SalaryComponent">
               <MappingFragment StoreEntitySet="SalaryComponent">
@@ -1782,6 +1913,61 @@
                 <ScalarProperty Name="Required" ColumnName="Required" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="HrmsModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeJobs">
+            <EntityTypeMapping TypeName="HrmsModel.EmployeeJob">
+              <MappingFragment StoreEntitySet="EmployeeJobs">
+                <ScalarProperty Name="Job_Specification" ColumnName="Job_Specification" />
+                <ScalarProperty Name="Effective_From" ColumnName="Effective_From" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="EEO_Job_Category" ColumnName="EEO_Job_Category" />
+                <ScalarProperty Name="FLSA_Exempt" ColumnName="FLSA_Exempt" />
+                <ScalarProperty Name="Cost_Center" ColumnName="Cost_Center" />
+                <ScalarProperty Name="Contract_End_Date" ColumnName="Contract_End_Date" />
+                <ScalarProperty Name="Contract_Start_Date" ColumnName="Contract_Start_Date" />
+                <ScalarProperty Name="Work_Shift" ColumnName="Work_Shift" />
+                <ScalarProperty Name="Sub_Unit" ColumnName="Sub_Unit" />
+                <ScalarProperty Name="Job_Category" ColumnName="Job_Category" />
+                <ScalarProperty Name="Employment_Status" ColumnName="Employment_Status" />
+                <ScalarProperty Name="Job_Title" ColumnName="Job_Title" />
+                <ScalarProperty Name="Date_Of_Permanency" ColumnName="Date_Of_Permanency" />
+                <ScalarProperty Name="Probation_End_Date" ColumnName="Probation_End_Date" />
+                <ScalarProperty Name="Joined_Date" ColumnName="Joined_Date" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalDetails">
+            <EntityTypeMapping TypeName="HrmsModel.PersonalDetail">
+              <MappingFragment StoreEntitySet="PersonalDetails">
+                <ScalarProperty Name="Nick_Name" ColumnName="Nick_Name" />
+                <ScalarProperty Name="Military_Service" ColumnName="Military_Service" />
+                <ScalarProperty Name="Smoker" ColumnName="Smoker" />
+                <ScalarProperty Name="EEO_Race_And_Ethnicity" ColumnName="EEO_Race_And_Ethnicity" />
+                <ScalarProperty Name="License_Expiry_Date" ColumnName="License_Expiry_Date" />
+                <ScalarProperty Name="Drivers_License_Number" ColumnName="Drivers_License_Number" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+                <ScalarProperty Name="Other_Id" ColumnName="Other_Id" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

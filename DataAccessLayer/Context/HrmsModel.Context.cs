@@ -63,6 +63,9 @@ namespace DataAccessLayer.Context
         public virtual DbSet<PayGrade> PayGrades { get; set; }
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<SectionField> SectionFields { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<EmployeeJob> EmployeeJobs { get; set; }
+        public virtual DbSet<PersonalDetail> PersonalDetails { get; set; }
     
         public virtual ObjectResult<GetPayGrades_Result> GetPayGrades()
         {
