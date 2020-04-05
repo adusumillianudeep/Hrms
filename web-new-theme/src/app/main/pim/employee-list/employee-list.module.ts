@@ -12,6 +12,7 @@ import { ComponentLoaderComponent } from './components/component-loader/componen
 import { ComponentLoaderDirective } from './directives/component-loader.directive';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
 import { AvailableOnlyPipe } from './pipes/available-only.pipe';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 const routes: Routes = [
   {
@@ -40,6 +41,8 @@ const routes: Routes = [
     CommonModule,
     FuseSharedModule,
     HeaderModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     RouterModule.forChild(routes)
   ],
   entryComponents: [

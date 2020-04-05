@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatCheckboxChange } from '@angular/material';
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
   selector: 'app-add-employee-dailog',
   templateUrl: './add-employee-dailog.component.html',
-  styleUrls: ['./add-employee-dailog.component.scss']
+  styleUrls: ['./add-employee-dailog.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  animations: fuseAnimations
 })
 export class AddEmployeeDailogComponent implements OnInit {
 
-
+  isChecked: boolean;
   constructor(
     private _router: Router,
     public dialogRef: MatDialogRef<AddEmployeeDailogComponent>) { }
@@ -23,4 +26,7 @@ export class AddEmployeeDailogComponent implements OnInit {
 
   }
 
+  onChange(event: MatCheckboxChange) {
+    this.isChecked = event.checked;
+  }
 }
