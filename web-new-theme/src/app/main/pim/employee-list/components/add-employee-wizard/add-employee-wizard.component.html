@@ -8,9 +8,7 @@
     <div class="content" fxFlex fxLayout="column">
 
         <mat-horizontal-stepper fxFlex="100" [linear]="false" #stepper>
-
             <mat-step *ngFor="let s of sections | availableOnly">
-
                 <app-component-loader [componentMapping]="componentMapping" [section]="s" [allSections]="sections">
                 </app-component-loader>
                 <!-- <div>

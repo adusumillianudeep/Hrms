@@ -14,12 +14,6 @@ namespace DataAccessLayer.Context
     
     public partial class Organization
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Organization()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
         public long OrganizationId { get; set; }
         public string Name { get; set; }
         public string TaxId { get; set; }
@@ -37,8 +31,5 @@ namespace DataAccessLayer.Context
         public Nullable<bool> IsCostCenterEnabled { get; set; }
         public string CostCenter { get; set; }
         public string Address2 { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
     }
 }

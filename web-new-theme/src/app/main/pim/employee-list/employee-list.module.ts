@@ -12,7 +12,7 @@ import { ComponentLoaderComponent } from './components/component-loader/componen
 import { ComponentLoaderDirective } from './directives/component-loader.directive';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
 import { AvailableOnlyPipe } from './pipes/available-only.pipe';
-import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { AvailableDirective } from './directives/available.directive';
 
 const routes: Routes = [
   {
@@ -35,14 +35,13 @@ const routes: Routes = [
     ComponentLoaderComponent,
     ComponentLoaderDirective,
     MoreInfoComponent,
-    AvailableOnlyPipe
+    AvailableOnlyPipe,
+    AvailableDirective
   ],
   imports: [
     CommonModule,
     FuseSharedModule,
     HeaderModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     RouterModule.forChild(routes)
   ],
   entryComponents: [

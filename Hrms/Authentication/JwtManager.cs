@@ -25,8 +25,8 @@ namespace Hrms.Authentication
                 Subject = new ClaimsIdentity(new[]
                         {
                             new Claim(ClaimTypes.Name, user.UserName),
-                            new Claim(ClaimTypes.Surname, user.FirstName),
-                            new Claim(ClaimTypes.GivenName, user.Email),
+                            new Claim(ClaimTypes.Sid, user.EmployeeId.ToString()),
+                            new Claim(ClaimTypes.GroupSid, user.OrganizationId.ToString()),
                             new Claim(ClaimTypes.Role, user.UserId.ToString()),
                         }),
 

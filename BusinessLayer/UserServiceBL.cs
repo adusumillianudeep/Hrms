@@ -43,10 +43,7 @@ namespace BusinessLayer
                     {
                         UserId = datarow.Field<long>("UserId"),
                         UserName = datarow.Field<string>("UserName"),
-                        FirstName = datarow.Field<string>("FirstName"),
-                        LastName = datarow.Field<string>("LastName"),
-                        PhoneNo = datarow.Field<string>("PhoneNo"),
-                        Email = datarow.Field<string>("PhoneNo"),
+                        EmployeeId = datarow.Field<int>("EmployeeId"),
                         OrganizationId = datarow.Field<long>("OrganizationId"),
                         userRoles = new UserRoles() { Role = new Roles() { RoleId = datarow.Field<int>("RoleId"), RoleName = datarow.Field<string>("RoleName") }, UserId = datarow.Field<long>("UserId") }
                     }).ToList()[0];
@@ -75,8 +72,6 @@ namespace BusinessLayer
                         UserName = datarow.Field<string>("UserName"),
                         FirstName = datarow.Field<string>("FirstName"),
                         LastName = datarow.Field<string>("LastName"),
-                        PhoneNo = datarow.Field<string>("PhoneNo"),
-                        Email = datarow.Field<string>("PhoneNo"),
                         OrganizationId = datarow.Field<long>("OrganizationId"),
                         userRegions = new UserRegions()
                         {
