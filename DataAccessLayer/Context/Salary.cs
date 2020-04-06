@@ -12,14 +12,16 @@ namespace DataAccessLayer.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class License
+    public partial class Salary
     {
         public int Id { get; set; }
         public int OrganisationId { get; set; }
         public int EmployeeId { get; set; }
-        public string License_Type { get; set; }
-        public Nullable<int> License_Number { get; set; }
-        public Nullable<System.DateTime> Issued_Date { get; set; }
-        public Nullable<System.DateTime> Expiry_Date { get; set; }
+        public Nullable<System.DateTime> Effective_From { get; set; }
+        public Nullable<int> Paygrade { get; set; }
+        public Nullable<decimal> Currency { get; set; }
+        public Nullable<decimal> Annual_Basic_Payment { get; set; }
+        public string EEO_PayBand { get; set; }
+        public string Comments { get; set; }
     }
 }

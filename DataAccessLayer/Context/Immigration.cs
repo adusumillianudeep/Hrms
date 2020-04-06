@@ -12,14 +12,18 @@ namespace DataAccessLayer.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class License
+    public partial class Immigration
     {
         public int Id { get; set; }
         public int OrganisationId { get; set; }
         public int EmployeeId { get; set; }
-        public string License_Type { get; set; }
-        public Nullable<int> License_Number { get; set; }
+        public string Document { get; set; }
+        public Nullable<int> Number { get; set; }
+        public string Eligible_Status { get; set; }
+        public string Issued_By { get; set; }
         public Nullable<System.DateTime> Issued_Date { get; set; }
         public Nullable<System.DateTime> Expiry_Date { get; set; }
+        public Nullable<System.DateTime> Eligible_Review_Date { get; set; }
+        public string Comment { get; set; }
     }
 }

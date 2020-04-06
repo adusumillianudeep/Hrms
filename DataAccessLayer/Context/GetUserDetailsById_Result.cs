@@ -10,16 +10,17 @@
 namespace DataAccessLayer.Context
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class License
+    public partial class GetUserDetailsById_Result
     {
-        public int Id { get; set; }
-        public int OrganisationId { get; set; }
-        public int EmployeeId { get; set; }
-        public string License_Type { get; set; }
-        public Nullable<int> License_Number { get; set; }
-        public Nullable<System.DateTime> Issued_Date { get; set; }
-        public Nullable<System.DateTime> Expiry_Date { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public long UserId { get; set; }
+        public string UserName { get; set; }
+        public string RegionName { get; set; }
+        public string RoleName { get; set; }
+        public Nullable<int> RegionId { get; set; }
+        public Nullable<int> RoleId { get; set; }
+        public Nullable<long> OrganizationId { get; set; }
     }
 }

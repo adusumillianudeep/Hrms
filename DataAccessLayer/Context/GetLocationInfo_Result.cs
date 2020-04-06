@@ -10,16 +10,18 @@
 namespace DataAccessLayer.Context
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class License
+    public partial class GetLocationInfo_Result
     {
-        public int Id { get; set; }
-        public int OrganisationId { get; set; }
-        public int EmployeeId { get; set; }
-        public string License_Type { get; set; }
-        public Nullable<int> License_Number { get; set; }
-        public Nullable<System.DateTime> Issued_Date { get; set; }
-        public Nullable<System.DateTime> Expiry_Date { get; set; }
+        public long OrganizationLocationId { get; set; }
+        public long OrganizationId { get; set; }
+        public string Name { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string Address { get; set; }
+        public string ZipCode { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
+        public string Comments { get; set; }
     }
 }

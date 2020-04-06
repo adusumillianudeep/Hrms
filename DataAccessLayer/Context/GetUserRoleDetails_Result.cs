@@ -10,16 +10,12 @@
 namespace DataAccessLayer.Context
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class License
+    public partial class GetUserRoleDetails_Result
     {
-        public int Id { get; set; }
-        public int OrganisationId { get; set; }
-        public int EmployeeId { get; set; }
-        public string License_Type { get; set; }
-        public Nullable<int> License_Number { get; set; }
-        public Nullable<System.DateTime> Issued_Date { get; set; }
-        public Nullable<System.DateTime> Expiry_Date { get; set; }
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
+        public int RoleTypeId { get; set; }
+        public Nullable<bool> IsDefault { get; set; }
     }
 }

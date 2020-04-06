@@ -14,10 +14,15 @@ namespace DataAccessLayer.Context
     
     public partial class Education
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public System.DateTime InsertDate { get; set; }
-        public System.DateTime UpdateDate { get; set; }
-        public bool RecordStatus { get; set; }
+        public int Id { get; set; }
+        public int OrganisationId { get; set; }
+        public int EmployeeId { get; set; }
+        public string Level { get; set; }
+        public string Institute { get; set; }
+        public string Major_Specialisation { get; set; }
+        public Nullable<int> Year { get; set; }
+        public Nullable<decimal> GPA_Score { get; set; }
+        public Nullable<System.DateTime> Start_Date { get; set; }
+        public Nullable<System.DateTime> End_Date { get; set; }
     }
 }

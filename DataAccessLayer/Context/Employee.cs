@@ -19,14 +19,17 @@ namespace DataAccessLayer.Context
         {
             this.EmployeeJobs = new HashSet<EmployeeJob>();
             this.PersonalDetails = new HashSet<PersonalDetail>();
+            this.PersonalDetails1 = new HashSet<PersonalDetail1>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> OrganizationId { get; set; }
+        public Nullable<long> OrganizationId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeJob> EmployeeJobs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PersonalDetail> PersonalDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonalDetail1> PersonalDetails1 { get; set; }
     }
 }

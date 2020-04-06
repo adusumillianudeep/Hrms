@@ -15,9 +15,9 @@ namespace DataAccessLayer.Context
     public partial class WorkShift
     {
         public long WorkShiftId { get; set; }
+        public string Name { get; set; }
         public System.TimeSpan From { get; set; }
         public System.TimeSpan To { get; set; }
-        public string Name { get; set; }
         public Nullable<long> OrganizationId { get; set; }
     }
 }
