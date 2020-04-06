@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="db77bf4e7d284fb1b200e8e7f6dec239" Name="Diagram1">
+      <Diagram DiagramId="db77bf4e7d284fb1b200e8e7f6dec239" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="HrmsModel.ContactDetail" Width="1.5" PointX="12.75" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.CostCenter" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Country" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
@@ -15,8 +15,6 @@
         <EntityTypeShape EntityType="HrmsModel.Dependent" Width="1.5" PointX="15.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.DependentsMarriagesInfo" Width="1.5" PointX="4.75" PointY="17.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.DirectDeposit" Width="1.5" PointX="12.75" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HrmsModel.Education" Width="1.5" PointX="14.75" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HrmsModel.Education1" Width="1.5" PointX="0.75" PointY="18.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.EmergencyContact" Width="1.5" PointX="16.75" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Employee" Width="1.5" PointX="7.75" PointY="17.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.EmployeeAction" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
@@ -30,8 +28,6 @@
         <EntityTypeShape EntityType="HrmsModel.Job" Width="1.5" PointX="6.75" PointY="20.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.JobCategory" Width="1.5" PointX="18.75" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Language" Width="1.5" PointX="18.75" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HrmsModel.License" Width="1.5" PointX="18.75" PointY="18.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HrmsModel.License1" Width="1.5" PointX="19.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Location" Width="1.5" PointX="13" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Membership" Width="1.5" PointX="19.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Nationality" Width="1.5" PointX="19.75" PointY="8.25" IsExpanded="true" />
@@ -39,10 +35,7 @@
         <EntityTypeShape EntityType="HrmsModel.OrganizationLocation" Width="1.5" PointX="14.75" PointY="21.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.OtherJobDetail" Width="1.5" PointX="20.75" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.PayGrade" Width="1.5" PointX="20.75" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HrmsModel.PersonalDetail" Width="1.5" PointX="10" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HrmsModel.PersonalDetail1" Width="1.5" PointX="10" PointY="20.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.PersonalDetails_Important" Width="1.5" PointX="20.75" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HrmsModel.PersonalDetails_Other" Width="1.5" PointX="16.75" PointY="22.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.PersonalDetails_Preferences" Width="1.5" PointX="20.75" PointY="20.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Region" Width="1.5" PointX="6" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.RoleDataGroupPermission" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
@@ -70,8 +63,6 @@
         <AssociationConnector Association="HrmsModel.FK_Locations_CountryId_Countries_Id" ManuallyRouted="false" />
         <AssociationConnector Association="HrmsModel.FK_RoleDataGroupPermissions_DataGroupPermissions" ManuallyRouted="false" />
         <AssociationConnector Association="HrmsModel.FK_Job_Employee_EmployeeId" ManuallyRouted="false" />
-        <AssociationConnector Association="HrmsModel.FK_PersonalDetail_Employee" ManuallyRouted="false" />
-        <AssociationConnector Association="HrmsModel.FK_PersonalDetails_Employee_EmployeeId" ManuallyRouted="false" />
         <AssociationConnector Association="HrmsModel.FK_RoleEmployeeActions_EmployeeActions" ManuallyRouted="false" />
         <AssociationConnector Association="HrmsModel.FK_Locations_TimeZoneId_TimeZones_Id" ManuallyRouted="false" />
         <AssociationConnector Association="HrmsModel.FK_UserRegions_Regions" ManuallyRouted="false" />

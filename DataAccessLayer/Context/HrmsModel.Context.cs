@@ -37,8 +37,6 @@ namespace DataAccessLayer.Context
         public virtual DbSet<Dependent> Dependents { get; set; }
         public virtual DbSet<DependentsMarriagesInfo> DependentsMarriagesInfoes { get; set; }
         public virtual DbSet<DirectDeposit> DirectDeposits { get; set; }
-        public virtual DbSet<Education> Educations { get; set; }
-        public virtual DbSet<Education1> Educations1 { get; set; }
         public virtual DbSet<EmergencyContact> EmergencyContacts { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<EmployeeAction> EmployeeActions { get; set; }
@@ -52,8 +50,6 @@ namespace DataAccessLayer.Context
         public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<JobCategory> JobCategories { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
-        public virtual DbSet<License> Licenses { get; set; }
-        public virtual DbSet<License1> Licenses1 { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Membership> Memberships { get; set; }
         public virtual DbSet<Nationality> Nationalities { get; set; }
@@ -61,10 +57,7 @@ namespace DataAccessLayer.Context
         public virtual DbSet<OrganizationLocation> OrganizationLocations { get; set; }
         public virtual DbSet<OtherJobDetail> OtherJobDetails { get; set; }
         public virtual DbSet<PayGrade> PayGrades { get; set; }
-        public virtual DbSet<PersonalDetail> PersonalDetails { get; set; }
-        public virtual DbSet<PersonalDetail1> PersonalDetails1 { get; set; }
         public virtual DbSet<PersonalDetails_Important> PersonalDetails_Important { get; set; }
-        public virtual DbSet<PersonalDetails_Other> PersonalDetails_Other { get; set; }
         public virtual DbSet<PersonalDetails_Preferences> PersonalDetails_Preferences { get; set; }
         public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<RoleDataGroupPermission> RoleDataGroupPermissions { get; set; }

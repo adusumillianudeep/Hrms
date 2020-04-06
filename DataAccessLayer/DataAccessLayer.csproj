@@ -84,12 +84,6 @@
     <Compile Include="Context\DirectDeposit.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\Education.cs">
-      <DependentUpon>HrmsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Education1.cs">
-      <DependentUpon>HrmsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Context\EmergencyContact.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
@@ -171,12 +165,6 @@
     <Compile Include="Context\Language.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\License.cs">
-      <DependentUpon>HrmsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\License1.cs">
-      <DependentUpon>HrmsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Context\Location.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
@@ -198,16 +186,7 @@
     <Compile Include="Context\PayGrade.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\PersonalDetail.cs">
-      <DependentUpon>HrmsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\PersonalDetail1.cs">
-      <DependentUpon>HrmsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Context\PersonalDetails_Important.cs">
-      <DependentUpon>HrmsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\PersonalDetails_Other.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\PersonalDetails_Preferences.cs">
