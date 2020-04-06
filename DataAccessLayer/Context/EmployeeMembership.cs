@@ -12,18 +12,16 @@ namespace DataAccessLayer.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class EmployeeMembership
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
-        {
-            this.EmployeeJobs = new HashSet<EmployeeJob>();
-        }
-    
         public int Id { get; set; }
-        public Nullable<long> OrganizationId { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeJob> EmployeeJobs { get; set; }
+        public int OrganisationId { get; set; }
+        public int EmployeeId { get; set; }
+        public string Membership { get; set; }
+        public string Subscription_PaidBy { get; set; }
+        public Nullable<decimal> Currency { get; set; }
+        public Nullable<System.DateTime> Subscription_Renewal_Date { get; set; }
+        public Nullable<System.DateTime> Subscription_Commence_Date { get; set; }
+        public Nullable<decimal> Subscription_Amount { get; set; }
     }
 }

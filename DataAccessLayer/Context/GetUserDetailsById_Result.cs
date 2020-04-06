@@ -10,14 +10,17 @@
 namespace DataAccessLayer.Context
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class WorkShift
+    public partial class GetUserDetailsById_Result
     {
-        public long WorkShiftId { get; set; }
-        public string Name { get; set; }
-        public System.TimeSpan From { get; set; }
-        public System.TimeSpan To { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public long UserId { get; set; }
+        public string UserName { get; set; }
+        public string RegionName { get; set; }
+        public string RoleName { get; set; }
+        public Nullable<int> RegionId { get; set; }
+        public Nullable<int> RoleId { get; set; }
         public Nullable<long> OrganizationId { get; set; }
     }
 }

@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\ContactDetail.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\CostCenter.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
@@ -63,10 +66,25 @@
     <Compile Include="Context\Currency.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\CustomField.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\CustomFieldSection.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\DataGroupPermission.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\Education.cs">
+    <Compile Include="Context\Dependent.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\DependentsMarriagesInfo.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\DirectDeposit.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\EmergencyContact.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Employee.cs">
@@ -78,10 +96,43 @@
     <Compile Include="Context\EmployeeJob.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\EmployeeLanguage.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\EmployeeMembership.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\EmployeeSkill.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\EmploymentStatu.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\GetCostCenterById_Result.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\GetCostCenters_Result.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\GetGeneralInfo_Result.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\GetLocationInfo_Result.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\GetPayGrades_Result.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\GetRoleNamesAndTypes_Result.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\GetUserDetailBasedOnUserCredentials_Result.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\GetUserDetailsById_Result.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\GetUserRoleDetails_Result.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\GradeCurrency.cs">
@@ -102,6 +153,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HrmsModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Context\Immigration.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Job.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
@@ -109,9 +163,6 @@
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Language.cs">
-      <DependentUpon>HrmsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\License.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Location.cs">
@@ -129,10 +180,16 @@
     <Compile Include="Context\OrganizationLocation.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\OtherJobDetail.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\PayGrade.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\PersonalDetail.cs">
+    <Compile Include="Context\PersonalDetails_Important.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\PersonalDetails_Preferences.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Region.cs">
@@ -159,6 +216,9 @@
     <Compile Include="Context\RoleWorkflowAction.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Salary.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\SalaryComponent.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
@@ -171,6 +231,18 @@
     <Compile Include="Context\Skill.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\SocialMediaDetail.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\splitstring_Result.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Subordinate.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Supervisor.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\TimeZone.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
@@ -181,6 +253,9 @@
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\UserRole.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\WorkExperience.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\WorkflowManagement.cs">
@@ -201,13 +276,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="Context\HrmsModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HrmsModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="Context\HrmsModel.edmx.diagram">
       <DependentUpon>HrmsModel.edmx</DependentUpon>
     </None>
@@ -216,8 +289,8 @@
   <ItemGroup>
     <Content Include="Context\HrmsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HrmsModel.Context.cs</LastGenOutput>
       <DependentUpon>HrmsModel.edmx</DependentUpon>
+      <LastGenOutput>HrmsModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Context\HrmsModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -229,5 +302,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

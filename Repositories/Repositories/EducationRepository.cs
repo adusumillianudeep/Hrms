@@ -17,71 +17,88 @@ namespace Repositories.Repositories
 
         public IQueryable<EducationModel> GetEducations()
         {
-            return _dbContext.Educations
-                .Where(x => x.RecordStatus == true)
-                .Select(x => new EducationModel
-                {
-                    Id = x.Id,
-                    Name = x.Name
-                });
+            //return _dbContext.Educations
+            //    .Where(x => x.RecordStatus == true)
+            //    .Select(x => new EducationModel
+            //    {
+            //        Id = x.Id,
+            //        Name = x.Name
+            //    });
+
+            throw new NotImplementedException();
+
         }
 
         public EducationModel SaveEducation(EducationModel educationModel)
         {
-            var education = new Education
-            {
-                Name = educationModel.Name
-            };
+            //var education = new Education
+            //{
+            //    Name = educationModel.Name
+            //};
 
-            _dbContext.Educations.Add(education);
-            _dbContext.SaveChanges();
+            //_dbContext.Educations.Add(education);
+            //_dbContext.SaveChanges();
 
-            educationModel.Id = education.Id;
-            return educationModel;
+            //educationModel.Id = education.Id;
+            //return educationModel;
+
+            throw new NotImplementedException();
+
+
         }
 
         public EducationModel UpdateEducation(EducationModel educationModel)
         {
-            var education = _dbContext.Educations
-                .FirstOrDefault(x => x.Id == educationModel.Id && x.RecordStatus == true);
+            //var education = _dbContext.Educations
+            //    .FirstOrDefault(x => x.Id == educationModel.Id && x.RecordStatus == true);
 
-            education.Name = educationModel.Name;
-            education.UpdateDate = DateTime.Now;
+            //education.Name = educationModel.Name;
+            //education.UpdateDate = DateTime.Now;
 
-            _dbContext.SaveChanges();
+            //_dbContext.SaveChanges();
 
-            return educationModel;
+            //return educationModel;
+
+            throw new NotImplementedException();
+
+
         }
 
         public EducationModel DeleteEducation(long educationId)
         {
-            var education = _dbContext.Educations
-                .FirstOrDefault(x => x.Id == educationId);
+            //var education = _dbContext.Educations
+            //    .FirstOrDefault(x => x.Id == educationId);
 
-            education.RecordStatus = false;
-            education.UpdateDate = DateTime.Now;
+            //education.RecordStatus = false;
+            //education.UpdateDate = DateTime.Now;
 
-            _dbContext.SaveChanges();
+            //_dbContext.SaveChanges();
 
-            return new EducationModel
-            {
-                Id = education.Id,
-                Name = education.Name
-            };
+            //return new EducationModel
+            //{
+            //    Id = education.Id,
+            //    Name = education.Name
+            //};
+            throw new NotImplementedException();
+
+
         }
 
         public List<long> DeleteEducations(List<long> educationId)
         {
-            var education = _dbContext.Educations
-                .Where(x => educationId.Contains(x.Id))
-                .ToList();
+            //var education = _dbContext.Educations
+            //    .Where(x => educationId.Contains(x.Id))
+            //    .ToList();
 
-            education.ForEach(x => x.RecordStatus = false);
-            education.ForEach(x => x.UpdateDate = DateTime.Now);
+            //education.ForEach(x => x.RecordStatus = false);
+            //education.ForEach(x => x.UpdateDate = DateTime.Now);
 
-            _dbContext.SaveChanges();
+            //_dbContext.SaveChanges();
 
-            return educationId;
+            //return educationId;
+            throw new NotImplementedException();
+
+
         }
     }
 }

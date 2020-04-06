@@ -12,12 +12,14 @@ namespace DataAccessLayer.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class License
+    public partial class EmployeeLanguage
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public System.DateTime InsertDate { get; set; }
-        public System.DateTime UpdateDate { get; set; }
-        public bool RecordStatus { get; set; }
+        public int Id { get; set; }
+        public int OrganisationId { get; set; }
+        public int EmployeeId { get; set; }
+        public string Language { get; set; }
+        public string Skill { get; set; }
+        public string Fluncy_Level { get; set; }
+        public string Comments { get; set; }
     }
 }

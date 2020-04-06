@@ -12,12 +12,11 @@ namespace DataAccessLayer.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class WorkShift
+    public partial class CustomFieldSection
     {
-        public long WorkShiftId { get; set; }
+        public int Id { get; set; }
+        public int OrganizationId { get; set; }
         public string Name { get; set; }
-        public System.TimeSpan From { get; set; }
-        public System.TimeSpan To { get; set; }
-        public Nullable<long> OrganizationId { get; set; }
+        public int Parent_SectionId { get; set; }
     }
 }
