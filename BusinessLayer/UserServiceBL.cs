@@ -146,7 +146,7 @@ namespace BusinessLayer
         {
             try
             {
-                return _UserServiceDL.InsertUserDetails(users.UserName, users.Password, users.FirstName, users.LastName, users.PhoneNo, users.Email, users.userRoles.Role.RoleId, users.userRegions.Region.RegionId,users.OrganizationId);
+                return _UserServiceDL.InsertUserDetails(users.UserName, users.Password, users.EmployeeId, users.RoleIds);
             }
             catch (Exception ex)
             {
@@ -159,7 +159,7 @@ namespace BusinessLayer
         {
             try
             {
-                return _UserServiceDL.UpdateUserDetails(users.UserName, users.UserId, users.FirstName, users.LastName, users.PhoneNo, users.Email, users.userRoles.Role.RoleId, users.userRegions.Region.RegionId, users.OrganizationId);
+                return _UserServiceDL.UpdateUserDetails(users.UserName, users.UserId, users.Password,users.IsPasswordChange,users.EmployeeId,users.RoleIds);
             }
             catch (Exception ex)
             {

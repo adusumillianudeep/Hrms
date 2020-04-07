@@ -93,22 +93,17 @@ namespace DataAccessLayer
             }
         }
 
-        public long InsertUserDetails(string UserName, string Password, string FirstName, string LastName, string PhoneNo, string Email, int RoleId, int RegionId, long OrganizationId)
+        public long InsertUserDetails(string UserName, string Password, int EmployeeId, List<int> RoleIds)
         {
             try
             {
                 scon.Open();
-                SqlCommand command = new SqlCommand("GetUserDetailsById", scon);
+                SqlCommand command = new SqlCommand("InsertUserDetails", scon);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@UserName", SqlDbType.VarChar).Value = UserName;
                 command.Parameters.Add("@Password", SqlDbType.VarChar).Value = Password;
-                command.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = FirstName;
-                command.Parameters.Add("@LastName", SqlDbType.VarChar).Value = LastName;
-                command.Parameters.Add("@PhoneNo", SqlDbType.VarChar).Value = PhoneNo;
-                command.Parameters.Add("@Email", SqlDbType.VarChar).Value = Email;
-                command.Parameters.Add("@RoleId", SqlDbType.Int).Value = RoleId;
-                command.Parameters.Add("@RegionId", SqlDbType.Int).Value = RegionId;
-                command.Parameters.Add("@OrganizationId", SqlDbType.Int).Value = OrganizationId;
+                command.Parameters.Add("@EmployeeId", SqlDbType.Int).Value = EmployeeId;
+                command.Parameters.Add("@Roles", SqlDbType.VarChar).Value = string.Join(",", RoleIds);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 DataSet ds = new DataSet();
                 dataAdapter.Fill(ds);
@@ -133,22 +128,19 @@ namespace DataAccessLayer
             }
         }
 
-        public long UpdateUserDetails(string UserName, long UserId, string FirstName, string LastName, string PhoneNo, string Email, int RoleId, int RegionId, long OrganizationId)
+        public long UpdateUserDetails(string UserName, long UserId, string Password,bool IsPasswordChange,int EmployeeId, List<int> RoleIds)
         {
             try
             {
                 scon.Open();
-                SqlCommand command = new SqlCommand("GetUserDetailsById", scon);
+                SqlCommand command = new SqlCommand("UpdateUserDetails", scon);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@UserName", SqlDbType.VarChar).Value = UserName;
                 command.Parameters.Add("@UserId", SqlDbType.BigInt).Value = UserId;
-                command.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = FirstName;
-                command.Parameters.Add("@LastName", SqlDbType.VarChar).Value = LastName;
-                command.Parameters.Add("@PhoneNo", SqlDbType.VarChar).Value = PhoneNo;
-                command.Parameters.Add("@Email", SqlDbType.VarChar).Value = Email;
-                command.Parameters.Add("@RoleId", SqlDbType.Int).Value = RoleId;
-                command.Parameters.Add("@RegionId", SqlDbType.Int).Value = RegionId;
-                command.Parameters.Add("@OrganizationId", SqlDbType.Int).Value = OrganizationId;
+                command.Parameters.Add("@Password", SqlDbType.VarChar).Value = Password;
+                command.Parameters.Add("@IsPasswordChange", SqlDbType.Bit).Value = IsPasswordChange;
+                command.Parameters.Add("@EmployeeId", SqlDbType.Int).Value = EmployeeId;
+                command.Parameters.Add("@Roles", SqlDbType.VarChar).Value = string.Join(",", RoleIds);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 DataSet ds = new DataSet();
                 dataAdapter.Fill(ds);
