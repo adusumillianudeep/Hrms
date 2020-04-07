@@ -82,6 +82,7 @@ namespace DataAccessLayer.Context
         public virtual DbSet<WorkExperience> WorkExperiences { get; set; }
         public virtual DbSet<WorkflowManagement> WorkflowManagements { get; set; }
         public virtual DbSet<WorkShift> WorkShifts { get; set; }
+        public virtual DbSet<PersonalDetail> PersonalDetails { get; set; }
     
         [DbFunction("HrmsEntities", "splitstring")]
         public virtual IQueryable<splitstring_Result> splitstring(string stringToSplit)

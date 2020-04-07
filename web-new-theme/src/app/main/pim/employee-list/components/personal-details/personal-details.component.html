@@ -13,13 +13,16 @@
                 <div fxLayout="column">
                     <div fxLayout="row" fxLayoutGap="24px">
                         <mat-form-field fxFlex>
-                            <input matInput formControlName="firstName" [(ngModel)]="personalDetail.firstName" placeholder="First Name*">
+                            <input matInput formControlName="firstName" [(ngModel)]="personalDetail.firstName"
+                                placeholder="First Name*">
                         </mat-form-field>
                         <mat-form-field fxFlex>
-                            <input matInput formControlName="middleName" [(ngModel)]="personalDetail.middleName" placeholder="Middle Name">
+                            <input matInput formControlName="middleName" [(ngModel)]="personalDetail.middleName"
+                                placeholder="Middle Name">
                         </mat-form-field>
                         <mat-form-field fxFlex>
-                            <input matInput formControlName="lastName" [(ngModel)]="personalDetail.lastName" placeholder="Last Name*">
+                            <input matInput formControlName="lastName" [(ngModel)]="personalDetail.lastName"
+                                placeholder="Last Name*">
                         </mat-form-field>
                     </div>
                     <div fxLayout="row" fxLayoutGap="24px">
@@ -41,20 +44,20 @@
 
                         <mat-form-field fxFlex>
                             <mat-label>Marital Status</mat-label>
-                            <mat-select formControlName="maritalStatus">
+                            <mat-select formControlName="maritalStatus" [(ngModel)]="personalDetail.maritalStatus">
                                 <mat-option>-select-</mat-option>
-                                <mat-option>Married</mat-option>
-                                <mat-option>Single</mat-option>
-                                <mat-option>Other</mat-option>
+                                <mat-option value="married">Married</mat-option>
+                                <mat-option value="single">Single</mat-option>
+                                <mat-option value="other">Other</mat-option>
                             </mat-select>
                         </mat-form-field>
 
                         <mat-form-field fxFlex>
                             <mat-label>Gender</mat-label>
-                            <mat-select formControlName="gender">
+                            <mat-select formControlName="gender" [(ngModel)]="personalDetail.gender">
                                 <mat-option>-select-</mat-option>
-                                <mat-option>Male</mat-option>
-                                <mat-option>Female</mat-option>
+                                <mat-option value="male">Male</mat-option>
+                                <mat-option value="female">Female</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -62,59 +65,35 @@
                     <div fxLayout="row" fxLayoutGap="24px">
                         <mat-form-field fxFlex>
                             <mat-label>Nationality</mat-label>
-                            <mat-select formControlName="nationality">
+                            <mat-select formControlName="nationality" [(ngModel)]="personalDetail.countryId">
                                 <mat-option>-select-</mat-option>
-                                <mat-option>A</mat-option>
-                                <mat-option>B</mat-option>
-                                <mat-option>Other</mat-option>
+                                <mat-option value="1">India</mat-option>
                             </mat-select>
                         </mat-form-field>
 
                         <mat-form-field fxFlex>
-                            <input matInput formControlName="licenseNumber" placeholder="Driver's License Number">
+                            <input matInput formControlName="licenseNumber" placeholder="Driver's License Number"
+                                [(ngModel)]="personalDetail.licenseNumber">
                         </mat-form-field>
 
                         <mat-form-field fxFlex>
-                            <input matInput formControlName="licenseExpiryDate" placeholder="License Expiry Date">
+                            <input matInput formControlName="licenseExpiryDate" placeholder="License Expiry Date"
+                                [(ngModel)]="personalDetail.licenseExpiry">
                         </mat-form-field>
                     </div>
                     <div fxLayout="row" fxLayoutGap="24px">
                         <mat-form-field fxFlex>
-                            <input matInput formControlName="nickName" placeholder="Nick Name">
+                            <input matInput formControlName="nickName" placeholder="Nick Name"
+                                [(ngModel)]="personalDetail.nickName">
                         </mat-form-field>
 
                         <mat-form-field fxFlex>
-                            <input matInput formControlName="militaryService" placeholder="Military Service">
+                            <input matInput formControlName="militaryService" placeholder="Military Service"
+                                [(ngModel)]="personalDetail.militaryService">
                         </mat-form-field>
 
-                        <mat-checkbox formControlName="smoker" fxFlex>Smoker</mat-checkbox>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="p-16 mat-elevation-z2" fxLayoutGap="16px" fxLayout="column" fusePerfectScrollbar>
-            <div fxLayout="column" fxLayoutGap="16px">
-                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
-                    <mat-icon class="secondary-text primary-fg">info</mat-icon>
-                    <div class="h2 secondary-text primary-fg">Important</div>
-                </div>
-                <mat-divider></mat-divider>
-                <div fxLayout="column">
-                    <div fxLayout="row" fxLayoutGap="24px">
-                        <mat-form-field fxFlex>
-                            <mat-label>Blood Group</mat-label>
-                            <mat-select formControlName="bloodGroup">
-                                <mat-option>-select-</mat-option>
-                                <mat-option>A</mat-option>
-                                <mat-option>B</mat-option>
-                                <mat-option>etc</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-
-                        <mat-form-field fxFlex>
-                            <input matInput formControlName="hobbies" placeholder="Hobbies">
-                        </mat-form-field>
+                        <mat-checkbox formControlName="smoker" [(ngModel)]="personalDetail.smoker" fxFlex>Smoker
+                        </mat-checkbox>
                     </div>
                 </div>
             </div>

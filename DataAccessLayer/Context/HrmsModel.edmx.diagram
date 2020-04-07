@@ -77,6 +77,8 @@
         <AssociationConnector Association="HrmsModel.FK_SectionFields_Sections" ManuallyRouted="false" />
         <AssociationConnector Association="HrmsModel.FK_UserRegions_Users" ManuallyRouted="false" />
         <AssociationConnector Association="HrmsModel.FK_UserRoles_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HrmsModel.PersonalDetail" Width="1.5" PointX="10" PointY="18.25" />
+        <AssociationConnector Association="HrmsModel.FK_PersonalDetail_Employee" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

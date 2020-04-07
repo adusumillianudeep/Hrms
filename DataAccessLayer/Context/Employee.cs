@@ -18,6 +18,7 @@ namespace DataAccessLayer.Context
         public Employee()
         {
             this.EmployeeJobs = new HashSet<EmployeeJob>();
+            this.PersonalDetails = new HashSet<PersonalDetail>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace DataAccessLayer.Context
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeJob> EmployeeJobs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonalDetail> PersonalDetails { get; set; }
     }
 }

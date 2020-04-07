@@ -374,6 +374,25 @@
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="OrganizationId" Type="int" />
         </EntityType>
+        <EntityType Name="PersonalDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="MaritalStatus" Type="varchar" MaxLength="20" />
+          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="LicenseExpiry" Type="datetime" />
+          <Property Name="NickName" Type="varchar" MaxLength="50" />
+          <Property Name="MilitaryService" Type="varchar" MaxLength="50" />
+          <Property Name="Smokar" Type="bit" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="PersonalDetails_Important">
           <Key>
             <PropertyRef Name="OrganisationId" />
@@ -656,6 +675,18 @@
             </Principal>
             <Dependent Role="Locations">
               <PropertyRef Name="TimeZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalDetail_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="PersonalDetail" Type="Self.PersonalDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalDetail">
+              <PropertyRef Name="EmployeeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -976,6 +1007,7 @@
           <EntitySet Name="OrganizationLocation" EntityType="Self.OrganizationLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OtherJobDetails" EntityType="Self.OtherJobDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayGrade" EntityType="Self.PayGrade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalDetail" EntityType="Self.PersonalDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonalDetails_Important" EntityType="Self.PersonalDetails_Important" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonalDetails_Preferences" EntityType="Self.PersonalDetails_Preferences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
@@ -1012,6 +1044,10 @@
           <AssociationSet Name="FK_Locations_TimeZoneId_TimeZones_Id" Association="Self.FK_Locations_TimeZoneId_TimeZones_Id">
             <End Role="TimeZones" EntitySet="TimeZones" />
             <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalDetail_Employee" Association="Self.FK_PersonalDetail_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="PersonalDetail" EntitySet="PersonalDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_RoleDataGroupPermissions_DataGroupPermissions" Association="Self.FK_RoleDataGroupPermissions_DataGroupPermissions">
             <End Role="DataGroupPermissions" EntitySet="DataGroupPermissions" />
@@ -1218,6 +1254,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrganizationId" Type="Int64" />
           <NavigationProperty Name="EmployeeJobs" Relationship="Self.FK_Job_Employee_EmployeeId" FromRole="Employee" ToRole="EmployeeJobs" />
+          <NavigationProperty Name="PersonalDetails" Relationship="HrmsModel.FK_PersonalDetail_Employee" FromRole="Employee" ToRole="PersonalDetail" />
         </EntityType>
         <EntityType Name="EmployeeAction">
           <Key>
@@ -2168,6 +2205,11 @@
             <Parameter Name="RoleId" Mode="In" Type="Int32" />
             <Parameter Name="RegionId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="PersonalDetails" EntityType="HrmsModel.PersonalDetail" />
+          <AssociationSet Name="FK_PersonalDetail_Employee" Association="HrmsModel.FK_PersonalDetail_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="PersonalDetail" EntitySet="PersonalDetails" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetCostCenterById_Result">
           <Property Type="Int64" Name="Id" Nullable="false" />
@@ -2248,6 +2290,38 @@
           <Property Type="Int32" Name="RoleTypeId" Nullable="false" />
           <Property Type="Boolean" Name="IsDefault" Nullable="true" />
         </ComplexType>
+        <EntityType Name="PersonalDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LicenseExpiry" Type="DateTime" Precision="3" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MilitaryService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Smokar" Type="Boolean" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Employee" Relationship="HrmsModel.FK_PersonalDetail_Employee" FromRole="PersonalDetail" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_PersonalDetail_Employee">
+          <End Type="HrmsModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="HrmsModel.PersonalDetail" Role="PersonalDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalDetail">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3045,6 +3119,26 @@
           <FunctionImportMapping FunctionImportName="SaveLocationInfo" FunctionName="HrmsModel.Store.SaveLocationInfo" />
           <FunctionImportMapping FunctionImportName="UpdateCostCenter" FunctionName="HrmsModel.Store.UpdateCostCenter" />
           <FunctionImportMapping FunctionImportName="UpdateUserDetails" FunctionName="HrmsModel.Store.UpdateUserDetails" />
+          <EntitySetMapping Name="PersonalDetails">
+            <EntityTypeMapping TypeName="HrmsModel.PersonalDetail">
+              <MappingFragment StoreEntitySet="PersonalDetail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Smokar" ColumnName="Smokar" />
+                <ScalarProperty Name="MilitaryService" ColumnName="MilitaryService" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="LicenseExpiry" ColumnName="LicenseExpiry" />
+                <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

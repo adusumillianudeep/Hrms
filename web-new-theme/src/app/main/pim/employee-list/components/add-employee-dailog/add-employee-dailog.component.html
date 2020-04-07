@@ -36,15 +36,15 @@
                 <mat-checkbox fxFlex (change)="onChange($event)">Create Login Details</mat-checkbox>
             </div>
 
-            <div *ngIf="isChecked">
+            <div *ngIf="empData.addLoginDetail">
                 <div fxLayout="row" fxLayoutGap="24px">
                     <mat-form-field fxFlex>
-                        <input matInput placeholder="User Name" required>
+                        <input matInput placeholder="User Name" [(ngModel)]="empData.loginDetail.username" required>
                     </mat-form-field>
 
                     <mat-form-field fxFlex>
                         <mat-label>Status</mat-label>
-                        <mat-select required>
+                        <mat-select required  [(ngModel)]="empData.loginDetail.status">
                             <mat-option>Enabled</mat-option>
                             <mat-option>Disabled</mat-option>
                         </mat-select>
@@ -53,7 +53,7 @@
 
                 <div fxLayout="row" fxLayoutGap="24px">
                     <mat-form-field fxFlex>
-                        <input matInput placeholder="Password" required>
+                        <input matInput placeholder="Password" required  [(ngModel)]="empData.loginDetail.password">
                     </mat-form-field>
 
                     <mat-form-field fxFlex>
@@ -70,7 +70,7 @@
                 <div fxLayout="row" fxLayoutGap="24px">
                     <mat-form-field fxFlex>
                         <mat-label>ESS Role</mat-label>
-                        <mat-select required>
+                        <mat-select required  [(ngModel)]="empData.loginDetail.essRole">
                             <mat-option>-- Select --</mat-option>
                             <mat-option>Default ESS</mat-option>
                         </mat-select>
@@ -78,7 +78,7 @@
 
                     <mat-form-field fxFlex>
                         <mat-label>Supervisor Role</mat-label>
-                        <mat-select required>
+                        <mat-select required  [(ngModel)]="empData.loginDetail.supervisorRole">
                             <mat-option>-- Select --</mat-option>
                             <mat-option>Default Supervisor</mat-option>
                         </mat-select>
@@ -88,7 +88,7 @@
                 <div fxLayout="row" fxLayoutGap="24px">
                     <mat-form-field fxFlex="300px">
                         <mat-label>Admin Role</mat-label>
-                        <mat-select required>
+                        <mat-select required [(ngModel)]="empData.loginDetail.adminRole">
                             <mat-option>-- Select --</mat-option>
                             <mat-option>Gobal Admin</mat-option>
                             <mat-option>Asset Manager</mat-option>

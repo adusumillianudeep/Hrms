@@ -186,6 +186,9 @@
     <Compile Include="Context\PayGrade.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\PersonalDetail.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\PersonalDetails_Important.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>

@@ -16,7 +16,6 @@ export class AddEmployeeDailogComponent implements OnInit {
 
   empData: EmployeeData;
 
-  isChecked: boolean;
   constructor(
     private _router: Router,
     private _addEmployeeService: AddEmployeeService,
@@ -35,6 +34,6 @@ export class AddEmployeeDailogComponent implements OnInit {
   }
 
   onChange(event: MatCheckboxChange) {
-    this.isChecked = event.checked;
+    this.empData.addLoginDetail = event.checked;
   }
 }
