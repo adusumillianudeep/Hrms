@@ -156,10 +156,13 @@
     <Compile Include="Context\Immigration.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\Job.cs">
+    <Compile Include="Context\JobCategory.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\JobCategory.cs">
+    <Compile Include="Context\JobDetail.cs">
+      <DependentUpon>HrmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\JobTitle.cs">
       <DependentUpon>HrmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Language.cs">

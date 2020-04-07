@@ -14,8 +14,8 @@ namespace DataAccessLayer.Context
     
     public partial class JobCategory
     {
-        public long JobCategoryId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<long> OrganizationId { get; set; }
+        public Nullable<int> Type { get; set; }
     }
 }

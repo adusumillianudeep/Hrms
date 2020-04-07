@@ -216,11 +216,10 @@
         </EntityType>
         <EntityType Name="EmploymentStatus">
           <Key>
-            <PropertyRef Name="EmploymentStatusId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="EmploymentStatusId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="OrganizationId" Type="bigint" />
         </EntityType>
         <EntityType Name="GradeCurrency">
           <Key>
@@ -249,7 +248,15 @@
           <Property Name="Eligible_Review_Date" Type="datetime" />
           <Property Name="Comment" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Job">
+        <EntityType Name="JobCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Type" Type="int" />
+        </EntityType>
+        <EntityType Name="JobDetail">
           <Key>
             <PropertyRef Name="JobId" />
           </Key>
@@ -260,13 +267,12 @@
           <Property Name="JobSpecification" Type="varbinary(max)" />
           <Property Name="OrganizationId" Type="bigint" />
         </EntityType>
-        <EntityType Name="JobCategories">
+        <EntityType Name="JobTitle">
           <Key>
-            <PropertyRef Name="JobCategoryId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="JobCategoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="OrganizationId" Type="bigint" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Languages">
           <Key>
@@ -907,13 +913,8 @@
         <Function Name="InsertUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
-          <Parameter Name="FirstName" Type="varchar" Mode="In" />
-          <Parameter Name="LastName" Type="varchar" Mode="In" />
-          <Parameter Name="PhoneNo" Type="varchar" Mode="In" />
-          <Parameter Name="Email" Type="varchar" Mode="In" />
-          <Parameter Name="OrganizationId" Type="bigint" Mode="In" />
-          <Parameter Name="RoleId" Type="int" Mode="In" />
-          <Parameter Name="RegionId" Type="int" Mode="In" />
+          <Parameter Name="EmployeeId" Type="int" Mode="In" />
+          <Parameter Name="Roles" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SaveCostCenter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="bigint" Mode="InOut" />
@@ -968,13 +969,10 @@
         <Function Name="UpdateUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="bigint" Mode="In" />
           <Parameter Name="UserName" Type="varchar" Mode="In" />
-          <Parameter Name="FirstName" Type="varchar" Mode="In" />
-          <Parameter Name="LastName" Type="varchar" Mode="In" />
-          <Parameter Name="PhoneNo" Type="varchar" Mode="In" />
-          <Parameter Name="Email" Type="varchar" Mode="In" />
-          <Parameter Name="OrganizationId" Type="bigint" Mode="In" />
-          <Parameter Name="RoleId" Type="int" Mode="In" />
-          <Parameter Name="RegionId" Type="int" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="IsPasswordChange" Type="bit" Mode="In" />
+          <Parameter Name="EmployeeId" Type="int" Mode="In" />
+          <Parameter Name="Roles" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="HrmsModelStoreContainer">
           <EntitySet Name="ContactDetails" EntityType="Self.ContactDetails" Schema="dbo" store:Type="Tables" />
@@ -997,8 +995,9 @@
           <EntitySet Name="EmploymentStatus" EntityType="Self.EmploymentStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GradeCurrency" EntityType="Self.GradeCurrency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Immigration" EntityType="Self.Immigration" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="JobCategories" EntityType="Self.JobCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobCategory" EntityType="Self.JobCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobDetail" EntityType="Self.JobDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobTitle" EntityType="Self.JobTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Memberships" EntityType="Self.Memberships" Schema="dbo" store:Type="Tables" />
@@ -1328,14 +1327,6 @@
           <Property Name="Years_of_Experinece" Type="DateTime" Precision="3" />
           <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="EmploymentStatu">
-          <Key>
-            <PropertyRef Name="EmploymentStatusId" />
-          </Key>
-          <Property Name="EmploymentStatusId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="OrganizationId" Type="Int64" />
-        </EntityType>
         <EntityType Name="GradeCurrency">
           <Key>
             <PropertyRef Name="Id" />
@@ -1362,25 +1353,6 @@
           <Property Name="Expiry_Date" Type="DateTime" Precision="3" />
           <Property Name="Eligible_Review_Date" Type="DateTime" Precision="3" />
           <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Job">
-          <Key>
-            <PropertyRef Name="JobId" />
-          </Key>
-          <Property Name="JobId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="JobSpecification" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="OrganizationId" Type="Int64" />
-        </EntityType>
-        <EntityType Name="JobCategory">
-          <Key>
-            <PropertyRef Name="JobCategoryId" />
-          </Key>
-          <Property Name="JobCategoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="OrganizationId" Type="Int64" />
         </EntityType>
         <EntityType Name="Language">
           <Key>
@@ -1988,11 +1960,8 @@
           <EntitySet Name="EmployeeLanguages" EntityType="Self.EmployeeLanguage" />
           <EntitySet Name="EmployeeMemberships" EntityType="Self.EmployeeMembership" />
           <EntitySet Name="EmployeeSkills" EntityType="Self.EmployeeSkill" />
-          <EntitySet Name="EmploymentStatus" EntityType="Self.EmploymentStatu" />
           <EntitySet Name="GradeCurrencies" EntityType="Self.GradeCurrency" />
           <EntitySet Name="Immigrations" EntityType="Self.Immigration" />
-          <EntitySet Name="Jobs" EntityType="Self.Job" />
-          <EntitySet Name="JobCategories" EntityType="Self.JobCategory" />
           <EntitySet Name="Languages" EntityType="Self.Language" />
           <EntitySet Name="Locations" EntityType="Self.Location" />
           <EntitySet Name="Memberships" EntityType="Self.Membership" />
@@ -2146,13 +2115,8 @@
           <FunctionImport Name="InsertUserDetails">
             <Parameter Name="UserName" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
-            <Parameter Name="FirstName" Mode="In" Type="String" />
-            <Parameter Name="LastName" Mode="In" Type="String" />
-            <Parameter Name="PhoneNo" Mode="In" Type="String" />
-            <Parameter Name="Email" Mode="In" Type="String" />
-            <Parameter Name="OrganizationId" Mode="In" Type="Int64" />
-            <Parameter Name="RoleId" Mode="In" Type="Int32" />
-            <Parameter Name="RegionId" Mode="In" Type="Int32" />
+            <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+            <Parameter Name="Roles" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SaveCostCenter">
             <Parameter Name="Id" Mode="InOut" Type="Int64" />
@@ -2197,19 +2161,20 @@
           <FunctionImport Name="UpdateUserDetails">
             <Parameter Name="UserId" Mode="In" Type="Int64" />
             <Parameter Name="UserName" Mode="In" Type="String" />
-            <Parameter Name="FirstName" Mode="In" Type="String" />
-            <Parameter Name="LastName" Mode="In" Type="String" />
-            <Parameter Name="PhoneNo" Mode="In" Type="String" />
-            <Parameter Name="Email" Mode="In" Type="String" />
-            <Parameter Name="OrganizationId" Mode="In" Type="Int64" />
-            <Parameter Name="RoleId" Mode="In" Type="Int32" />
-            <Parameter Name="RegionId" Mode="In" Type="Int32" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="IsPasswordChange" Mode="In" Type="Boolean" />
+            <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+            <Parameter Name="Roles" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="PersonalDetails" EntityType="HrmsModel.PersonalDetail" />
           <AssociationSet Name="FK_PersonalDetail_Employee" Association="HrmsModel.FK_PersonalDetail_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="PersonalDetail" EntitySet="PersonalDetails" />
           </AssociationSet>
+          <EntitySet Name="JobDetails" EntityType="HrmsModel.JobDetail" />
+          <EntitySet Name="JobTitles" EntityType="HrmsModel.JobTitle" />
+          <EntitySet Name="JobCategories" EntityType="HrmsModel.JobCategory" />
+          <EntitySet Name="EmploymentStatus" EntityType="HrmsModel.EmploymentStatu" />
         </EntityContainer>
         <ComplexType Name="GetCostCenterById_Result">
           <Property Type="Int64" Name="Id" Nullable="false" />
@@ -2322,6 +2287,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="JobDetail">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="JobSpecification" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OrganizationId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="JobCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EmploymentStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2546,15 +2544,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EmploymentStatus">
-            <EntityTypeMapping TypeName="HrmsModel.EmploymentStatu">
-              <MappingFragment StoreEntitySet="EmploymentStatus">
-                <ScalarProperty Name="EmploymentStatusId" ColumnName="EmploymentStatusId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GradeCurrencies">
             <EntityTypeMapping TypeName="HrmsModel.GradeCurrency">
               <MappingFragment StoreEntitySet="GradeCurrency">
@@ -2580,27 +2569,6 @@
                 <ScalarProperty Name="Expiry_Date" ColumnName="Expiry_Date" />
                 <ScalarProperty Name="Eligible_Review_Date" ColumnName="Eligible_Review_Date" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Jobs">
-            <EntityTypeMapping TypeName="HrmsModel.Job">
-              <MappingFragment StoreEntitySet="Job">
-                <ScalarProperty Name="JobId" ColumnName="JobId" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="JobSpecification" ColumnName="JobSpecification" />
-                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="JobCategories">
-            <EntityTypeMapping TypeName="HrmsModel.JobCategory">
-              <MappingFragment StoreEntitySet="JobCategories">
-                <ScalarProperty Name="JobCategoryId" ColumnName="JobCategoryId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3136,6 +3104,43 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobDetails">
+            <EntityTypeMapping TypeName="HrmsModel.JobDetail">
+              <MappingFragment StoreEntitySet="JobDetail">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="JobSpecification" ColumnName="JobSpecification" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTitles">
+            <EntityTypeMapping TypeName="HrmsModel.JobTitle">
+              <MappingFragment StoreEntitySet="JobTitle">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobCategories">
+            <EntityTypeMapping TypeName="HrmsModel.JobCategory">
+              <MappingFragment StoreEntitySet="JobCategory">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmploymentStatus">
+            <EntityTypeMapping TypeName="HrmsModel.EmploymentStatu">
+              <MappingFragment StoreEntitySet="EmploymentStatus">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -44,11 +44,8 @@ namespace DataAccessLayer.Context
         public virtual DbSet<EmployeeLanguage> EmployeeLanguages { get; set; }
         public virtual DbSet<EmployeeMembership> EmployeeMemberships { get; set; }
         public virtual DbSet<EmployeeSkill> EmployeeSkills { get; set; }
-        public virtual DbSet<EmploymentStatu> EmploymentStatus { get; set; }
         public virtual DbSet<GradeCurrency> GradeCurrencies { get; set; }
         public virtual DbSet<Immigration> Immigrations { get; set; }
-        public virtual DbSet<Job> Jobs { get; set; }
-        public virtual DbSet<JobCategory> JobCategories { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Membership> Memberships { get; set; }
@@ -83,6 +80,10 @@ namespace DataAccessLayer.Context
         public virtual DbSet<WorkflowManagement> WorkflowManagements { get; set; }
         public virtual DbSet<WorkShift> WorkShifts { get; set; }
         public virtual DbSet<PersonalDetail> PersonalDetails { get; set; }
+        public virtual DbSet<JobDetail> JobDetails { get; set; }
+        public virtual DbSet<JobTitle> JobTitles { get; set; }
+        public virtual DbSet<JobCategory> JobCategories { get; set; }
+        public virtual DbSet<EmploymentStatu> EmploymentStatus { get; set; }
     
         [DbFunction("HrmsEntities", "splitstring")]
         public virtual IQueryable<splitstring_Result> splitstring(string stringToSplit)
@@ -246,7 +247,7 @@ namespace DataAccessLayer.Context
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertRoleWorkflowManagements", roleIdParameter, workflowManagementsParameter);
         }
     
-        public virtual int InsertUserDetails(string userName, string password, string firstName, string lastName, string phoneNo, string email, Nullable<long> organizationId, Nullable<int> roleId, Nullable<int> regionId)
+        public virtual int InsertUserDetails(string userName, string password, Nullable<int> employeeId, string roles)
         {
             var userNameParameter = userName != null ?
                 new ObjectParameter("UserName", userName) :
@@ -256,35 +257,15 @@ namespace DataAccessLayer.Context
                 new ObjectParameter("Password", password) :
                 new ObjectParameter("Password", typeof(string));
     
-            var firstNameParameter = firstName != null ?
-                new ObjectParameter("FirstName", firstName) :
-                new ObjectParameter("FirstName", typeof(string));
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("EmployeeId", employeeId) :
+                new ObjectParameter("EmployeeId", typeof(int));
     
-            var lastNameParameter = lastName != null ?
-                new ObjectParameter("LastName", lastName) :
-                new ObjectParameter("LastName", typeof(string));
+            var rolesParameter = roles != null ?
+                new ObjectParameter("Roles", roles) :
+                new ObjectParameter("Roles", typeof(string));
     
-            var phoneNoParameter = phoneNo != null ?
-                new ObjectParameter("PhoneNo", phoneNo) :
-                new ObjectParameter("PhoneNo", typeof(string));
-    
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
-    
-            var organizationIdParameter = organizationId.HasValue ?
-                new ObjectParameter("OrganizationId", organizationId) :
-                new ObjectParameter("OrganizationId", typeof(long));
-    
-            var roleIdParameter = roleId.HasValue ?
-                new ObjectParameter("RoleId", roleId) :
-                new ObjectParameter("RoleId", typeof(int));
-    
-            var regionIdParameter = regionId.HasValue ?
-                new ObjectParameter("RegionId", regionId) :
-                new ObjectParameter("RegionId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserDetails", userNameParameter, passwordParameter, firstNameParameter, lastNameParameter, phoneNoParameter, emailParameter, organizationIdParameter, roleIdParameter, regionIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUserDetails", userNameParameter, passwordParameter, employeeIdParameter, rolesParameter);
         }
     
         public virtual int SaveCostCenter(ObjectParameter id, string name, string description)
@@ -431,7 +412,7 @@ namespace DataAccessLayer.Context
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateCostCenter", idParameter, nameParameter, descriptionParameter);
         }
     
-        public virtual int UpdateUserDetails(Nullable<long> userId, string userName, string firstName, string lastName, string phoneNo, string email, Nullable<long> organizationId, Nullable<int> roleId, Nullable<int> regionId)
+        public virtual int UpdateUserDetails(Nullable<long> userId, string userName, string password, Nullable<bool> isPasswordChange, Nullable<int> employeeId, string roles)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("UserId", userId) :
@@ -441,35 +422,23 @@ namespace DataAccessLayer.Context
                 new ObjectParameter("UserName", userName) :
                 new ObjectParameter("UserName", typeof(string));
     
-            var firstNameParameter = firstName != null ?
-                new ObjectParameter("FirstName", firstName) :
-                new ObjectParameter("FirstName", typeof(string));
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
     
-            var lastNameParameter = lastName != null ?
-                new ObjectParameter("LastName", lastName) :
-                new ObjectParameter("LastName", typeof(string));
+            var isPasswordChangeParameter = isPasswordChange.HasValue ?
+                new ObjectParameter("IsPasswordChange", isPasswordChange) :
+                new ObjectParameter("IsPasswordChange", typeof(bool));
     
-            var phoneNoParameter = phoneNo != null ?
-                new ObjectParameter("PhoneNo", phoneNo) :
-                new ObjectParameter("PhoneNo", typeof(string));
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("EmployeeId", employeeId) :
+                new ObjectParameter("EmployeeId", typeof(int));
     
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
+            var rolesParameter = roles != null ?
+                new ObjectParameter("Roles", roles) :
+                new ObjectParameter("Roles", typeof(string));
     
-            var organizationIdParameter = organizationId.HasValue ?
-                new ObjectParameter("OrganizationId", organizationId) :
-                new ObjectParameter("OrganizationId", typeof(long));
-    
-            var roleIdParameter = roleId.HasValue ?
-                new ObjectParameter("RoleId", roleId) :
-                new ObjectParameter("RoleId", typeof(int));
-    
-            var regionIdParameter = regionId.HasValue ?
-                new ObjectParameter("RegionId", regionId) :
-                new ObjectParameter("RegionId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateUserDetails", userIdParameter, userNameParameter, firstNameParameter, lastNameParameter, phoneNoParameter, emailParameter, organizationIdParameter, roleIdParameter, regionIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateUserDetails", userIdParameter, userNameParameter, passwordParameter, isPasswordChangeParameter, employeeIdParameter, rolesParameter);
         }
     }
 }

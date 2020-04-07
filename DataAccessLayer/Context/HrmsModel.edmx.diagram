@@ -22,11 +22,8 @@
         <EntityTypeShape EntityType="HrmsModel.EmployeeLanguage" Width="1.5" PointX="16.75" PointY="16.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.EmployeeMembership" Width="1.5" PointX="17.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.EmployeeSkill" Width="1.5" PointX="17.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HrmsModel.EmploymentStatu" Width="1.5" PointX="17.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.GradeCurrency" Width="1.5" PointX="2.75" PointY="20.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Immigration" Width="1.5" PointX="4.75" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HrmsModel.Job" Width="1.5" PointX="6.75" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HrmsModel.JobCategory" Width="1.5" PointX="18.75" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Language" Width="1.5" PointX="18.75" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Location" Width="1.5" PointX="13" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HrmsModel.Membership" Width="1.5" PointX="19.75" PointY="5.25" IsExpanded="true" />
@@ -79,6 +76,10 @@
         <AssociationConnector Association="HrmsModel.FK_UserRoles_Users" ManuallyRouted="false" />
         <EntityTypeShape EntityType="HrmsModel.PersonalDetail" Width="1.5" PointX="10" PointY="18.25" />
         <AssociationConnector Association="HrmsModel.FK_PersonalDetail_Employee" />
+        <EntityTypeShape EntityType="HrmsModel.JobDetail" Width="1.5" PointX="0.5" PointY="20" />
+        <EntityTypeShape EntityType="HrmsModel.JobTitle" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="HrmsModel.JobCategory" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="HrmsModel.EmploymentStatu" Width="1.5" PointX="17.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,6 +1,8 @@
 ﻿using BusinessLayer;
+using DataAccessLayer.Context;
 using Model;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -12,24 +14,21 @@ namespace Hrms.Controllers
     {
         private readonly JobCategoryService _jobCategoryService;
 
+        private readonly HrmsEntities _dbContext;
+
         public JobCategoryController()
         {
+            _dbContext = new HrmsEntities();
+
             _jobCategoryService = new JobCategoryService();
         }
 
         [HttpGet]
-        [Route("GetJobCategoryList")]
-        [ResponseType(typeof(IEnumerable<JobCategoryModel>))]
-        public IHttpActionResult GetJobCategoryList()
+        [Route("list")]
+        [ResponseType(typeof(IEnumerable<OptionModel>))]
+        public IHttpActionResult Get()
         {
-            try
-            {
-                return Ok(_jobCategoryService.GetJobCategoryList());
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
+           return Ok(this._dbContext.JobCategories.Select(p=> new OptionModel { Text = p.Name, Value = p.Id.ToString()}).ToList());
         }
 
         [HttpGet]

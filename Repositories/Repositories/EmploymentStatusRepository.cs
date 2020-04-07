@@ -20,9 +20,9 @@ namespace Repositories.Repositories
             return _dbContext.EmploymentStatus
                 .Select(x => new EmploymentStatusModel
                 {
-                    EmploymentStatusId = x.EmploymentStatusId,
+                    EmploymentStatusId = x.Id,
                     Name = x.Name,
-                    OrganizationId = x.OrganizationId
+                    // OrganizationId = x.OrganizationId
                 });
         }
 
@@ -31,24 +31,24 @@ namespace Repositories.Repositories
             var EmploymentStatus = new EmploymentStatu
             {
                 Name = EmploymentStatusModel.Name,
-                OrganizationId = EmploymentStatusModel.OrganizationId
+               // OrganizationId = EmploymentStatusModel.OrganizationId
             };
 
             _dbContext.EmploymentStatus.Add(EmploymentStatus);
             _dbContext.SaveChanges();
 
-            EmploymentStatusModel.EmploymentStatusId = EmploymentStatus.EmploymentStatusId;
+            EmploymentStatusModel.EmploymentStatusId = EmploymentStatus.Id;
             return EmploymentStatusModel;
         }
 
         public EmploymentStatusModel UpdateEmploymentStatus(EmploymentStatusModel EmploymentStatusModel)
         {
             var EmploymentStatus = _dbContext.EmploymentStatus
-                .FirstOrDefault(x => x.EmploymentStatusId == EmploymentStatusModel.EmploymentStatusId);
+                .FirstOrDefault(x => x.Id == EmploymentStatusModel.EmploymentStatusId);
             if(EmploymentStatus!=null)
             {
                 EmploymentStatus.Name = EmploymentStatusModel.Name;
-                EmploymentStatus.OrganizationId = EmploymentStatusModel.OrganizationId;
+                // EmploymentStatus.OrganizationId = EmploymentStatusModel.OrganizationId;
                 _dbContext.SaveChanges();
             }
 
@@ -58,7 +58,7 @@ namespace Repositories.Repositories
         public EmploymentStatusModel DeleteEmploymentStatus(long EmploymentStatusId)
         {
             var EmploymentStatus = _dbContext.EmploymentStatus
-                .FirstOrDefault(x => x.EmploymentStatusId == EmploymentStatusId);
+                .FirstOrDefault(x => x.Id == EmploymentStatusId);
 
             if(EmploymentStatus!=null)
             {
@@ -71,7 +71,7 @@ namespace Repositories.Repositories
         public List<long> DeleteEmploymentStatuss(List<long> EmploymentStatusIds)
         {
             var EmploymentStatuss = _dbContext.EmploymentStatus
-                .Where(x => EmploymentStatusIds.Contains(x.EmploymentStatusId))
+                .Where(x => EmploymentStatusIds.Contains(x.Id))
                 .ToList();
             if(EmploymentStatuss!=null && EmploymentStatuss.Count>0)
             {

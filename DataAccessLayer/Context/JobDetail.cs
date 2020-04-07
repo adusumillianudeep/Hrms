@@ -12,7 +12,7 @@ namespace DataAccessLayer.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class Job
+    public partial class JobDetail
     {
         public long JobId { get; set; }
         public string Title { get; set; }
