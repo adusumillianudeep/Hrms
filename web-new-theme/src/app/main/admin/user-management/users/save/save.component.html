@@ -23,20 +23,20 @@
             <div fxLayout="row" fxLayoutGap="24px">
                 <mat-form-field fxFlex>
                     <mat-label>ESS Role</mat-label>
-                    <mat-select required>
+                    <mat-select required (selectionChange)="changeRole($event)">
                         <mat-option>-select-</mat-option>
-                        <mat-option *ngFor="let animal of animals" [value]="animal">
-                            {{animal.name}}
+                        <mat-option *ngFor="let ess of essRole" [value]="ess">
+                            {{ess.roleName}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field fxFlex>
                     <mat-label>Supervisor Role</mat-label>
-                    <mat-select required>
+                    <mat-select required (selectionChange)="changeRole($event)">
                         <mat-option>-select-</mat-option>
-                        <mat-option *ngFor="let animal of animals" [value]="animal">
-                            {{animal.name}}
+                        <mat-option *ngFor="let supervisor of supervisorRole" [value]="supervisor">
+                            {{supervisor.roleName}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -44,10 +44,10 @@
             <div fxLayout="row" fxLayoutGap="24px">
                 <mat-form-field fxFlex>
                     <mat-label>Admin Role</mat-label>
-                    <mat-select required>
+                    <mat-select required (selectionChange)="changeRole($event)">
                         <mat-option>-select-</mat-option>
-                        <mat-option *ngFor="let animal of animals" [value]="animal">
-                            {{animal.name}}
+                        <mat-option *ngFor="let role of adminRole" [value]="role">
+                            {{role.roleName}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -63,10 +63,10 @@
             </div>
             <div fxLayout="row" fxLayoutGap="24px">
                 <mat-form-field fxFlex>
-                    <input matInput placeholder="Password" required [(ngModel)]="user.userName">
+                    <input matInput placeholder="Password" required [(ngModel)]="user.password">
                 </mat-form-field>
                 <mat-form-field fxFlex>
-                    <input matInput placeholder="Confirm Password" [(ngModel)]="user.userName">
+                    <input matInput placeholder="Confirm Password" [(ngModel)]="user.password">
                 </mat-form-field>
             </div>
         </div>

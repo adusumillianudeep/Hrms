@@ -11,6 +11,10 @@ import { AlertService } from "app/services/alert.service";
 })
 export class SaveComponent implements OnInit {
     user: User;
+    essRole: any = [];
+    supervisorRole: any = [];
+    adminRole: any = [];
+    seletedRules: any = [];
 
     animals: any[] = [
         { name: "Dog", sound: "Woof!" },
@@ -23,13 +27,24 @@ export class SaveComponent implements OnInit {
         public _dialogRef: MatDialogRef<SaveComponent>,
         private userService: UsersService,
         private alertService: AlertService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.user = new User();
+        this.getRoles();
     }
+    getRoles() {
+        this.userService.getRoles().subscribe(res => {
+            if (res.length > 0) {
+                this.adminRole = res.filter(x => x.roleTypeName == 'Admin');
+                this.essRole = res.filter(x => x.roleTypeName == 'ESES');
+                this.supervisorRole = res.filter(x => x.roleTypeName == 'Supervisor');
+            }
 
+        });
+    }
     saveUser() {
+        this.user.roleIds = this.seletedRules;
         this.userService.saveUser(this.user).subscribe(
             res => {
                 this.alertService.success("Added");
@@ -39,5 +54,12 @@ export class SaveComponent implements OnInit {
                 this.alertService.error("Failed to add");
             }
         );
+    }
+    changeRole(data: any) {
+        if (data.value != undefined)
+            this.seletedRules.push(data.value.roleId);
+        else {
+
+        }
     }
 }

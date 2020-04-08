@@ -40,14 +40,14 @@ export class UsersComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-     private userService: UsersService
-    ) { }
+    private userService: UsersService
+  ) { }
 
   ngOnInit() {
 
-    this.userService.getUsers().subscribe(res=>{
-      
-    this.Users = res;
+    this.userService.getUsers().subscribe(res => {
+
+      this.Users = res;
     });
   }
 
@@ -64,10 +64,10 @@ export class UsersComponent implements OnInit {
 
 }
 
-export interface User {
-  username: string;
-  userrole: string;
-  employeename: string;
-  status: string;
-}
+// export interface User {
+//   username: string;
+//   userrole: string;
+//   employeename: string;
+//   status: string;
+// }
 
