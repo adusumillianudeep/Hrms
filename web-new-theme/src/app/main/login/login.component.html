@@ -11,8 +11,7 @@
         </div>
 
         <div class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper nisl erat,
-            vel convallis elit fermentum pellentesque. Sed mollis velit facilisis facilisis viverra.
+           
         </div>
 
     </div>
@@ -52,7 +51,7 @@
                     Invalid Username or Password
                 </mat-error>
 
-                <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
+                <!-- <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
                     fxLayoutAlign="space-between center">
                     <mat-checkbox class="remember-me" aria-label="Remember Me">
                         Remember Me
@@ -61,7 +60,7 @@
                     <a class="forgot-password" [routerLink]="'/pages/auth/forgot-password-2'">
                         Forgot Password?
                     </a>
-                </div>
+                </div> -->
 
                 <button mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
                     [disabled]="loginForm.invalid" (click)="login()">
