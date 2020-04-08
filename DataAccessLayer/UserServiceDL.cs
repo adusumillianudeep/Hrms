@@ -128,6 +128,31 @@ namespace DataAccessLayer
             }
         }
 
+        public DataSet GetEmployeesBySearch(string searchText)
+        {
+            try
+            {
+                scon.Open();
+                SqlCommand command = new SqlCommand("GetEmployeesBySearch", scon);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@searchText", SqlDbType.VarChar).Value = searchText;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                DataSet ds = new DataSet();
+                dataAdapter.Fill(ds);
+                return ds;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (scon.State == ConnectionState.Open)
+                    scon.Close();
+            }
+        }
+
         public DataSet GetRoles()
         {
             try

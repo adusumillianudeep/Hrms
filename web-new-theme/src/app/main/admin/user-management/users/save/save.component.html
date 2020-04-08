@@ -63,10 +63,10 @@
             </div>
             <div fxLayout="row" fxLayoutGap="24px">
                 <mat-form-field fxFlex>
-                    <input matInput placeholder="Password" required>
+                    <input matInput placeholder="Password" required [(ngModel)]="user.userName">
                 </mat-form-field>
                 <mat-form-field fxFlex>
-                    <input matInput placeholder="Confirm Password">
+                    <input matInput placeholder="Confirm Password" [(ngModel)]="user.userName">
                 </mat-form-field>
             </div>
         </div>

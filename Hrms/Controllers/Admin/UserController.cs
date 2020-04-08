@@ -106,6 +106,11 @@ namespace Hrms.Controllers.Admin
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roles"></param>
+        /// <returns></returns>
         [HttpPost]
         public bool InsertOrUpdateUserRole(Roles roles)
         {
@@ -121,12 +126,37 @@ namespace Hrms.Controllers.Admin
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
         public List<Roles> GetRoles()
         {
             try
             {
 
                 return userServiceBL.GetRoles();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SearchText"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public List<EmployeeListModel> GetEmployeesBySearch(string SearchText)
+        {
+            try
+            {
+
+                return userServiceBL.GetEmployeesBySearch(SearchText);
             }
             catch (Exception ex)
             {
