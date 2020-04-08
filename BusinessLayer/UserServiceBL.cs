@@ -101,7 +101,7 @@ namespace BusinessLayer
             try
             {
                 DataSet ds = _UserServiceDL.GetEmployeesBySearch(searchText);
-                List<EmployeeListModel> employees = new List<EmployeeListModel>;
+                List<EmployeeListModel> employees = new List<EmployeeListModel>();
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     employees = ds.Tables[0].AsEnumerable().Select(datarow => new EmployeeListModel
