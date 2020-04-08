@@ -22,7 +22,8 @@ namespace BusinessLayer
         }
 
 
-        public List<Users> GetUsers() {
+        public List<Users> GetUsers()
+        {
             return _userRepository.GetUsers();
         }
 
@@ -95,6 +96,31 @@ namespace BusinessLayer
             }
         }
 
+        public List<Roles> GetRoles()
+        {
+            try
+            {
+                DataSet ds = _UserServiceDL.GetRoles();
+                List<Roles> roles = new List<Roles>();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    roles = ds.Tables[0].AsEnumerable().Select(datarow => new Roles
+                    {
+                        RoleId = datarow.Field<int>("RoleId"),
+                        RoleName = datarow.Field<string>("RoleName"),
+                        RoleType = datarow.Field<int>("RoleTypeId"),
+                        RoleTypeName = datarow.Field<string>("RoleTypeName")
+                    }).Distinct().ToList();
+                }
+                return roles;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public List<Roles> GetUserRoleDetails(int RoleId)
         {
             try
@@ -159,7 +185,7 @@ namespace BusinessLayer
         {
             try
             {
-                return _UserServiceDL.UpdateUserDetails(users.UserName, users.UserId, users.Password,users.IsPasswordChange,users.EmployeeId,users.RoleIds);
+                return _UserServiceDL.UpdateUserDetails(users.UserName, users.UserId, users.Password, users.IsPasswordChange, users.EmployeeId, users.RoleIds);
             }
             catch (Exception ex)
             {
@@ -178,7 +204,7 @@ namespace BusinessLayer
             {
                 if (roles.RoleId == 0)
                 {
-                    roles.RoleId = _UserServiceDL.InsertRole(roles.RoleName,roles.RoleType);
+                    roles.RoleId = _UserServiceDL.InsertRole(roles.RoleName, roles.RoleType);
                 }
                 //Insert role EmployeeActions
                 _UserServiceDL.InsertRoleEmployeeActions(roles.RoleId, roles.EmployeeActions);
@@ -195,6 +221,6 @@ namespace BusinessLayer
             }
         }
 
-        
+
     }
 }

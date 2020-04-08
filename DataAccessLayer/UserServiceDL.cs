@@ -128,6 +128,30 @@ namespace DataAccessLayer
             }
         }
 
+        public DataSet GetRoles()
+        {
+            try
+            {
+                scon.Open();
+                SqlCommand command = new SqlCommand("GetRoles", scon);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                DataSet ds = new DataSet();
+                dataAdapter.Fill(ds);
+                return ds;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (scon.State == ConnectionState.Open)
+                    scon.Close();
+            }
+        }
+
         public long UpdateUserDetails(string UserName, long UserId, string Password,bool IsPasswordChange,int EmployeeId, List<int> RoleIds)
         {
             try

@@ -13,6 +13,7 @@ namespace Model
         public string RoleName { get; set; }
 
         public int RoleType { get; set; }
+        public string RoleTypeName { get; set; }
 
         public List<EmployeeActions> EmployeeActions { get; set; }
 

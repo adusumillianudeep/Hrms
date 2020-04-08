@@ -120,6 +120,20 @@ namespace Hrms.Controllers.Admin
                 throw ex;
             }
         }
+
+        public List<Roles> GetRoles()
+        {
+            try
+            {
+
+                return userServiceBL.GetRoles();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 
 }
