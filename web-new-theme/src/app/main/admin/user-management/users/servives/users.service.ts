@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { Roles } from '../models/roles';
@@ -23,6 +23,9 @@ export class UsersService {
     return this._http.get('/api/user/GetRoles');
   }
 
-
+  public onSearchChange(searchText: string): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('SearchText', searchText);
+    return this._http.get('/api/user/GetEmployeesBySearch', { params: params });
+  }
 }
-
